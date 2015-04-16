@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   box-ios-browse-sdk: 41d016f0036dd68255e37db1ea7af3d80692ff84
-  box-ios-content-sdk: 7b572c3ba051a167e526c6fce21abac49970bf9f
+  box-ios-content-sdk: 7be737de0b0d608623cc89c2af49660b2b724422
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
 
 COCOAPODS: 0.36.3
