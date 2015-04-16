@@ -10,8 +10,6 @@
 #import "BOXItemCell.h"
 #import "BOXFolderViewController.h"
 
-#define kCellHeight 50.0
-
 @interface BOXItemsViewController ()
 
 @property (nonatomic, readwrite, strong) NSArray *items;
@@ -37,7 +35,6 @@
     [super viewDidLoad];
     
     self.tableView.separatorInset = UIEdgeInsetsZero;
-    self.tableView.rowHeight = kCellHeight;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // eliminate extra separators
     
     [self setupNavigationBar];

@@ -203,6 +203,7 @@
 		15CE0A071ACD15BA006B8614 /* DummyStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A061ACD15BA006B8614 /* DummyStrings.m */; };
 		15CE0A0A1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */; };
 		15CE0A0B1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */; };
+		15DC5B261AE01EFE003FB3E9 /* BOXItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564A5541ACA1D68005DD04F /* BOXItemCell.m */; };
 		1C6E5394A7F19AE4673FFCCC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A03A2EFCE068CBE5D11D74D /* libPods.a */; };
 		C1E7651D66F260349D91B959 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A03A2EFCE068CBE5D11D74D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -1153,6 +1154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15DC5B261AE01EFE003FB3E9 /* BOXItemCell.m in Sources */,
 				15764E0D1ACF42710023C535 /* BOXSearchResultsViewController.m in Sources */,
 				1564A5371ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m in Sources */,
 				1564A6DA1ACB3C9E005DD04F /* BOXThumbnailCache.m in Sources */,
