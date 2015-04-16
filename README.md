@@ -18,6 +18,8 @@ Quickstart
 ----------
 Step 1: Add to your Podfile
 ```
+source https://github.com/box/box-ios-podspecs.git
+source 'https://github.com/CocoaPods/Specs.git'
 pod 'box-ios-browse-sdk'
 ```
 Step 2: Install
