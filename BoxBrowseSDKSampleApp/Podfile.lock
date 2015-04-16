@@ -1,0 +1,25 @@
+PODS:
+  - box-ios-browse-sdk (1.0.0):
+    - box-ios-content-sdk
+    - MBProgressHUD (~> 0.9.1)
+  - box-ios-content-sdk (1.0.0):
+    - box-ios-content-sdk/logger (= 1.0.0)
+    - box-ios-content-sdk/no-arc (= 1.0.0)
+  - box-ios-content-sdk/logger (1.0.0)
+  - box-ios-content-sdk/no-arc (1.0.0):
+    - box-ios-content-sdk/logger
+  - MBProgressHUD (0.9.1)
+
+DEPENDENCIES:
+  - box-ios-browse-sdk (from `../`)
+
+EXTERNAL SOURCES:
+  box-ios-browse-sdk:
+    :path: ../
+
+SPEC CHECKSUMS:
+  box-ios-browse-sdk: 0f9e4be0b3671309de4d307e1638bd0e4f98a979
+  box-ios-content-sdk: cbb0e9a99be49af61d60678c773ce63dac4e4300
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+
+COCOAPODS: 0.36.3

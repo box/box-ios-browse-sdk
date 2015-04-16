@@ -1,0 +1,3 @@
+source 'git@gitenterprise.inside-box.net:Mobile/box-ios-podspecs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'box-ios-browse-sdk', :path => '../'
