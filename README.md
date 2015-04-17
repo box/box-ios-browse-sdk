@@ -37,10 +37,10 @@ Step 4: Set the Box Client ID and Client Secret that you obtain from [creating a
 Step 5: Launch a BOXFolderViewController
 ```objectivec
 BOXContentClient *contentClient = [BOXContentClient defaultClient];
-BOXFolderViewController *folderViewController = [[BOXFolderViewController alloc] initWithContentClient:conentClient];
+BOXFolderViewController *folderViewController = [[BOXFolderViewController alloc] initWithContentClient:contentClient];
 
 // You must push it to a UINavigationController (i.e. do not 'presentViewController')
-UINavigationController navigationController = [[UINavigationController alloc] initWithRootViewController:folderViewController];
+UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:folderViewController];
 [self presentViewController:navigationController animated:YES completion:nil];
 ```
 
