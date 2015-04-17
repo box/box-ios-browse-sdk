@@ -57,6 +57,10 @@ Step 2: Open Workspace
 open BoxBrowseSDKSampleApp.xcworkspace
 ```
 
+Contributing
+------------
+See [CONTRIBUTING](CONTRIBUTING.md) on how to help out.
+
 
 Copyright and License
 ---------------------
