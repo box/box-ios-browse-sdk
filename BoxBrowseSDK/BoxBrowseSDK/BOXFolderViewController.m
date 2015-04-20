@@ -157,16 +157,8 @@
     }
 
     BOXItem *item = [self itemForRowAtIndexPath:indexPath];
-    
-    if (item.isFile) {
-        return ((BOXFile *)item).canDelete == BOXAPIBooleanYES;
-    } else if (item.isFolder) {
-        return ((BOXFolder *)item).canDelete == BOXAPIBooleanYES;
-    } else if (item.isBookmark) {
-        return ((BOXBookmark *)item).canDelete == BOXAPIBooleanYES;
-    }
-    
-    return NO;
+
+    return (item.canDelete == BOXAPIBooleanYES);
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,8 +168,6 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Item", @"Label: title for item deletion confirmation alert")
                                                         message:NSLocalizedString(@"Are you sure you want to delete this item?", @"Label: confirmation message for item deletion")
                                                        delegate:self
@@ -192,7 +182,6 @@
 {
     if (buttonIndex == 1) {
         BOXItem *item = [self itemForRowAtIndexPath:self.indexPathForDeleteCandidate];
-
 
         BOXErrorBlock errorBlock = ^(NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -214,13 +203,13 @@
         };
 
         if (item.isFile) {
-            BOXFileDeleteRequest *deleteRequest = [[BOXContentClient defaultClient] fileDeleteRequestWithID:item.modelID];
+            BOXFileDeleteRequest *deleteRequest = [self.contentClient fileDeleteRequestWithID:item.modelID];
             [deleteRequest performRequestWithCompletion:errorBlock];
         } else if (item.isFolder) {
-            BOXFolderDeleteRequest *deleteRequest = [[BOXContentClient defaultClient] folderDeleteRequestWithID:item.modelID];
+            BOXFolderDeleteRequest *deleteRequest = [self.contentClient folderDeleteRequestWithID:item.modelID];
             [deleteRequest performRequestWithCompletion:errorBlock];
         } else if (item.isBookmark) {
-            BOXBookmarkDeleteRequest *deleteRequest = [[BOXContentClient defaultClient] bookmarkDeleteRequestWithID:item.modelID];
+            BOXBookmarkDeleteRequest *deleteRequest = [self.contentClient bookmarkDeleteRequestWithID:item.modelID];
             [deleteRequest performRequestWithCompletion:errorBlock];
         }
     }
@@ -259,7 +248,6 @@
         }
     }
 }
-
 
 #pragma mark - Toolbar
 
