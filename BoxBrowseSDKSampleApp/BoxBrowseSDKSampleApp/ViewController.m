@@ -10,19 +10,38 @@
 
 @interface ViewController () <BOXFolderViewControllerDelegate>
 
+@property (nonatomic, readwrite, strong) UIButton *button;
+@property (nonatomic, readwrite, strong) UINavigationController *navControllerForBrowseSDK;
+
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.button setTitle:@"Start" forState:UIControlStateNormal];
+    self.button.titleLabel.font = [UIFont systemFontOfSize:22.0f];
+    [self.button addTarget:self action:@selector(showFolderViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.button];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLayoutSubviews
 {
-    [super viewDidAppear:animated];
+    [super viewDidLayoutSubviews];
     
-    // Show a UIViewController that
+    self.button.frame = self.view.bounds;
+    [self.button sizeToFit];
+    self.button.center = self.view.center;
+}
+
+- (void)showFolderViewController
+{
+    // Show a UIViewController that displays the contents of a Box Folder.
     BOXFolderViewController *folderViewController = [[BOXFolderViewController alloc] initWithContentClient:[BOXContentClient defaultClient]];
     folderViewController.delegate = self;
     folderViewController.showsCreateFolderButton = YES;
@@ -30,34 +49,70 @@
     folderViewController.showsSearchBar = YES;
     
     // You must load it in a UINavigationController.
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:folderViewController];
-    [self presentViewController:navController animated:YES completion:nil];
+    self.navControllerForBrowseSDK = [[UINavigationController alloc] initWithRootViewController:folderViewController];
+    [self presentViewController:self.navControllerForBrowseSDK animated:YES completion:nil];
 }
 
 #pragma mark - BOXFolderViewControllerDelegate
 
-- (void)didTapFolder:(BOXFolder *)folder inItems:(NSArray *)items
+// These are all optional and will allow you to customize behavior for your app.
+
+- (BOOL)itemsViewController:(BOXItemsViewController *)itemsViewController shouldShowItem:(BOXItem *)item
+{
+    return YES;
+}
+
+- (BOOL)itemsViewController:(BOXItemsViewController *)itemsViewController shouldEnableItem:(BOXItem *)item
+{
+    return YES;
+}
+
+- (BOOL)itemsViewController:(BOXItemsViewController *)itemsViewController willNavigateToFolder:(BOXFolder *)folder
+{
+    return YES;
+}
+
+- (void)itemsViewController:(BOXItemsViewController *)itemsViewController didTapFolder:(BOXFolder *)folder inItems:(NSArray *)items
 {
     NSLog(@"Did tap folder: %@", folder.name);
-    return;
 }
 
-- (void)didTapFile:(BOXFile *)file inItems:(NSArray *)items
+- (void)itemsViewController:(BOXItemsViewController *)itemsViewController didTapFile:(BOXFile *)file inItems:(NSArray *)items
 {
     NSLog(@"Did tap file: %@", file.name);
-    return;
 }
 
-- (void)didTapChooseFolderButton:(BOXFolder *)folder
+- (void)itemsViewControllerDidTapCloseButtton:(BOXItemsViewController *)itemsViewController
+{
+    // If you don't implement this, the navigation controller will be dismissed for you.
+    // Only implement if you need to customize behavior.
+    NSLog(@"Did tap close button");
+    [self.navControllerForBrowseSDK dismissViewControllerAnimated:YES completion:nil];
+}
+
+// By default the following sort order will be applied:
+// - Folders come before files
+// - Sort by modification date descending
+// - Sort by name ascending
+// You can implement your own sort order by implementing this delegate method.
+//
+//- (NSComparisonResult)itemsViewController:(BOXItemsViewController *)itemsViewController compareForSortingItem:(BOXItem *)itemA toItem:(BOXItem *)itemB
+//{
+//}
+
+- (void)folderViewController:(BOXFolderViewController *)folderViewController didChooseFolder:(BOXFolder *)folder
 {
     NSLog(@"Did choose folder: %@", folder.name);
-    return;
 }
 
-- (void)didCreateNewFolder:(BOXFolder *)folder
+- (void)folderViewController:(BOXFolderViewController *)folderViewController didCreateNewFolder:(BOXFolder *)folder
 {
     NSLog(@"Did create new folder: %@", folder.name);
-    return;
+}
+
+- (void)folderViewController:(BOXFolderViewController *)folderViewController didDeleteItem:(BOXItem *)item
+{
+    NSLog(@"Did delete item: %@", item.name);
 }
 
 @end

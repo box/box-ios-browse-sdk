@@ -86,8 +86,8 @@
     
     cell.item = item;
     
-    if ([self.delegate respondsToSelector:@selector(shouldEnableItem:)]) {
-        cell.enabled = [self.delegate shouldEnableItem:item];
+    if ([self.delegate respondsToSelector:@selector(itemsViewController:shouldEnableItem:)]) {
+        cell.enabled = [self.delegate itemsViewController:self shouldEnableItem:item];
     } else {
         cell.enabled = YES;
     }
@@ -101,24 +101,24 @@
     BOXItem *item = [self itemForRowAtIndexPath:indexPath];
     if (item.isFolder) {
         BOXFolder *folder = (BOXFolder *)item;
-        if ([self.delegate respondsToSelector:@selector(didTapFolder:inItems:)]) {
-            [self.delegate didTapFolder:folder inItems:self.items];
+        if ([self.delegate respondsToSelector:@selector(itemsViewController:didTapFolder:inItems:)]) {
+            [self.delegate itemsViewController:self didTapFolder:folder inItems:self.items];
         }
     }
     
     // File
     else if (item.isFile) {
         BOXFile *file = (BOXFile *)item;
-        if ([self.delegate respondsToSelector:@selector(didTapFile:inItems:)]) {
-            [self.delegate didTapFile:file inItems:self.items];
+        if ([self.delegate respondsToSelector:@selector(itemsViewController:didTapFile:inItems:)]) {
+            [self.delegate itemsViewController:self didTapFile:file inItems:self.items];
         }
     }
     
     // Bookmark
     else if (item.isBookmark) {
         BOXBookmark *bookmark = (BOXBookmark *)item;
-        if ([self.delegate respondsToSelector:@selector(didTapBookmark:inItems:)]) {
-            [self.delegate didTapBookmark:bookmark inItems:self.items];
+        if ([self.delegate respondsToSelector:@selector(itemsViewController:didTapBookmark:inItems:)]) {
+            [self.delegate itemsViewController:self didTapBookmark:bookmark inItems:self.items];
         }
     }
 }
@@ -137,19 +137,21 @@
 - (void)setupNavigationBar
 {
     // Close Button
-    UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Close", @"Title : button closing the folder picker")
-                                                                           style:UIBarButtonItemStylePlain
-                                                                          target:self
-                                                                          action:@selector(closeButtonAction:)];
-    [closeBarButtonItem setTitlePositionAdjustment:UIOffsetMake(0.0, 1)
-                                     forBarMetrics:UIBarMetricsDefault];
-    self.navigationItem.rightBarButtonItem = closeBarButtonItem;
+    if (self.showsCloseButton) {
+        UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Close", @"Title : button closing the folder picker")
+                                                                               style:UIBarButtonItemStylePlain
+                                                                              target:self
+                                                                              action:@selector(closeButtonAction:)];
+        [closeBarButtonItem setTitlePositionAdjustment:UIOffsetMake(0.0, 1)
+                                         forBarMetrics:UIBarMetricsDefault];
+        self.navigationItem.rightBarButtonItem = closeBarButtonItem;
+    }
 }
 
 - (void)closeButtonAction:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(didTapCloseButton)]) {
-        [self.delegate didTapCloseButton];
+    if ([self.delegate respondsToSelector:@selector(itemsViewControllerDidTapCloseButtton:)]) {
+        [self.delegate itemsViewControllerDidTapCloseButtton:self];
     } else {
         [[self navigationController] dismissViewControllerAnimated:YES completion:NULL];
     }
@@ -177,8 +179,8 @@
                                 BOXItem *itemA = (BOXItem*) obj1;
                                 BOXItem *itemB = (BOXItem*) obj2;
                                 
-                                if ([self.delegate respondsToSelector:@selector(compareForSortingItem:toItem:)]) {
-                                    order = [self.delegate compareForSortingItem:itemA toItem:itemB];
+                                if ([self.delegate respondsToSelector:@selector(itemsViewController:compareForSortingItem:toItem:)]) {
+                                    order = [self.delegate itemsViewController:self compareForSortingItem:itemA toItem:itemB];
                                 } else {
                                     // Folders come first
                                     if (itemA.isFolder && !itemB.isFolder) {
@@ -205,10 +207,10 @@
 
 - (NSArray *)filterItems:(NSArray *)items
 {
-    if ([self.delegate respondsToSelector:@selector(shouldShowItem:)]) {
+    if ([self.delegate respondsToSelector:@selector(itemsViewController:shouldShowItem:)]) {
         NSArray *filteredArray = [items objectsAtIndexes:[items indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
             BOXItem *item = (BOXItem*) obj;
-            return [self.delegate shouldShowItem:item];
+            return [self.delegate itemsViewController:self shouldShowItem:item];
         }]];
         return filteredArray;
     } else {

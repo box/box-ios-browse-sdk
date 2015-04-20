@@ -206,8 +206,8 @@
                     [alertView show];
                 } else {
                     [self refresh];
-                    if ([self.folderBrowserDelegate respondsToSelector:@selector(didDeleteItem:)]) {
-                        [self.folderBrowserDelegate didDeleteItem:item];
+                    if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didDeleteItem:)]) {
+                        [self.folderBrowserDelegate folderViewController:self didDeleteItem:item];
                     }
                 }
             });
@@ -243,13 +243,14 @@
     if (item.isFolder) {
         BOXFolder *folder = (BOXFolder *)item;
         BOOL shouldNavigateToFolder = YES;
-        if ([self.folderBrowserDelegate respondsToSelector:@selector(willNavigateToFolder:)]) {
-            shouldNavigateToFolder = [self.folderBrowserDelegate willNavigateToFolder:folder];
+        if ([self.folderBrowserDelegate respondsToSelector:@selector(itemsViewController:willNavigateToFolder:)]) {
+            shouldNavigateToFolder = [self.folderBrowserDelegate itemsViewController:self willNavigateToFolder:folder];
         }
         if (shouldNavigateToFolder) {
             BOXFolderViewController *viewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient
                                                                                                       folder:folder];
             viewController.delegate = self.folderBrowserDelegate;
+            viewController.showsCloseButton = self.showsCloseButton;
             viewController.showsChooseFolderButton = self.showsChooseFolderButton;
             viewController.showsCreateFolderButton = self.showsCreateFolderButton;
             viewController.showsDeleteButtons = self.showsDeleteButtons;
@@ -308,13 +309,16 @@
     BOXCreateFolderViewController *createFolderViewController = [[BOXCreateFolderViewController alloc] initWithContentClient:self.contentClient parentFolderID:self.folderID completion:^(BOXFolder *folder, NSError *error) {
         [self refresh];
         BOXFolderViewController *folderBrowserViewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient folder:folder];
+        folderBrowserViewController.delegate = self.delegate;
         folderBrowserViewController.showsChooseFolderButton = self.showsChooseFolderButton;
         folderBrowserViewController.showsCreateFolderButton = self.showsCreateFolderButton;
         folderBrowserViewController.showsSearchBar = self.showsSearchBar;
+        folderBrowserViewController.showsCloseButton = self.showsCloseButton;
+        folderBrowserViewController.showsDeleteButtons = self.showsDeleteButtons;
         [self.navigationController pushViewController:folderBrowserViewController animated:YES];
 
-        if ([self.folderBrowserDelegate respondsToSelector:@selector(didCreateNewFolder:)]) {
-            [self.folderBrowserDelegate didCreateNewFolder:folder];
+        if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didCreateNewFolder:)]) {
+            [self.folderBrowserDelegate folderViewController:self didCreateNewFolder:folder];
         }
     }];
     [self.navigationController pushViewController:createFolderViewController animated:YES];
@@ -322,8 +326,8 @@
 
 - (void)chooseFolderButtonAction:(id)sender
 {
-    if ([self.folderBrowserDelegate respondsToSelector:@selector(didTapChooseFolderButton:)]) {
-        [self.folderBrowserDelegate didTapChooseFolderButton:self.folder];
+    if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didChooseFolder:)]) {
+        [self.folderBrowserDelegate folderViewController:self didChooseFolder:self.folder];
     }
 }
 

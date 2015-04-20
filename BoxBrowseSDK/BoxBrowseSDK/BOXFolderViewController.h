@@ -52,34 +52,28 @@
 @optional
 
 /**
- *  Implement to control whether the user should be navigated to a folder.
- *
- *  @param folder The folder that the user would be navigated to.
- *
- *  @return YES to allow the navigation to proceed, false otherwise.
- */
-- (BOOL)willNavigateToFolder:(BOXFolder *)folder;
-
-/**
  *  If the choose button is shown (see 'shouldShowChooseFolderButton'), this will be called when the user has tapped the button to
  *  select the folder currently displayed.
  *
+ *  @param itemsViewController The instance of BOXItemsViewController calling this method.
  *  @param folder The Folder that the user was viewing when the Choose button was tapped.
  */
-- (void)didTapChooseFolderButton:(BOXFolder *)folder;
+- (void)folderViewController:(BOXFolderViewController *)folderViewController didChooseFolder:(BOXFolder *)folder;
 
 /**
  *  A folder was created.
  *
+ *  @param itemsViewController The instance of BOXItemsViewController calling this method.
  *  @param folder The created folder.
  */
-- (void)didCreateNewFolder:(BOXFolder *)folder;
+- (void)folderViewController:(BOXFolderViewController *)folderViewController didCreateNewFolder:(BOXFolder *)folder;
 
 /**
  *  A Box item was deleted.
  *
+ *  @param itemsViewController The instance of BOXItemsViewController calling this method.
  *  @param item The deleted item.
  */
-- (void)didDeleteItem:(BOXItem *)item;
+- (void)folderViewController:(BOXFolderViewController *)folderViewController didDeleteItem:(BOXItem *)item;
 
 @end

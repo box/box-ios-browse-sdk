@@ -57,12 +57,21 @@
     if (item.isFolder) {
         BOXFolder *folder = (BOXFolder *)item;
         BOOL shouldNavigateToFolder = YES;
-        if ([self.folderBrowserDelegate respondsToSelector:@selector(willNavigateToFolder:)]) {
-            shouldNavigateToFolder = [self.folderBrowserDelegate willNavigateToFolder:folder];
+        if ([self.folderBrowserDelegate respondsToSelector:@selector(itemsViewController:willNavigateToFolder:)]) {
+            shouldNavigateToFolder = [self.folderBrowserDelegate itemsViewController:self willNavigateToFolder:folder];
         }
         if (shouldNavigateToFolder) {
             BOXFolderViewController *viewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient folder:folder];
+            viewController.showsCloseButton = self.showsCloseButton;
             viewController.delegate = self.folderBrowserDelegate;
+            if ([[self class] isKindOfClass:[BOXFolderViewController class]]) {
+                viewController.showsChooseFolderButton = ((BOXFolderViewController *)self).showsChooseFolderButton;
+                viewController.showsCreateFolderButton = ((BOXFolderViewController *)self).showsCreateFolderButton;
+                viewController.showsSearchBar = ((BOXFolderViewController *)self).showsSearchBar;
+                viewController.showsDeleteButtons = ((BOXFolderViewController *)self).showsDeleteButtons;
+            }
+            
+            
             self.navigationItem.backBarButtonItem.title = folder.parentFolder.name;
             [self.presentingViewController.navigationController pushViewController:viewController animated:YES];
         }
