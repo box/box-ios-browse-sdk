@@ -70,8 +70,6 @@
  *
  *  @param folder The folder the user selected.
  *  @param items The list of items that the tap occured from. The array will include the tapped item itself.
- *
- *  @return Whether or not to navigate to the folder. If YES, the user will be taken into the folder.
  */
 - (void)didTapFolder:(BOXFolder *)folder inItems:(NSArray *)items;
 
