@@ -74,7 +74,7 @@
 
 - (NSString *)cacheKeyForFile:(BOXFile *)file thumbnailSize:(BOXThumbnailSize)thumbnailSize
 {
-    NSString *key = [NSString stringWithFormat:@"%@_%lu", file, thumbnailSize];
+    NSString *key = [NSString stringWithFormat:@"%@_%lu", file.SHA1, thumbnailSize];
     return key;
 }
 

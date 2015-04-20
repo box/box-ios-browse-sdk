@@ -112,17 +112,18 @@ CGFloat const BOXItemCellHeight = 60.0f;
                 }
             }];
         } else {
-            self.myImageView.image = [self iconForItem:item];
+            UIImageView *myImageView = self.myImageView;
+            myImageView.image = [self iconForItem:item];
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
-                if ([me.item.modelID isEqualToString:file.modelID]) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        me.myImageView.image = image;
+                if (error == nil) {
+                    if ([me.item.modelID isEqualToString:file.modelID]) {
+                        myImageView.image = image;
                         CATransition *transition = [CATransition animation];
                         transition.duration = 0.3f;
                         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
                         transition.type = kCATransitionFade;
-                        [me.imageView.layer addAnimation:transition forKey:nil];
-                    });
+                        [myImageView.layer addAnimation:transition forKey:nil];
+                    }
                 }
             }];
         }
