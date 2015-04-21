@@ -62,7 +62,6 @@
         }
         if (shouldNavigateToFolder) {
             BOXFolderViewController *viewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient folder:folder];
-            viewController.showsCloseButton = self.showsCloseButton;
             viewController.delegate = self.folderBrowserDelegate;
             if ([[self class] isKindOfClass:[BOXFolderViewController class]]) {
                 viewController.showsChooseFolderButton = ((BOXFolderViewController *)self).showsChooseFolderButton;

@@ -137,7 +137,12 @@
 - (void)setupNavigationBar
 {
     // Close Button
-    if (self.showsCloseButton) {
+    BOOL shouldShowCloseButton = YES;
+    if ([self.delegate respondsToSelector:@selector(itemsViewControllerShouldShowCloseButton:)]) {
+        shouldShowCloseButton = [self.delegate itemsViewControllerShouldShowCloseButton:self];
+    }
+    
+    if (shouldShowCloseButton) {
         UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Close", @"Title : button closing the folder picker")
                                                                                style:UIBarButtonItemStylePlain
                                                                               target:self

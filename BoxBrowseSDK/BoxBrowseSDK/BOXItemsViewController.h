@@ -28,11 +28,6 @@
  */
 - (void)refresh;
 
-/**
- * Controls whether or not to show the close button in the navigation bar.
- */
-@property (nonatomic, readwrite, assign) BOOL showsCloseButton;
-
 @end
 
 @protocol BOXItemsViewControllerDelegate <NSObject>
@@ -120,5 +115,16 @@
  *  @return YES to allow the navigation to proceed, false otherwise.
  */
 - (BOOL)itemsViewController:(BOXItemsViewController *)itemsViewController willNavigateToFolder:(BOXFolder *)folder;
+
+/**
+ *
+ *  Whether or not to show a 'Close' button in the navigation bar. By default, the button will be shown and
+ *  will dismiss the host UINavigationController when tapped.
+ *
+ *  @param itemsViewController The instance of BOXItemsViewController calling this method.
+ *
+ *  @return YES to show the button, NO otherwise.
+ */
+- (BOOL)itemsViewControllerShouldShowCloseButton:(BOXItemsViewController *)itemsViewController;
 
 @end

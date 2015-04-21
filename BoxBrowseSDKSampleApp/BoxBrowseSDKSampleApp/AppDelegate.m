@@ -19,10 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    #error Set your client-id and client-secret that you obtained from https://developers.box.com
-//    [BOXContentClient setClientID:nil clientSecret:nil];
-
-    [BOXContentClient setClientID:@"m8nwyiz20tq7j9itkz3loab9rwsgwa1y" clientSecret:@"cVDIgTy6WFQ8RbUKSSgNxlzl4ej59KvO"];
+    #error Set your client-id and client-secret that you obtained from https://developers.box.com
+    [BOXContentClient setClientID:nil clientSecret:nil];
 
     ViewController *viewController = [[ViewController alloc] init];
     self.window.rootViewController = viewController;
