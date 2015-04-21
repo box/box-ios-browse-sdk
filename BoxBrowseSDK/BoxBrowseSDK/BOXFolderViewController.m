@@ -12,6 +12,7 @@
 #import "BOXCreateFolderViewController.h"
 #import "BOXSearchResultsViewController.h"
 #import "MBProgressHUD.h"
+#import "BOXBrowseSDKConstants.h"
 
 @interface BOXFolderViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UIAlertViewDelegate>
 
@@ -157,16 +158,8 @@
     }
 
     BOXItem *item = [self itemForRowAtIndexPath:indexPath];
-    
-    if (item.isFile) {
-        return ((BOXFile *)item).canDelete == BOXAPIBooleanYES;
-    } else if (item.isFolder) {
-        return ((BOXFolder *)item).canDelete == BOXAPIBooleanYES;
-    } else if (item.isBookmark) {
-        return ((BOXBookmark *)item).canDelete == BOXAPIBooleanYES;
-    }
-    
-    return NO;
+
+    return (item.canDelete == BOXAPIBooleanYES);
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,8 +169,6 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Item", @"Label: title for item deletion confirmation alert")
                                                         message:NSLocalizedString(@"Are you sure you want to delete this item?", @"Label: confirmation message for item deletion")
                                                        delegate:self
@@ -192,7 +183,6 @@
 {
     if (buttonIndex == 1) {
         BOXItem *item = [self itemForRowAtIndexPath:self.indexPathForDeleteCandidate];
-
 
         BOXErrorBlock errorBlock = ^(NSError *error){
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -214,13 +204,19 @@
         };
 
         if (item.isFile) {
-            BOXFileDeleteRequest *deleteRequest = [[BOXContentClient defaultClient] fileDeleteRequestWithID:item.modelID];
+            BOXFileDeleteRequest *deleteRequest = [self.contentClient fileDeleteRequestWithID:item.modelID];
+            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
             [deleteRequest performRequestWithCompletion:errorBlock];
         } else if (item.isFolder) {
-            BOXFolderDeleteRequest *deleteRequest = [[BOXContentClient defaultClient] folderDeleteRequestWithID:item.modelID];
+            BOXFolderDeleteRequest *deleteRequest = [self.contentClient folderDeleteRequestWithID:item.modelID];
+            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
             [deleteRequest performRequestWithCompletion:errorBlock];
         } else if (item.isBookmark) {
-            BOXBookmarkDeleteRequest *deleteRequest = [[BOXContentClient defaultClient] bookmarkDeleteRequestWithID:item.modelID];
+            BOXBookmarkDeleteRequest *deleteRequest = [self.contentClient bookmarkDeleteRequestWithID:item.modelID];
+            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
             [deleteRequest performRequestWithCompletion:errorBlock];
         }
     }
@@ -260,7 +256,6 @@
         }
     }
 }
-
 
 #pragma mark - Toolbar
 
@@ -336,7 +331,11 @@
 - (void)fetchItemsWithCompletion:(void (^)(NSArray *items))completion
 {
     [self setupToolbar];
-    [[self.contentClient folderInfoRequestWithID:self.folderID] performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
+    
+    BOXFolderRequest *folderRequest = [self.contentClient folderInfoRequestWithID:self.folderID];
+    folderRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+    folderRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+    [folderRequest performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
         if (error) {
             [self didFailToLoadItemsWithError:error];
             self.navigationController.toolbarHidden = YES;
@@ -366,6 +365,8 @@
 - (void)fetchItemsInFolder:(BOXFolder *)folder withCompletion:(void (^)(NSArray *items, NSError *error))completion
 {
     BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folder.modelID];
+    request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+    request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
     [request performRequestWithCompletion:^(NSArray *items, NSError *error) {
         if (completion) {

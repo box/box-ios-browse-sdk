@@ -239,6 +239,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXBrowseSDKConstants.h; sourceTree = "<group>"; };
 		15146EB01AC20B77000BA380 /* libBoxBrowseSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBoxBrowseSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxBrowseSDK.h; sourceTree = "<group>"; };
 		15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxBrowseSDK.m; sourceTree = "<group>"; };
@@ -518,6 +519,7 @@
 				15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */,
 				15764E0A1ACF42710023C535 /* BOXSearchResultsViewController.h */,
 				15764E0B1ACF42710023C535 /* BOXSearchResultsViewController.m */,
+				1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */,
 			);
 			path = BoxBrowseSDK;
 			sourceTree = "<group>";
