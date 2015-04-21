@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <BoxContentSDK/BOXContentSDK.h>
 #import "BOXFolderViewController.h"
-#import "BOXThumbnailCache.h"
 
 @interface BoxBrowseSDK : NSObject
 

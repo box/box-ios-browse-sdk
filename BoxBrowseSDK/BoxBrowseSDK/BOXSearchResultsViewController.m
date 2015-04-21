@@ -8,6 +8,7 @@
 
 #import "BOXSearchResultsViewController.h"
 #import "BOXFolderViewController.h"
+#import "BOXBrowseSDKConstants.h"
 
 @interface BOXSearchResultsViewController ()
 
@@ -38,6 +39,8 @@
     [self.searchRequest cancel];
     
     self.searchRequest = [self.contentClient searchRequestWithQuery:self.searchString inRange:NSMakeRange(0, 1000)];
+    self.searchRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+    self.searchRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
     self.searchRequest.ancestorFolderIDs = @[self.folderID];
     [self.searchRequest performRequestWithCompletion:^(NSArray *items, NSUInteger totalCount, NSRange range, NSError *error) {
         if (error) {
