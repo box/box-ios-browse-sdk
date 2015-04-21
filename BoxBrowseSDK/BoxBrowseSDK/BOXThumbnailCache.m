@@ -8,6 +8,7 @@
 
 #import "BOXThumbnailCache.h"
 #import "UIImage+BOXBrowseSDKAdditions.h"
+#import "BOXBrowseSDKConstants.h"
 
 @interface BOXThumbnailCache ()
 
@@ -54,6 +55,8 @@
         completion(thumbnail, nil);
     } else {
         BOXFileThumbnailRequest *request = [self.contentClient fileThumbnailRequestWithID:file.modelID size:size];
+        request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+        request.SDKVersion = BOX_BROWSE_SDK_VERSION;
         [request performRequestWithProgress:nil completion:^(UIImage *image, NSError *error) {
             if (image) {
                 thumbnail = [image imageWith2XScaleIfRetina];

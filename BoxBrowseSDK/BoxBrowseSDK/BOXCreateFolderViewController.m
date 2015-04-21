@@ -8,6 +8,7 @@
 
 #import "BOXCreateFolderViewController.h"
 #import "UIImage+BOXBrowseSDKAdditions.h"
+#import "BOXBrowseSDKConstants.h"
 
 #define kTitleViewHeight  60.0
 #define kTextFieldOffsetX 64.0
@@ -154,6 +155,8 @@
     
     NSString *folderName = self.textField.text;
     BOXFolderCreateRequest *folderCreateRequest = [self.contentClient folderCreateRequestWithName:folderName parentFolderID:self.parentFolderID];
+    folderCreateRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+    folderCreateRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = self.view.center;
