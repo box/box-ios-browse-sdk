@@ -13,37 +13,13 @@
 
 @interface BOXFolderViewController : BOXItemsViewController
 
+@property (nonatomic, readonly, strong) NSString *folderID;
+
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient
                              folderID:(NSString *)folderID;
 
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient
                                folder:(BOXFolder *)folder;
-
-/**
- *  Defaults to YES. If YES, a search bar will be shown as a table header view to allow users to search for content within the 
- *  folder that is being viewed.
- */
-@property (nonatomic, readwrite, assign) BOOL showsSearchBar;
-
-/**
- *  Defaults to NO. If YES, a toolbar button item will be added that allows users to "Choose" the folder they are currently viewing.
- *  This could be useful if you are asking users to choose a folder from Box.
- *  The chosen folder will be returned through 'didTapChooseFolderButton:'.
- */
-@property (nonatomic, readwrite, assign) BOOL showsChooseFolderButton;
-
-/**
- *  Defaults to NO. If YES, a toolbar button item will be added that allows users to create a new folder in the folder they are currently viewing.
- *  By default, this button will not be shown.
- *  A newly created folder will be returned through 'didCreateNewFolder:'
- */
-@property (nonatomic, readwrite, assign) BOOL showsCreateFolderButton;
-
-/**
- *  The flag that sets whether deletion is allowed by user. Default to YES.
- *  If YES, a delete button is exposed when an item row is swiped.
- */
-@property (nonatomic, readwrite, assign) BOOL showsDeleteButtons;
 
 @end
 
@@ -55,7 +31,7 @@
  *  If the choose button is shown (see 'shouldShowChooseFolderButton'), this will be called when the user has tapped the button to
  *  select the folder currently displayed.
  *
- *  @param itemsViewController The instance of BOXItemsViewController calling this method.
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
  *  @param folder The Folder that the user was viewing when the Choose button was tapped.
  */
 - (void)folderViewController:(BOXFolderViewController *)folderViewController didChooseFolder:(BOXFolder *)folder;
@@ -63,7 +39,7 @@
 /**
  *  A folder was created.
  *
- *  @param itemsViewController The instance of BOXItemsViewController calling this method.
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
  *  @param folder The created folder.
  */
 - (void)folderViewController:(BOXFolderViewController *)folderViewController didCreateNewFolder:(BOXFolder *)folder;
@@ -71,9 +47,47 @@
 /**
  *  A Box item was deleted.
  *
- *  @param itemsViewController The instance of BOXItemsViewController calling this method.
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
  *  @param item The deleted item.
  */
 - (void)folderViewController:(BOXFolderViewController *)folderViewController didDeleteItem:(BOXItem *)item;
+
+/**
+ *  Whether to expose a 'Delete' button for an item by swiping the cell. By default this is not exposed. Note that depending on permissions
+ *  the 'Delete' action may not be exposed even if YES is returned.
+ *
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
+ *  @param item The deleted item to show/hide the delete button for.
+ *  @return YES to show the 'Delete' actiion, NO otherwise.
+ */
+- (BOOL)folderViewController:(BOXFolderViewController *)folderViewController shouldShowDeleteButtonForItem:(BOXItem *)item;
+
+/**
+ *  Whether to show a search bar to allow the user to search for content within the folder.
+ *  By default, a search bar is shown.
+ *
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
+ *  @return YES to show a search bar, NO otherwise.
+ */
+- (BOOL)folderViewControllerShouldShowSearchBar:(BOXFolderViewController *)folderViewController;
+
+/**
+ *  Whether to show a button to 'Choose' the folder being displayed. This might be appropriate in
+ *  scenarios where you are asking the user to select a folder (e.g. a folder to upload to).
+ *  By default, this button is not displayed.
+ *
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
+ *  @return YES to show a the button, NO otherwise.
+ */
+- (BOOL)folderViewControllerShouldShowChooseFolderButton:(BOXFolderViewController *)folderViewController;
+
+/**
+ *  Whether to show a button to allow the user to create a new folder within the folder displayed.
+ *  By default, this button is not displayed.
+ *
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
+ *  @return YES to show a the button, NO otherwise.
+ */
+- (BOOL)folderViewControllerShouldShowCreateFolderButton:(BOXFolderViewController *)folderViewController;
 
 @end

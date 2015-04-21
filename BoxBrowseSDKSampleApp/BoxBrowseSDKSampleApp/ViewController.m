@@ -44,9 +44,6 @@
     // Show a UIViewController that displays the contents of a Box Folder.
     BOXFolderViewController *folderViewController = [[BOXFolderViewController alloc] initWithContentClient:[BOXContentClient defaultClient]];
     folderViewController.delegate = self;
-    folderViewController.showsCreateFolderButton = YES;
-    folderViewController.showsChooseFolderButton = YES;
-    folderViewController.showsSearchBar = YES;
     
     // You must load it in a UINavigationController.
     self.navControllerForBrowseSDK = [[UINavigationController alloc] initWithRootViewController:folderViewController];
@@ -55,7 +52,14 @@
 
 #pragma mark - BOXFolderViewControllerDelegate
 
+////////////////////////////////////////////////////////////////////////////////////////
 // These are all optional and will allow you to customize behavior for your app.
+////////////////////////////////////////////////////////////////////////////////////////
+
+- (BOOL)itemsViewControllerShouldShowCloseButton:(BOXItemsViewController *)itemsViewController
+{
+    return NO;
+}
 
 - (BOOL)itemsViewController:(BOXItemsViewController *)itemsViewController shouldShowItem:(BOXItem *)item
 {
@@ -100,9 +104,19 @@
 //{
 //}
 
+- (BOOL)folderViewControllerShouldShowChooseFolderButton:(BOXFolderViewController *)folderViewController
+{
+    return YES;
+}
+
 - (void)folderViewController:(BOXFolderViewController *)folderViewController didChooseFolder:(BOXFolder *)folder
 {
     NSLog(@"Did choose folder: %@", folder.name);
+}
+
+- (BOOL)folderViewControllerShouldShowCreateFolderButton:(BOXFolderViewController *)folderViewController
+{
+    return YES;
 }
 
 - (void)folderViewController:(BOXFolderViewController *)folderViewController didCreateNewFolder:(BOXFolder *)folder
@@ -110,9 +124,21 @@
     NSLog(@"Did create new folder: %@", folder.name);
 }
 
+- (BOOL)folderViewController:(BOXFolderViewController *)folderViewController shouldShowDeleteButtonForItem:(BOXItem *)item
+{
+    return YES;
+}
+
 - (void)folderViewController:(BOXFolderViewController *)folderViewController didDeleteItem:(BOXItem *)item
 {
     NSLog(@"Did delete item: %@", item.name);
 }
+
+- (BOOL)folderViewControllerShouldShowSearchBar:(BOXFolderViewController *)folderViewController
+{
+    return YES;
+}
+
+
 
 @end

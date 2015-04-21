@@ -15,7 +15,6 @@
 
 @interface BOXFolderViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UIAlertViewDelegate>
 
-@property (nonatomic, readonly, strong) NSString *folderID;
 @property (nonatomic, readwrite, strong) BOXFolder *folder;
 
 @property (nonatomic, readwrite, strong) UISearchController *searchController;
@@ -31,9 +30,6 @@
 {
     if (self = [super initWithContentClient:contentClient]) {
         _folderID = BOXAPIFolderIDRoot;
-        _showsChooseFolderButton = NO;
-        _showsCreateFolderButton = NO;
-        _showsDeleteButtons = YES;
     }
     return self;
 }
@@ -82,7 +78,11 @@
 - (void)setupForSearch
 {
     // UISearchController was introduced in iOS8, so we don't have search on iOS 7.
-    if ([UISearchController class] && self.showsSearchBar) {
+    BOOL shouldShowSearchBar = YES;
+    if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewControllerShouldShowSearchBar:)]) {
+        shouldShowSearchBar = [self.folderBrowserDelegate folderViewControllerShouldShowSearchBar:self];
+    }
+    if ([UISearchController class] && shouldShowSearchBar) {
         self.definesPresentationContext = YES;
         
         self.searchResultsController = [[BOXSearchResultsViewController alloc] initWithContentClient:self.contentClient];
@@ -152,11 +152,16 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!self.showsDeleteButtons) {
+    BOXItem *item = [self itemForRowAtIndexPath:indexPath];
+    
+    BOOL shouldShowDeleteButton = NO;
+    if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:shouldShowDeleteButtonForItem:)]) {
+        shouldShowDeleteButton = [self.folderBrowserDelegate folderViewController:self shouldShowDeleteButtonForItem:item];
+    }
+    
+    if (!shouldShowDeleteButton) {
         return NO;
     }
-
-    BOXItem *item = [self itemForRowAtIndexPath:indexPath];
     
     if (item.isFile) {
         return ((BOXFile *)item).canDelete == BOXAPIBooleanYES;
@@ -250,11 +255,6 @@
             BOXFolderViewController *viewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient
                                                                                                       folder:folder];
             viewController.delegate = self.folderBrowserDelegate;
-            viewController.showsCloseButton = self.showsCloseButton;
-            viewController.showsChooseFolderButton = self.showsChooseFolderButton;
-            viewController.showsCreateFolderButton = self.showsCreateFolderButton;
-            viewController.showsDeleteButtons = self.showsDeleteButtons;
-            viewController.showsSearchBar = self.showsSearchBar;
             self.navigationItem.backBarButtonItem.title = folder.parentFolder.name;
             [self.navigationController pushViewController:viewController animated:YES];
         }
@@ -268,7 +268,11 @@
 {
     NSMutableArray *toolbarItems = [NSMutableArray array];
     
-    if (self.showsCreateFolderButton) {
+    BOOL shouldShowCreateFolderButton = NO;
+    if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewControllerShouldShowCreateFolderButton:)]) {
+        shouldShowCreateFolderButton = [self.folderBrowserDelegate folderViewControllerShouldShowCreateFolderButton:self];
+    }
+    if (shouldShowCreateFolderButton) {
         UIBarButtonItem *createFolderButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Create New Folder", @"Button to create a new folder")
                                                                                    style:UIBarButtonItemStylePlain
                                                                                   target:self
@@ -276,7 +280,12 @@
         [toolbarItems addObject:createFolderButtonItem];
     }
     
-    if (self.showsChooseFolderButton) {
+    BOOL shouldShowChooseFolderButton = NO;
+    if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewControllerShouldShowChooseFolderButton:)]) {
+        shouldShowChooseFolderButton = [self.folderBrowserDelegate folderViewControllerShouldShowChooseFolderButton:self];
+    }
+    
+    if (shouldShowChooseFolderButton) {
         UIBarButtonItem *chooseFolderButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Choose", @"Button to indicate that the folder being displayed was chosen")
                                                                                    style:UIBarButtonItemStyleDone
                                                                                   target:self
@@ -310,11 +319,6 @@
         [self refresh];
         BOXFolderViewController *folderBrowserViewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient folder:folder];
         folderBrowserViewController.delegate = self.delegate;
-        folderBrowserViewController.showsChooseFolderButton = self.showsChooseFolderButton;
-        folderBrowserViewController.showsCreateFolderButton = self.showsCreateFolderButton;
-        folderBrowserViewController.showsSearchBar = self.showsSearchBar;
-        folderBrowserViewController.showsCloseButton = self.showsCloseButton;
-        folderBrowserViewController.showsDeleteButtons = self.showsDeleteButtons;
         [self.navigationController pushViewController:folderBrowserViewController animated:YES];
 
         if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didCreateNewFolder:)]) {
