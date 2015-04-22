@@ -12,6 +12,7 @@
 #import "BOXCreateFolderViewController.h"
 #import "BOXSearchResultsViewController.h"
 #import "MBProgressHUD.h"
+#import "BOXBrowseSDKConstants.h"
 
 @interface BOXFolderViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UIAlertViewDelegate>
 
@@ -209,12 +210,18 @@
 
         if (item.isFile) {
             BOXFileDeleteRequest *deleteRequest = [self.contentClient fileDeleteRequestWithID:item.modelID];
+            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
             [deleteRequest performRequestWithCompletion:errorBlock];
         } else if (item.isFolder) {
             BOXFolderDeleteRequest *deleteRequest = [self.contentClient folderDeleteRequestWithID:item.modelID];
+            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
             [deleteRequest performRequestWithCompletion:errorBlock];
         } else if (item.isBookmark) {
             BOXBookmarkDeleteRequest *deleteRequest = [self.contentClient bookmarkDeleteRequestWithID:item.modelID];
+            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
             [deleteRequest performRequestWithCompletion:errorBlock];
         }
     }
@@ -328,7 +335,11 @@
 - (void)fetchItemsWithCompletion:(void (^)(NSArray *items))completion
 {
     [self setupToolbar];
-    [[self.contentClient folderInfoRequestWithID:self.folderID] performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
+    
+    BOXFolderRequest *folderRequest = [self.contentClient folderInfoRequestWithID:self.folderID];
+    folderRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+    folderRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+    [folderRequest performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
         if (error) {
             [self didFailToLoadItemsWithError:error];
             self.navigationController.toolbarHidden = YES;
@@ -358,6 +369,8 @@
 - (void)fetchItemsInFolder:(BOXFolder *)folder withCompletion:(void (^)(NSArray *items, NSError *error))completion
 {
     BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folder.modelID];
+    request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+    request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
     [request performRequestWithCompletion:^(NSArray *items, NSError *error) {
         if (completion) {
