@@ -39,6 +39,7 @@
     [self.searchRequest cancel];
     
     self.searchRequest = [self.contentClient searchRequestWithQuery:self.searchString inRange:NSMakeRange(0, 1000)];
+    self.searchRequest.requestAllItemFields = YES;
     self.searchRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     self.searchRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
     self.searchRequest.ancestorFolderIDs = @[self.folderID];
