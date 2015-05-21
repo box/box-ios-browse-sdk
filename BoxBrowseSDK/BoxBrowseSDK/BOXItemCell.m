@@ -20,32 +20,29 @@ CGFloat const BOXItemCellHeight = 60.0f;
 
 #define kImageViewWidth 40.0
 #define kImageHorizontalPadding 12.0
+#define kDisabledAlphaValue 0.6f
 
 @interface BOXItemCell ()
 
 @property (nonatomic, readonly, strong) BOXContentClient *contentClient;
 @property (nonatomic) BOXFileThumbnailRequest *thumbnailRequest;
-@property (nonatomic, readwrite, strong) UIImageView *myImageView;
 
 @end
 
 @implementation BOXItemCell
 
-- (id)initWithContentClient:(BOXContentClient *)conentClient
+- (id)initWithContentClient:(BOXContentClient *)contentClient
                       style:(UITableViewCellStyle)style
             reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _contentClient = conentClient;
+        _contentClient = contentClient;
         
         self.textLabel.font = [UIFont systemFontOfSize:17.0f];
         self.textLabel.textColor = [UIColor colorWithRed:86.0f/255.0f green:86.0f/255.0f blue:86.0f/255.0f alpha:1.0];
         
         self.detailTextLabel.font = [UIFont systemFontOfSize:13.0f];
         self.detailTextLabel.textColor = [UIColor colorWithRed:174.0f/255.0f green:174.0f/255.0f blue:174.0f/255.0f alpha:1.0];
-        
-        self.myImageView = [[UIImageView alloc] init];
-        [self addSubview:self.myImageView];
     }
     
     return self;
@@ -60,16 +57,16 @@ CGFloat const BOXItemCellHeight = 60.0f;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.myImageView.frame = CGRectMake(0, (self.frame.size.height - kImageViewWidth) * 0.5f, kImageViewWidth + kImageHorizontalPadding * 2, kImageViewWidth);
-    self.myImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.frame = CGRectMake(0, (self.frame.size.height - kImageViewWidth) * 0.5f, kImageViewWidth + kImageHorizontalPadding * 2, kImageViewWidth);
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.origin.x = CGRectGetMaxX(self.myImageView.frame);
+    textLabelFrame.origin.x = CGRectGetMaxX(self.imageView.frame);
     textLabelFrame.size.width = CGRectGetMaxX(self.frame) - textLabelFrame.origin.x - kImageHorizontalPadding;
     self.textLabel.frame = textLabelFrame;
     
     CGRect detailTextLabelFrame = self.detailTextLabel.frame;
-    detailTextLabelFrame.origin.x = CGRectGetMaxX(self.myImageView.frame);
+    detailTextLabelFrame.origin.x = CGRectGetMaxX(self.imageView.frame);
     detailTextLabelFrame.size.width = CGRectGetMaxX(self.frame) - detailTextLabelFrame.origin.x - kImageHorizontalPadding;
     self.detailTextLabel.frame = detailTextLabelFrame;
 }
@@ -107,28 +104,28 @@ CGFloat const BOXItemCellHeight = 60.0f;
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if ([me.item.modelID isEqualToString:file.modelID]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        me.myImageView.image = image;
+                        me.imageView.image = image;
                     });
                 }
             }];
         } else {
-            UIImageView *myImageView = self.myImageView;
-            myImageView.image = [self iconForItem:item];
+            UIImageView *imageView = self.imageView;
+            imageView.image = [self iconForItem:item];
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if (error == nil) {
                     if ([me.item.modelID isEqualToString:file.modelID]) {
-                        myImageView.image = image;
+                        imageView.image = image;
                         CATransition *transition = [CATransition animation];
                         transition.duration = 0.3f;
                         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
                         transition.type = kCATransitionFade;
-                        [myImageView.layer addAnimation:transition forKey:nil];
+                        [imageView.layer addAnimation:transition forKey:nil];
                     }
                 }
             }];
         }
     } else {
-        self.myImageView.image = [self iconForItem:item];
+        self.imageView.image = [self iconForItem:item];
     }
 }
 
@@ -138,10 +135,12 @@ CGFloat const BOXItemCellHeight = 60.0f;
         self.userInteractionEnabled = YES;
         self.textLabel.enabled = YES;
         self.detailTextLabel.enabled = YES;
+        self.imageView.alpha = 1.0f;
     } else {
         self.userInteractionEnabled = NO;
         self.textLabel.enabled = NO;
         self.detailTextLabel.enabled = NO;
+        self.imageView.alpha = kDisabledAlphaValue;
     }
 }
 

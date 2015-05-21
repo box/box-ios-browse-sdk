@@ -15,7 +15,7 @@ extern CGFloat const BOXItemCellHeight;
 
 @interface BOXItemCell : UITableViewCell
 
-- (id)initWithContentClient:(BOXContentClient *)conentClient
+- (id)initWithContentClient:(BOXContentClient *)contentClient
                       style:(UITableViewCellStyle)style
             reuseIdentifier:(NSString *)reuseIdentifier;
 
