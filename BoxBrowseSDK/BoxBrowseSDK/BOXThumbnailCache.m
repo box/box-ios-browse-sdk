@@ -59,7 +59,7 @@
         request.SDKVersion = BOX_BROWSE_SDK_VERSION;
         [request performRequestWithProgress:nil completion:^(UIImage *image, NSError *error) {
             if (image) {
-                thumbnail = [image imageWith2XScaleIfRetina];
+                thumbnail = [image box_imageAtAppropriateScaleFactor];
                 [self.memoryCache setObject:thumbnail forKey:key];
             }
             completion(image, error);

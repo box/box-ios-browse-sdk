@@ -99,7 +99,7 @@
     [self.textFieldContainer addSubview:self.textField];
 
     UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(9.0, 9.0, 40, 40)];
-    icon.image = [UIImage imageFromBrowseSDKResourceBundleNamed:@"icon-folder"];
+    icon.image = [UIImage box_imageFromBrowseSDKResourceBundleNamed:@"icon-folder"];
     icon.contentMode = UIViewContentModeCenter;
     [self.textFieldContainer addSubview:icon];
     
