@@ -196,21 +196,21 @@ CGFloat const BOXItemCellHeight = 60.0f;
     if (item.isFolder) {
         BOXFolder *folder = (BOXFolder *)item;
         if (folder.isExternallyOwned == BOXAPIBooleanYES) {
-            icon = [UIImage imageFromBrowseSDKResourceBundleNamed:@"icon-folder-external"];
+            icon = [UIImage box_imageFromBrowseSDKResourceBundleNamed:@"icon-folder-external"];
         } else if (folder.hasCollaborations == BOXAPIBooleanYES) {
-            icon = [UIImage imageFromBrowseSDKResourceBundleNamed:@"icon-folder-shared"];
+            icon = [UIImage box_imageFromBrowseSDKResourceBundleNamed:@"icon-folder-shared"];
         } else {
-            icon = [UIImage imageFromBrowseSDKResourceBundleNamed:@"icon-folder"];
+            icon = [UIImage box_imageFromBrowseSDKResourceBundleNamed:@"icon-folder"];
         }
     } else if (item.isFile) {
         NSString *extension = [[self pathExtensionAccountingForZippedPackagesFromFileName:item.name] lowercaseString];
         NSString *defaultIconPath = [NSString stringWithFormat:@"icon-file-%@", extension];
-        icon = [UIImage imageFromBrowseSDKResourceBundleNamed:defaultIconPath];
+        icon = [UIImage box_imageFromBrowseSDKResourceBundleNamed:defaultIconPath];
         if (icon == nil) {
-            icon = [UIImage imageFromBrowseSDKResourceBundleNamed:@"icon-file-generic"];
+            icon = [UIImage box_imageFromBrowseSDKResourceBundleNamed:@"icon-file-generic"];
         }
     } else if (item.isBookmark) {
-        icon = [UIImage imageFromBrowseSDKResourceBundleNamed:@"icon-file-weblink"];
+        icon = [UIImage box_imageFromBrowseSDKResourceBundleNamed:@"icon-file-weblink"];
     }
 
     return icon;

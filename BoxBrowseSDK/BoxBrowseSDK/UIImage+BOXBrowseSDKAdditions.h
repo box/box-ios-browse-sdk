@@ -15,13 +15,13 @@
  *
  * @param string Image name.
  */
-+ (UIImage *)imageFromBrowseSDKResourceBundleNamed:(NSString *)string;
++ (UIImage *)box_imageFromBrowseSDKResourceBundleNamed:(NSString *)name;
 
 /**
  * Returns an image with the appropriate scale factor given the device.
  *
  * @return An image with the appropriate scale.
  */
-- (UIImage *)imageWith2XScaleIfRetina;
+- (UIImage *)box_imageAtAppropriateScaleFactor;
 
 @end

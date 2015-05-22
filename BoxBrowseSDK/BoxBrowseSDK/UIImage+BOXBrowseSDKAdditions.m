@@ -10,20 +10,37 @@
 
 @implementation UIImage (BOXBrowseSDKAdditions)
 
-+ (UIImage *)imageFromBrowseSDKResourceBundleNamed:(NSString *)string
++ (UIImage *)box_imageFromBrowseSDKResourceBundleNamed:(NSString *)name
 {
-    NSString *str = [[[self resourcesBundle] resourcePath] stringByAppendingPathComponent:[[self resourcesBundle] pathForResource:string ofType:nil]];
-    return [UIImage imageWithContentsOfFile:[str stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", string]]];
+    UIImage *imageFromBundle = nil;
+    NSBundle *bundle = [self resourcesBundle];
+
+    if ([self respondsToSelector:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)]) {
+        imageFromBundle = [self imageNamed:name inBundle:bundle compatibleWithTraitCollection:nil];
+    } else {
+        NSString *path = [[bundle resourcePath] stringByAppendingPathComponent:[bundle pathForResource:name ofType:nil]];
+
+        NSString *fileName = nil;
+        if ([UIScreen mainScreen].scale == 2.0) {
+            fileName = [NSString stringWithFormat:@"%@@2x.png", name];
+        } else {
+            fileName = [NSString stringWithFormat:@"%@.png", name];
+        }
+        path = [path stringByAppendingPathComponent:fileName];
+        imageFromBundle = [UIImage imageWithContentsOfFile:path];
+    }
+
+    return imageFromBundle;
 }
 
-- (UIImage *)imageWith2XScaleIfRetina;
+- (UIImage *)box_imageAtAppropriateScaleFactor
 {
     UIImage *image = self;
-    if ([UIScreen mainScreen].scale == 2.0)
-    {
-        image = [UIImage imageWithCGImage:image.CGImage scale:2.0f orientation:image.imageOrientation];
+    CGFloat scaleFactor = [UIScreen mainScreen].scale;
+    if (scaleFactor != 1.0f) {
+        image = [UIImage imageWithCGImage:image.CGImage scale:scaleFactor orientation:image.imageOrientation];
     }
-    
+
     return image;
 }
 
@@ -32,8 +49,8 @@
     static NSBundle *frameworkBundle = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
-        NSURL *ressourcesBundleURL = [[NSBundle mainBundle] URLForResource:@"BoxBrowseSDKResources" withExtension:@"bundle"];
-        frameworkBundle = [NSBundle bundleWithURL:ressourcesBundleURL];
+        NSURL *resourcesBundleURL = [[NSBundle mainBundle] URLForResource:@"BoxBrowseSDKResources" withExtension:@"bundle"];
+        frameworkBundle = [NSBundle bundleWithURL:resourcesBundleURL];
     });
     
     return frameworkBundle;
