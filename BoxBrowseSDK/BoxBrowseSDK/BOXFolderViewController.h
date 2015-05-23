@@ -15,8 +15,14 @@
 
 @property (nonatomic, readonly, strong) NSString *folderID;
 
++ (NSArray *)navigationStackViewControllersWithContentClient:(BOXContentClient *)contentClient
+                                              startingFolder:(BOXFolder *)folder;
+
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient
                              folderID:(NSString *)folderID;
+
+- (instancetype)initWithContentClient:(BOXContentClient *)contentClient
+                           folderMini:(BOXFolderMini *)folderMini;
 
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient
                                folder:(BOXFolder *)folder;

@@ -27,10 +27,23 @@
 
 @implementation BOXFolderViewController
 
++ (NSArray *)navigationStackViewControllersWithContentClient:(BOXContentClient *)contentClient
+                                              startingFolder:(BOXFolder *)folder
+{
+    NSMutableArray *controllersArray = [NSMutableArray arrayWithCapacity:(folder.pathFolders.count + 1)];
+
+    for (BOXFolderMini *miniFolder in folder.pathFolders) {
+        [controllersArray addObject:[[self alloc] initWithContentClient:contentClient folderMini:miniFolder]];
+    }
+    [controllersArray addObject:[[self alloc] initWithContentClient:contentClient folder:folder]];
+
+    return [controllersArray copy];
+}
+
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient
 {
-    if (self = [super initWithContentClient:contentClient]) {
-        _folderID = BOXAPIFolderIDRoot;
+    if (self = [self initWithContentClient:contentClient folderID:BOXAPIFolderIDRoot]) {
+        //
     }
     return self;
 }
@@ -38,8 +51,17 @@
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient
                              folderID:(NSString *)folderID
 {
-    if (self = [self initWithContentClient:contentClient]) {
+    if (self = [super initWithContentClient:contentClient]) {
         _folderID = folderID;
+    }
+    return self;
+}
+
+- (instancetype)initWithContentClient:(BOXContentClient *)contentClient
+                           folderMini:(BOXFolderMini *)folderMini
+{
+    if (self = [self initWithContentClient:contentClient folderID:folderMini.modelID]) {
+        self.title = folderMini.name;
     }
     return self;
 }
@@ -47,9 +69,9 @@
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient
                                folder:(BOXFolder *)folder
 {
-    if (self = [self initWithContentClient:contentClient]) {
-        _folderID = folder.modelID;
+    if (self = [self initWithContentClient:contentClient folderID:folder.modelID]) {
         _folder = folder;
+        self.title = folder.name;
     }
     return self;
 }
