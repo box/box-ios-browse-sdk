@@ -1,9 +1,9 @@
 PODS:
-  - box-ios-content-sdk (1.0.0):
-    - box-ios-content-sdk/logger (= 1.0.0)
-    - box-ios-content-sdk/no-arc (= 1.0.0)
-  - box-ios-content-sdk/logger (1.0.0)
-  - box-ios-content-sdk/no-arc (1.0.0):
+  - box-ios-content-sdk (1.0.3):
+    - box-ios-content-sdk/logger (= 1.0.3)
+    - box-ios-content-sdk/no-arc (= 1.0.3)
+  - box-ios-content-sdk/logger (1.0.3)
+  - box-ios-content-sdk/no-arc (1.0.3):
     - box-ios-content-sdk/logger
   - MBProgressHUD (0.9.1)
 
@@ -12,7 +12,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.1)
 
 SPEC CHECKSUMS:
-  box-ios-content-sdk: 7be737de0b0d608623cc89c2af49660b2b724422
+  box-ios-content-sdk: ece494faf1655fba07908f09227cffcc7ef118ef
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.1
