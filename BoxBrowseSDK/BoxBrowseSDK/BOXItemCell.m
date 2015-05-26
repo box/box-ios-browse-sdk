@@ -27,6 +27,8 @@ CGFloat const BOXItemCellHeight = 60.0f;
 @property (nonatomic, readonly, strong) BOXContentClient *contentClient;
 @property (nonatomic) BOXFileThumbnailRequest *thumbnailRequest;
 
+@property (nonatomic, readwrite, strong) UIImageView *thumbnailImageView;
+
 @end
 
 @implementation BOXItemCell
@@ -43,6 +45,8 @@ CGFloat const BOXItemCellHeight = 60.0f;
         
         self.detailTextLabel.font = [UIFont systemFontOfSize:13.0f];
         self.detailTextLabel.textColor = [UIColor colorWithRed:174.0f/255.0f green:174.0f/255.0f blue:174.0f/255.0f alpha:1.0];
+
+        _thumbnailImageView = [[UIImageView alloc] init];
     }
     
     return self;
@@ -55,18 +59,22 @@ CGFloat const BOXItemCellHeight = 60.0f;
     _item = nil;
 }
 
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
     [super layoutSubviews];
-    self.imageView.frame = CGRectMake(0, (self.frame.size.height - kImageViewWidth) * 0.5f, kImageViewWidth + kImageHorizontalPadding * 2, kImageViewWidth);
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.thumbnailImageView.frame = CGRectMake(0, (self.frame.size.height - kImageViewWidth) * 0.5f, kImageViewWidth + kImageHorizontalPadding * 2, kImageViewWidth);
+    self.thumbnailImageView.contentMode = UIViewContentModeScaleAspectFit;
+    if (self.thumbnailImageView.superview == nil) {
+        [self.contentView addSubview:self.thumbnailImageView];
+    }
     
     CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.origin.x = CGRectGetMaxX(self.imageView.frame);
+    textLabelFrame.origin.x = CGRectGetMaxX(self.thumbnailImageView.frame);
     textLabelFrame.size.width = CGRectGetMaxX(self.frame) - textLabelFrame.origin.x - kImageHorizontalPadding;
     self.textLabel.frame = textLabelFrame;
     
     CGRect detailTextLabelFrame = self.detailTextLabel.frame;
-    detailTextLabelFrame.origin.x = CGRectGetMaxX(self.imageView.frame);
+    detailTextLabelFrame.origin.x = CGRectGetMaxX(self.thumbnailImageView.frame);
     detailTextLabelFrame.size.width = CGRectGetMaxX(self.frame) - detailTextLabelFrame.origin.x - kImageHorizontalPadding;
     self.detailTextLabel.frame = detailTextLabelFrame;
 }
@@ -104,12 +112,12 @@ CGFloat const BOXItemCellHeight = 60.0f;
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if ([me.item.modelID isEqualToString:file.modelID]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        me.imageView.image = image;
+                        me.thumbnailImageView.image = image;
                     });
                 }
             }];
         } else {
-            UIImageView *imageView = self.imageView;
+            UIImageView *imageView = self.thumbnailImageView;
             imageView.image = [self iconForItem:item];
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if (error == nil) {
@@ -125,7 +133,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
             }];
         }
     } else {
-        self.imageView.image = [self iconForItem:item];
+        self.thumbnailImageView.image = [self iconForItem:item];
     }
 }
 
@@ -135,12 +143,12 @@ CGFloat const BOXItemCellHeight = 60.0f;
         self.userInteractionEnabled = YES;
         self.textLabel.enabled = YES;
         self.detailTextLabel.enabled = YES;
-        self.imageView.alpha = 1.0f;
+        self.thumbnailImageView.alpha = 1.0f;
     } else {
         self.userInteractionEnabled = NO;
         self.textLabel.enabled = NO;
         self.detailTextLabel.enabled = NO;
-        self.imageView.alpha = kDisabledAlphaValue;
+        self.thumbnailImageView.alpha = kDisabledAlphaValue;
     }
 }
 
