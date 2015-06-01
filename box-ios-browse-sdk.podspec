@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 # Root specification
 
 s.name                  = "box-ios-browse-sdk"
-s.version               = "1.0.2"
+s.version               = "1.0.3"
 s.summary               = "iOS Browse SDK."
 s.homepage              = "https://github.com/box/box-ios-browse-sdk"
 s.license               = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
@@ -27,7 +27,7 @@ s.resource_bundle = {
 # Build settings
 s.requires_arc          = true
 s.ios.header_dir        = "BoxBrowseSDK"
-s.dependency              "box-ios-content-sdk"
+s.dependency              "box-ios-sdk"
 s.dependency		  'MBProgressHUD', '~> 0.9.1'
 
 end

@@ -1,2 +1,2 @@
-pod 'box-ios-content-sdk'
+pod 'box-ios-sdk'
 pod 'MBProgressHUD', '~> 0.9.1'
