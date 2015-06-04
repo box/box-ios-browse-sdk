@@ -168,7 +168,13 @@
 {
     [self fetchItemsWithCompletion:^(NSArray *items) {
         items = [self filterItems:items];
-        items = [self sortItems:items];
+        BOOL shouldSort = YES;
+        if ([self.delegate respondsToSelector:@selector(itemsViewControllerShouldSortItems:)]) {
+            shouldSort = [self.delegate itemsViewControllerShouldSortItems:self];
+        }
+        if (shouldSort) {
+            items = [self sortItems:items];
+        }
         
         self.items = items;
         [self.tableView reloadData];

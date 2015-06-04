@@ -58,6 +58,22 @@
 - (BOOL)itemsViewController:(BOXItemsViewController *)itemsViewController shouldEnableItem:(BOXItem *)item;
 
 /**
+ *  Override this method to enable or disable item sorting. This method sorts BOX folder item results for display.
+ *  By default, items will be sorted.
+ *
+ *  @param itemsViewController The instance of BOXItemsViewController calling this method.
+ *
+ *  @return YES to enable sorting (enabled by default). The default sort applied is:
+ *  1) Folders listed before files and weblinks
+ *  2) By modified date descending
+ *  3) Alpha-numeric ascending.
+ *  You can also implement itemsViewController:compareForSortingItem:toItem: for custom sorting.
+ *
+ *  @return NO to disable sorting.
+ */
+- (BOOL)itemsViewControllerShouldSortItems:(BOXItemsViewController *)itemsViewController;
+
+/**
  *  Implement this if you want to customize the sort order of items. By default items will be sorted with the following ordered rules:
  *  - Folders come before files and weblinks.
  *  - Most recently modified items come first.
