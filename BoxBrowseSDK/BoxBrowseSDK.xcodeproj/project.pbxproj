@@ -250,7 +250,7 @@
 		1564A5341ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BOXBrowseSDKAdditions.h"; sourceTree = "<group>"; };
 		1564A5351ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BOXBrowseSDKAdditions.m"; sourceTree = "<group>"; };
 		1564A5441ACA1908005DD04F /* BoxBrowseSDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxBrowseSDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		1564A5471ACA1908005DD04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1564A5471ACA1908005DD04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BoxBrowseSDKResources/Info.plist; sourceTree = "<group>"; };
 		1564A5531ACA1D68005DD04F /* BOXItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXItemCell.h; sourceTree = "<group>"; };
 		1564A5541ACA1D68005DD04F /* BOXItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOXItemCell.m; sourceTree = "<group>"; };
 		1564A55F1ACA2553005DD04F /* icon-file-xml.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-file-xml.png"; path = "BoxBrowseSDKResources/Icons/icon-file-xml.png"; sourceTree = "<group>"; };
@@ -481,7 +481,6 @@
 				15146EB21AC20B77000BA380 /* BoxBrowseSDK */,
 				15146EBF1AC20B78000BA380 /* BoxBrowseSDKTests */,
 				1564A5381ACA1373005DD04F /* BoxBrowseSDKResources */,
-				1564A5451ACA1908005DD04F /* BoxBrowseSDKResources */,
 				15146EB11AC20B77000BA380 /* Products */,
 				A687D6BA546CC338C3C307C4 /* Pods */,
 				492B2B63CCF1DB357F428F94 /* Frameworks */,
@@ -551,23 +550,8 @@
 		1564A5391ACA13FB005DD04F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1564A55E1ACA2542005DD04F /* Icons */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1564A5451ACA1908005DD04F /* BoxBrowseSDKResources */ = {
-			isa = PBXGroup;
-			children = (
-				1564A5461ACA1908005DD04F /* Supporting Files */,
-			);
-			path = BoxBrowseSDKResources;
-			sourceTree = "<group>";
-		};
-		1564A5461ACA1908005DD04F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				1564A5471ACA1908005DD04F /* Info.plist */,
+				1564A55E1ACA2542005DD04F /* Icons */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
