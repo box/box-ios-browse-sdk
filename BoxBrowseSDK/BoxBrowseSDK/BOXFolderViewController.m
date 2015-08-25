@@ -303,7 +303,11 @@
     }
     
     if (shouldShowChooseFolderButton) {
-        UIBarButtonItem *chooseFolderButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Choose", @"Button to indicate that the folder being displayed was chosen")
+        NSString *chooseFolderButtonTitle = NSLocalizedString(@"Choose", @"Button to indicate that the folder being displayed was chosen");
+        if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewControllerChooseFolderButtonTitle:)]) {
+            chooseFolderButtonTitle = [self.folderBrowserDelegate folderViewControllerChooseFolderButtonTitle:self];
+        }
+        UIBarButtonItem *chooseFolderButtonItem = [[UIBarButtonItem alloc] initWithTitle:chooseFolderButtonTitle
                                                                                    style:UIBarButtonItemStyleDone
                                                                                   target:self
                                                                                   action:@selector(chooseFolderButtonAction:)];
