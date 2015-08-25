@@ -96,4 +96,13 @@
  */
 - (BOOL)folderViewControllerShouldShowCreateFolderButton:(BOXFolderViewController *)folderViewController;
 
+/**
+ *  A custom title for the Choose Folder button if the button is displayed.
+ *  By default, the title is "Choose".
+ *
+ *  @param folderViewController The instance of BOXFolderViewController calling this method.
+ *  @return The string to be displayed for the button.
+ */
+- (NSString *)folderViewControllerChooseFolderButtonTitle:(BOXFolderViewController *)folderViewController;
+
 @end
