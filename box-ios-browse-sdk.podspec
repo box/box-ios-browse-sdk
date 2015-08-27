@@ -27,6 +27,7 @@ s.resource_bundle = {
 # Build settings
 s.requires_arc          = true
 s.ios.header_dir        = "BoxBrowseSDK"
+s.module_name           = "BoxBrowseSDK"
 s.dependency              "box-ios-sdk"
 s.dependency		  'MBProgressHUD', '~> 0.9.1'
 
