@@ -54,7 +54,10 @@
     if (self = [super initWithContentClient:contentClient]) {
         _folderID = folderID;
         if ([folderID isEqualToString:BOXAPIFolderIDRoot]) {
-            self.title = NSLocalizedString(@"All Files", @"Root directory title.");
+            _folder = [[BOXFolder alloc] init];
+            _folder.modelID = BOXAPIFolderIDRoot;
+            _folder.name = NSLocalizedString(@"All Files", @"Root folder title.");
+            self.title = _folder.name;
         }
     }
     return self;
@@ -365,39 +368,40 @@
 {
     [self setupToolbar];
     
+    // Refresh the underlying folder, just in case the name changed.
     BOXFolderRequest *folderRequest = [self.contentClient folderInfoRequestWithID:self.folderID];
     folderRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     folderRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+    folderRequest.requestAllFolderFields = YES;
     [folderRequest performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
-        if (error) {
-            [self didFailToLoadItemsWithError:error];
-            self.navigationController.toolbarHidden = YES;
-        } else {
+        if (!error) {
             self.folder = folder;
-            [self fetchItemsInFolder:self.folder withCompletion:^(NSArray *items, NSError *error) {
-                if (error == nil) {
-                    self.title = self.folder.name;
-                    completion(items);
-                } else {
-                    self.navigationController.toolbarHidden = YES;
-                    [self didFailToLoadItemsWithError:error];
-                }
-                
-                if (self.tableView.visibleCells.count < 1) {
-                    [self switchToEmptyStateWithError:error];
-                    self.searchController.searchBar.hidden = YES;
-                } else {
-                    [self switchToNonEmptyView];
-                    self.searchController.searchBar.hidden = NO;
-                }
-            }];
+            self.title = self.folder.name;
+        }
+    }];
+
+    // Fetch items
+    [self fetchItemsInFolderID:self.folderID withCompletion:^(NSArray *items, NSError *error) {
+        if (error == nil) {
+            completion(items);
+        } else {
+            self.navigationController.toolbarHidden = YES;
+            [self didFailToLoadItemsWithError:error];
+        }
+        
+        if (self.tableView.visibleCells.count < 1) {
+            [self switchToEmptyStateWithError:error];
+            self.searchController.searchBar.hidden = YES;
+        } else {
+            [self switchToNonEmptyView];
+            self.searchController.searchBar.hidden = NO;
         }
     }];
 }
 
-- (void)fetchItemsInFolder:(BOXFolder *)folder withCompletion:(void (^)(NSArray *items, NSError *error))completion
+- (void)fetchItemsInFolderID:(NSString *)folderID withCompletion:(void (^)(NSArray *items, NSError *error))completion
 {
-    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folder.modelID];
+    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folderID];
     request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
