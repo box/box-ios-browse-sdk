@@ -57,6 +57,9 @@
 {
     if (self = [super initWithContentClient:contentClient]) {
         _folderID = folderID;
+        if ([folderID isEqualToString:BOXAPIFolderIDRoot]) {
+            self.title = NSLocalizedString(@"All Files", @"Root directory title.");
+        }
     }
     return self;
 }
@@ -434,7 +437,12 @@
     request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
-    [request performRequestWithCompletion:^(NSArray *items, NSError *error) {
+    
+    [request performRequestWithCached:^(NSArray *items, NSError *error) {
+        if (completion) {
+            completion(items, error);
+        }
+    } refreshed:^(NSArray *items, NSError *error) {
         if (completion) {
             completion(items, error);
         }
