@@ -314,7 +314,6 @@
                                                                                                       folder:folder];
             viewController.delegate = self.folderBrowserDelegate;
             self.navigationItem.backBarButtonItem.title = folder.parentFolder.name;
-            viewController.navigationItem.prompt = self.navigationItem.prompt;
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }
@@ -399,7 +398,7 @@
 
 #pragma mark - data
 
-- (void)fetchItemsWithCompletion:(void (^)(NSArray *items, BOOL fromCache, NSError *error))externalCompletionBlock
+- (void)fetchItemsWithCompletion:(void (^)(NSArray *items))completion
 {
     [self setupToolbar];
     
@@ -408,68 +407,43 @@
     folderRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     folderRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
     folderRequest.requestAllFolderFields = YES;
-
-    void (^internalCompletionBlock)(NSArray *, BOOL, NSError *) = ^void(NSArray *items, BOOL fromCache, NSError *error) {
-
-        [BOXDispatchHelper callCompletionBlock:^{
-            if (items.count > 0 && !error) {
-                [self switchToNonEmptyView];
-            } else if (!fromCache && self.tableView.visibleCells.count < 1) {
-                [self switchToEmptyStateWithError:error];
-            }
-
-            if (externalCompletionBlock) {
-                externalCompletionBlock(items, fromCache, error);
-            }
-
-        } onMainThread:YES];
-    };
-
-    void (^itemFetchBlock)(BOXFolder *, BOOL fromCache, NSError *) = ^void(BOXFolder *folder, BOOL fromCache, NSError *error) {
-        if (error.code == BOXContentSDKAPIErrorBadRequest ||
-            error.code == BOXContentSDKAPIErrorUnauthorized ||
-            error.code == BOXContentSDKAPIErrorForbidden ||
-            error.code == BOXContentSDKAPIErrorNotFound) {
-            internalCompletionBlock(nil, fromCache, error);
-
-        } else {
-            if (folder && !error) {
-                [self setCurrentFolder:folder];
-            }
-
-            if (fromCache) {
-                [self fetchItemsInFolder:self.folder cacheBlock:^(NSArray *items, NSError *error){
-                    internalCompletionBlock(items, YES, error);
-                } refreshBlock:nil];
-            } else {
-                [self fetchItemsInFolder:self.folder cacheBlock:nil refreshBlock:^(NSArray *items, NSError *error) {
-                    internalCompletionBlock(items, NO, error);
-                }];
-            }
+    [folderRequest performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
+        if (!error) {
+            self.folder = folder;
+            self.title = self.folder.name;
         }
-    };
+    }];
 
-    [folderRequest performRequestWithCached:^(BOXFolder *folder, NSError *error) {
-        itemFetchBlock(folder, YES, error);
-
-    } refreshed:^(BOXFolder *folder, NSError *error) {
-        itemFetchBlock(folder, NO, error);
+    // Fetch items
+    [self fetchItemsInFolderID:self.folderID withCompletion:^(NSArray *items, NSError *error) {
+        if (error == nil) {
+            completion(items);
+        } else {
+            self.navigationController.toolbarHidden = YES;
+            [self didFailToLoadItemsWithError:error];
+        }
+        
+        if (self.tableView.visibleCells.count < 1) {
+            [self switchToEmptyStateWithError:error];
+            self.searchController.searchBar.hidden = YES;
+        } else {
+            [self switchToNonEmptyView];
+            self.searchController.searchBar.hidden = NO;
+        }
     }];
 }
 
-- (void)fetchItemsInFolder:(BOXFolder *)folder cacheBlock:(void (^)(NSArray *items, NSError *error))cacheBlock refreshBlock:(void (^)(NSArray *items, NSError *error))refreshBlock
+- (void)fetchItemsInFolderID:(NSString *)folderID withCompletion:(void (^)(NSArray *items, NSError *error))completion
 {
-    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folder.modelID];
+    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folderID];
     request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
-    [request performRequestWithCached:cacheBlock refreshed:refreshBlock];
-}
-
-- (void)setCurrentFolder:(BOXFolder *)folder
-{
-    self.folder = folder;
-    self.title = self.folder.name;
+    [request performRequestWithCompletion:^(NSArray *items, NSError *error) {
+        if (completion) {
+            completion(items, error);
+        }
+    }];
 }
 
 - (void)switchToEmptyStateWithError:(NSError *)error
