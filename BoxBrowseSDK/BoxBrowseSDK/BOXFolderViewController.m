@@ -215,8 +215,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 if (error) {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Deletion Failed", @"Label: title for item deletion failure alert")
-                                                                        message:NSLocalizedString(@"There was a problem with deleting this item.", @"Label: alert message for item deletion failure")
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Unable to Delete", @"Label: title for item deletion failure alert")
+                                                                        message:NSLocalizedString(@"Unable to delete this item.", @"Label: alert message for item deletion failure")
                                                                        delegate:self
                                                               cancelButtonTitle:NSLocalizedString(@"Ok", @"Label: Ok action ")
                                                               otherButtonTitles:nil];
@@ -290,7 +290,7 @@
         shouldShowCreateFolderButton = [self.folderBrowserDelegate folderViewControllerShouldShowCreateFolderButton:self];
     }
     if (shouldShowCreateFolderButton) {
-        UIBarButtonItem *createFolderButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Create New Folder", @"Button to create a new folder")
+        UIBarButtonItem *createFolderButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Create Folder", @"Button to create a new folder")
                                                                                    style:UIBarButtonItemStylePlain
                                                                                   target:self
                                                                                   action:@selector(createFolderButtonAction:)];
@@ -409,7 +409,7 @@
 {
     // No error means it's just an empty folder.
     if (error == nil) {
-        ((UILabel *)self.tableView.backgroundView).text = NSLocalizedString(@"This folder is empty", @"Label: Label displayed when the current folder is empty");
+        ((UILabel *)self.tableView.backgroundView).text = NSLocalizedString(@"This folder is empty.", @"Label: Label displayed when the current folder is empty");
     } else {
         ((UILabel *)self.tableView.backgroundView).text = NSLocalizedString(@"Unable to load contents of folder.", @"Label: Label displayed when the current folder is empty");
     }

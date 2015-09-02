@@ -177,12 +177,12 @@
 
 - (void)didFailToCreateFolderWithError:(NSError *)error
 {
-    NSString *title = NSLocalizedString(@"Could Not Create Your Folder", @"Title: Title used when an error occurs while attempting to create a new folder.");
-    NSString *message = NSLocalizedString(@"Sorry, we couldn't create the folder. Please try again.", @"Alert View Description : The renaming failed.");
+    NSString *title = NSLocalizedString(@"Unable to Create Folder", @"Title: Title used when an error occurs while attempting to create a new folder.");
+    NSString *message = NSLocalizedString(@"Unable to create folder. Please try again.", @"Alert View Description : The renaming failed.");
     
     if ([error.domain isEqualToString:BOXContentSDKErrorDomain]) {
         if (error.code == BOXContentSDKAPIErrorUnauthorized || error.code == BOXContentSDKAPIErrorForbidden) {
-            message = NSLocalizedString(@"You do not have permission to create this folder here.",
+            message = NSLocalizedString(@"You do not have permission to create a folder in this location.",
                                         @"Messsage: message for alert view shown when creating folder failed since user did not have the permission");
         } else if (error.code == BOXContentSDKAPIErrorConflict) {
             message = NSLocalizedString(@"A folder with the same name already exists.",

@@ -13,15 +13,9 @@
 - (void)nothing
 {
     NSLocalizedString(@"Creating folder. One moment please…", @"RenameViewController creating folder");
-    NSLocalizedString(@"Sorry, we couldn't create the folder. Please try again.",
                       @"Alert View Description : The creation failed.");
-    NSLocalizedString(@"There was a problem connecting to Box to create this folder. Please check your network connection.",
-                      @"Messsage: message for alert view shown when creating folder failed due to network issue");
-    NSLocalizedString(@"You do not have permission to create this folder here.",
-                      @"Messsage: message for alert view shown when creating folder failed since user did not have the permission");
     NSLocalizedString(@"A folder with the same name already exists.",
                       @"Messsage: message for alert view shown when creating folder failed because a folder with the same name already exists");
-    NSLocalizedString(@"Could Not Create Your Folder", @"Title: Title used when an error occurs while attempting to create a new folder.");
     NSLocalizedString(@"Dismiss", @"Label: Allow the user to dismiss the current view or interface, often used on buttons to dismiss alerts");
     NSLocalizedString(@"Are you sure you want to change the file extension from “.%@” to “.%@”?",
                                             @"Rename action requesting confirmation on file extension change");
@@ -29,10 +23,6 @@
     NSLocalizedString(@"Keep .%@", @"Alert View button : Keep old extension, eg:Keep .txt");
     NSLocalizedString(@"Warning", @"Title: Warning to alert the user that an issue has occurred");
     
-    NSLocalizedString(@"Sorry, we couldn't rename the file. Please try again.", @"Alert View Description : The renaming failed.");
-    
-    NSLocalizedString(@"There was a problem connecting to Box to rename this file. Please check your network connection.",
-                                        @"Messsage: message shown in alert view when renaming file failed due to network issue");
     NSLocalizedString(@"You do not have permission to rename this file.",
                                         @"Messsage: message shown alert view in when renaming file failed since user did not have the permission");
     
