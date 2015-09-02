@@ -13,7 +13,6 @@
 - (void)nothing
 {
     NSLocalizedString(@"Creating folder. One moment please…", @"RenameViewController creating folder");
-                      @"Alert View Description : The creation failed.");
     NSLocalizedString(@"A folder with the same name already exists.",
                       @"Messsage: message for alert view shown when creating folder failed because a folder with the same name already exists");
     NSLocalizedString(@"Dismiss", @"Label: Allow the user to dismiss the current view or interface, often used on buttons to dismiss alerts");
