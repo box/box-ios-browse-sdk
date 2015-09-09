@@ -379,40 +379,39 @@
             self.title = self.folder.name;
         }
     }];
-
-    // Fetch items
-    [self fetchItemsInFolderID:self.folderID withCompletion:^(NSArray *items, NSError *error) {
-        if (error == nil) {
-            completion(items);
-        } else {
-            self.navigationController.toolbarHidden = YES;
-            [self didFailToLoadItemsWithError:error];
-        }
-        
-        if (self.tableView.visibleCells.count < 1) {
-            [self switchToEmptyStateWithError:error];
-            self.searchController.searchBar.hidden = YES;
-        } else {
-            [self switchToNonEmptyView];
-            self.searchController.searchBar.hidden = NO;
-        }
-    }];
-}
-
-- (void)fetchItemsInFolderID:(NSString *)folderID withCompletion:(void (^)(NSArray *items, NSError *error))completion
-{
-    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folderID];
+    
+    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:self.folderID];
     request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
     
+    __block NSArray *itemsFromCache = nil;
+    __weak BOXFolderViewController *me = self;
+    
     [request performRequestWithCached:^(NSArray *items, NSError *error) {
-        if (completion) {
-            completion(items, error);
+        itemsFromCache = items;
+        if (completion && error == nil) {
+            completion(items);
+        }
+        
+        if (me.tableView.visibleCells.count > 0) {
+            [me switchToNonEmptyView];
+            me.searchController.searchBar.hidden = NO;
         }
     } refreshed:^(NSArray *items, NSError *error) {
-        if (completion) {
-            completion(items, error);
+        if (completion && error == nil) {
+            completion(items);
+        } else if (error != nil && itemsFromCache == nil) {
+            me.navigationController.toolbarHidden = YES;
+            [me didFailToLoadItemsWithError:error];
+        }
+        
+        if (me.tableView.visibleCells.count < 1) {
+            [me switchToEmptyStateWithError:error];
+            me.searchController.searchBar.hidden = YES;
+        } else {
+            [me switchToNonEmptyView];
+            me.searchController.searchBar.hidden = NO;
         }
     }];
 }
