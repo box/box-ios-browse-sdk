@@ -153,7 +153,8 @@
         [self.textField setSelectedTextRange:currentRange];
     }
     
-    NSString *folderName = self.textField.text;
+    NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *folderName = [self.textField.text stringByTrimmingCharactersInSet:whitespaceCharacterSet];
     BOXFolderCreateRequest *folderCreateRequest = [self.contentClient folderCreateRequestWithName:folderName parentFolderID:self.parentFolderID];
     folderCreateRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     folderCreateRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
