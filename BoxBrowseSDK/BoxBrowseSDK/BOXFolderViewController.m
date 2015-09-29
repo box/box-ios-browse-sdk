@@ -23,6 +23,10 @@
 
 @property (nonatomic, readwrite, strong) NSIndexPath *indexPathForDeleteCandidate;
 
+@property (nonatomic, readwrite, strong) UIView *backgroundView;
+@property (nonatomic, readwrite, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, readwrite, strong) UILabel *folderInfoLabel;
+
 @end
 
 @implementation BOXFolderViewController
@@ -53,6 +57,12 @@
 {
     if (self = [super initWithContentClient:contentClient]) {
         _folderID = folderID;
+        if ([folderID isEqualToString:BOXAPIFolderIDRoot]) {
+            _folder = [[BOXFolder alloc] init];
+            _folder.modelID = BOXAPIFolderIDRoot;
+            _folder.name = NSLocalizedString(@"All Files", @"Root folder title.");
+            self.title = _folder.name;
+        }
     }
     return self;
 }
@@ -84,16 +94,46 @@
 
     [self setupForSearch];
     
-    UILabel *emptyLabel = [[UILabel alloc] init];
-    emptyLabel.textAlignment = NSTextAlignmentCenter;
-    emptyLabel.font = [UIFont boldSystemFontOfSize:15.0f];
-    emptyLabel.textColor = [UIColor colorWithRed:180.0f/255.0f green:179.0f/255.0f blue:180.0f/255.0f alpha:1.0f];
-    emptyLabel.backgroundColor = [UIColor clearColor];
-    emptyLabel.contentMode = UIViewContentModeCenter;
-    emptyLabel.numberOfLines = 0;
-    emptyLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    emptyLabel.text = NSLocalizedString(@"Loading…", @"Loading message shown while content is being fetched.");
-    self.tableView.backgroundView = emptyLabel;
+    self.backgroundView = [[UIView alloc] init];
+
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicator.hidesWhenStopped = YES;
+    [self.activityIndicator startAnimating];
+    [self.backgroundView addSubview:self.activityIndicator];
+
+    self.folderInfoLabel = [[UILabel alloc] init];
+    self.folderInfoLabel.textAlignment = NSTextAlignmentCenter;
+    self.folderInfoLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    self.folderInfoLabel.textColor = [UIColor colorWithRed:180.0f/255.0f green:179.0f/255.0f blue:180.0f/255.0f alpha:1.0f];
+    self.folderInfoLabel.backgroundColor = [UIColor clearColor];
+    self.folderInfoLabel.contentMode = UIViewContentModeCenter;
+    self.folderInfoLabel.numberOfLines = 0;
+    self.folderInfoLabel.text = @"";
+    self.folderInfoLabel.hidden = YES;
+    self.folderInfoLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.backgroundView addSubview:self.folderInfoLabel];
+
+    self.tableView.backgroundView = self.backgroundView;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+    [self.backgroundView setBounds:self.view.bounds];
+    [self layoutActivityIndicator];
+    [self layoutFolderInfoLabel];
+}
+
+- (void)layoutActivityIndicator
+{
+    self.activityIndicator.center = self.backgroundView.center;
+}
+
+- (void)layoutFolderInfoLabel
+{
+    self.folderInfoLabel.frame = CGRectMake(0, 0, self.backgroundView.frame.size.width, self.backgroundView.frame.size.height);
+    self.folderInfoLabel.center = self.backgroundView.center;
 }
 
 #pragma mark - Search
@@ -362,45 +402,50 @@
 {
     [self setupToolbar];
     
+    // Refresh the underlying folder, just in case the name changed.
     BOXFolderRequest *folderRequest = [self.contentClient folderInfoRequestWithID:self.folderID];
     folderRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     folderRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+    folderRequest.requestAllFolderFields = YES;
     [folderRequest performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
-        if (error) {
-            [self didFailToLoadItemsWithError:error];
-            self.navigationController.toolbarHidden = YES;
-        } else {
+        if (!error) {
             self.folder = folder;
-            [self fetchItemsInFolder:self.folder withCompletion:^(NSArray *items, NSError *error) {
-                if (error == nil) {
-                    self.title = self.folder.name;
-                    completion(items);
-                } else {
-                    self.navigationController.toolbarHidden = YES;
-                    [self didFailToLoadItemsWithError:error];
-                }
-                
-                if (self.tableView.visibleCells.count < 1) {
-                    [self switchToEmptyStateWithError:error];
-                    self.searchController.searchBar.hidden = YES;
-                } else {
-                    [self switchToNonEmptyView];
-                    self.searchController.searchBar.hidden = NO;
-                }
-            }];
+            self.title = self.folder.name;
         }
     }];
-}
-
-- (void)fetchItemsInFolder:(BOXFolder *)folder withCompletion:(void (^)(NSArray *items, NSError *error))completion
-{
-    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folder.modelID];
+    
+    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:self.folderID];
     request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
-    [request performRequestWithCompletion:^(NSArray *items, NSError *error) {
-        if (completion) {
-            completion(items, error);
+    
+    __block NSArray *itemsFromCache = nil;
+    __weak BOXFolderViewController *me = self;
+    
+    [request performRequestWithCached:^(NSArray *items, NSError *error) {
+        itemsFromCache = items;
+        if (completion && error == nil) {
+            completion(items);
+        }
+        
+        if (me.tableView.visibleCells.count > 0) {
+            [me switchToNonEmptyView];
+            me.searchController.searchBar.hidden = NO;
+        }
+    } refreshed:^(NSArray *items, NSError *error) {
+        if (completion && error == nil) {
+            completion(items);
+        } else if (error != nil && itemsFromCache == nil) {
+            me.navigationController.toolbarHidden = YES;
+            [me didFailToLoadItemsWithError:error];
+        }
+        
+        if (me.tableView.visibleCells.count < 1) {
+            [me switchToEmptyStateWithError:error];
+            me.searchController.searchBar.hidden = YES;
+        } else {
+            [me switchToNonEmptyView];
+            me.searchController.searchBar.hidden = NO;
         }
     }];
 }
@@ -408,17 +453,20 @@
 - (void)switchToEmptyStateWithError:(NSError *)error
 {
     // No error means it's just an empty folder.
+    NSString *errorMessage = [[NSString alloc] init];
     if (error == nil) {
-        ((UILabel *)self.tableView.backgroundView).text = NSLocalizedString(@"This folder is empty.", @"Label: Label displayed when the current folder is empty");
+        errorMessage = NSLocalizedString(@"This folder is empty.", @"Label: Label displayed when the current folder is empty");
     } else {
-        ((UILabel *)self.tableView.backgroundView).text = NSLocalizedString(@"Unable to load contents of folder.", @"Label: Label displayed when the current folder is empty");
+        errorMessage = NSLocalizedString(@"Unable to load contents of folder.", @"Label: Label displayed when the current folder is empty");
     }
-    self.tableView.backgroundView.hidden = NO;
+    self.folderInfoLabel.text = errorMessage;
+    self.folderInfoLabel.hidden = NO;
+    [self.activityIndicator stopAnimating];
 }
 
 - (void)switchToNonEmptyView
 {
-    self.tableView.backgroundView.hidden = YES;
+    [self.activityIndicator stopAnimating];
 }
 
 - (void)didFailToLoadItemsWithError:(NSError *)error
