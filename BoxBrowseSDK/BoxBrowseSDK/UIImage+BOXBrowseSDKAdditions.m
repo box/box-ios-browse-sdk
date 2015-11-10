@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+BOXBrowseSDKAdditions.h"
+#import "BOXBrowseSDKBundleHelper.h"
 
 @implementation UIImage (BOXBrowseSDKAdditions)
 
@@ -49,8 +50,7 @@
     static NSBundle *frameworkBundle = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
-        NSURL *resourcesBundleURL = [[NSBundle mainBundle] URLForResource:@"BoxBrowseSDKResources" withExtension:@"bundle"];
-        frameworkBundle = [NSBundle bundleWithURL:resourcesBundleURL];
+        frameworkBundle = [NSBundle bundleForClass:[BOXBrowseSDKBundleHelper class]];
     });
     
     return frameworkBundle;
