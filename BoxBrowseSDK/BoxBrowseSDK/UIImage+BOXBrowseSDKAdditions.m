@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+BOXBrowseSDKAdditions.h"
+#import "BOXBrowseSDKBundleHelper.h"
 
 @implementation UIImage (BOXBrowseSDKAdditions)
 
