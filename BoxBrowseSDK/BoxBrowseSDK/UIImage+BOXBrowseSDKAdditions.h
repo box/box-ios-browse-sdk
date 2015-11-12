@@ -11,13 +11,6 @@
 @interface UIImage (BOXBrowseSDKAdditions)
 
 /**
- * Retrieves assets embedded in the resource bundle.
- *
- * @param string Image name.
- */
-+ (UIImage *)box_imageFromBrowseSDKResourceBundleNamed:(NSString *)name;
-
-/**
  * Returns an image with the appropriate scale factor given the device.
  *
  * @return An image with the appropriate scale.
