@@ -143,4 +143,13 @@
  */
 - (BOOL)itemsViewControllerShouldShowCloseButton:(BOXItemsViewController *)itemsViewController;
 
+/**
+ *  A custom title for the Close button used to dismiss the view controller
+ *  By default, the title is "Close".
+ *
+ *  @param itemsViewController The instance of BOXItemsViewController calling this method.
+ *  @return The string to be displayed for the button.
+ */
+- (NSString *)itemsViewControllerCloseButtonTitle:(BOXItemsViewController *)itemsViewController;
+
 @end
