@@ -36,6 +36,7 @@
     
     self.tableView.separatorInset = UIEdgeInsetsZero;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // eliminate extra separators
+    self.tableView.separatorColor = [UIColor colorWithWhite:244.0f/255.0f alpha:1.0f];
     
     [self setupNavigationBar];
     
@@ -143,7 +144,16 @@
     }
     
     if (shouldShowCloseButton) {
-        UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Close", @"Title : button closing the folder picker")
+
+        NSString *closeButtonTitle = [[NSString alloc] init];
+
+        if ([self.delegate respondsToSelector:@selector(itemsViewControllerCloseButtonTitle:)]) {
+            closeButtonTitle = [self.delegate itemsViewControllerCloseButtonTitle:self];
+        } else {
+            closeButtonTitle = NSLocalizedString(@"Close", @"Title : button closing the folder picker");
+        }
+
+        UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:closeButtonTitle
                                                                                style:UIBarButtonItemStylePlain
                                                                               target:self
                                                                               action:@selector(closeButtonAction:)];
