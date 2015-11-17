@@ -20,7 +20,13 @@ CGFloat const BOXItemCellHeight = 60.0f;
 
 #define kImageViewWidth 40.0
 #define kImageHorizontalPadding 12.0
-#define kDisabledAlphaValue 0.6f
+#define kDisabledAlphaValue 0.3f
+
+#define kTextLabelColorEnabled [UIColor colorWithWhite:86.0f/255.0f alpha:1.0]
+#define kTextLabelColorDisabled [UIColor colorWithWhite:86.0f/255.0f alpha:0.3]
+
+#define kDetailTextLabelColorEnabled [UIColor colorWithWhite:174.0f/255.0f alpha:1.0]
+#define kDetailTextLabelColorDisabled [UIColor colorWithWhite:174.0f/255.0f alpha:0.3]
 
 @interface BOXItemCell ()
 
@@ -41,10 +47,10 @@ CGFloat const BOXItemCellHeight = 60.0f;
         _contentClient = contentClient;
         
         self.textLabel.font = [UIFont systemFontOfSize:17.0f];
-        self.textLabel.textColor = [UIColor colorWithRed:86.0f/255.0f green:86.0f/255.0f blue:86.0f/255.0f alpha:1.0];
+        self.textLabel.textColor = kTextLabelColorEnabled;
         
         self.detailTextLabel.font = [UIFont systemFontOfSize:13.0f];
-        self.detailTextLabel.textColor = [UIColor colorWithRed:174.0f/255.0f green:174.0f/255.0f blue:174.0f/255.0f alpha:1.0];
+        self.detailTextLabel.textColor = kDetailTextLabelColorEnabled;
 
         _thumbnailImageView = [[UIImageView alloc] init];
     }
@@ -141,14 +147,14 @@ CGFloat const BOXItemCellHeight = 60.0f;
 {
     if (enabled) {
         self.userInteractionEnabled = YES;
-        self.textLabel.enabled = YES;
-        self.detailTextLabel.enabled = YES;
         self.thumbnailImageView.alpha = 1.0f;
+        self.textLabel.textColor = kTextLabelColorEnabled;
+        self.detailTextLabel.textColor = kDetailTextLabelColorEnabled;
     } else {
         self.userInteractionEnabled = NO;
-        self.textLabel.enabled = NO;
-        self.detailTextLabel.enabled = NO;
         self.thumbnailImageView.alpha = kDisabledAlphaValue;
+        self.textLabel.textColor = kTextLabelColorDisabled;
+        self.detailTextLabel.textColor = kDetailTextLabelColorDisabled;
     }
 }
 
