@@ -398,7 +398,7 @@
 
 #pragma mark - data
 
-- (void)fetchItemsWithCompletion:(void (^)(NSArray *items))completion
+- (void)fetchItemsWithCompletion:(void (^)(NSArray *items, BOOL fromCache, NSError *error))externalCompletionBlock
 {
     [self setupToolbar];
     
@@ -407,43 +407,68 @@
     folderRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     folderRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
     folderRequest.requestAllFolderFields = YES;
-    [folderRequest performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
-        if (!error) {
-            self.folder = folder;
-            self.title = self.folder.name;
-        }
-    }];
 
-    // Fetch items
-    [self fetchItemsInFolderID:self.folderID withCompletion:^(NSArray *items, NSError *error) {
-        if (error == nil) {
-            completion(items);
+    void (^internalCompletionBlock)(NSArray *, BOOL, NSError *) = ^void(NSArray *items, BOOL fromCache, NSError *error) {
+
+        [BOXDispatchHelper callCompletionBlock:^{
+            if (items.count > 0 && !error) {
+                [self switchToNonEmptyView];
+            } else if (!fromCache && self.tableView.visibleCells.count < 1) {
+                [self switchToEmptyStateWithError:error];
+            }
+
+            if (externalCompletionBlock) {
+                externalCompletionBlock(items, fromCache, error);
+            }
+
+        } onMainThread:YES];
+    };
+
+    void (^itemFetchBlock)(BOXFolder *, BOOL fromCache, NSError *) = ^void(BOXFolder *folder, BOOL fromCache, NSError *error) {
+        if (error.code == BOXContentSDKAPIErrorBadRequest ||
+            error.code == BOXContentSDKAPIErrorUnauthorized ||
+            error.code == BOXContentSDKAPIErrorForbidden ||
+            error.code == BOXContentSDKAPIErrorNotFound) {
+            internalCompletionBlock(nil, fromCache, error);
+
         } else {
-            self.navigationController.toolbarHidden = YES;
-            [self didFailToLoadItemsWithError:error];
+            if (folder && !error) {
+                [self setCurrentFolder:folder];
+            }
+
+            if (fromCache) {
+                [self fetchItemsInFolder:self.folder cacheBlock:^(NSArray *items, NSError *error){
+                    internalCompletionBlock(items, YES, error);
+                } refreshBlock:nil];
+            } else {
+                [self fetchItemsInFolder:self.folder cacheBlock:nil refreshBlock:^(NSArray *items, NSError *error) {
+                    internalCompletionBlock(items, NO, error);
+                }];
+            }
         }
-        
-        if (self.tableView.visibleCells.count < 1) {
-            [self switchToEmptyStateWithError:error];
-            self.searchController.searchBar.hidden = YES;
-        } else {
-            [self switchToNonEmptyView];
-            self.searchController.searchBar.hidden = NO;
-        }
+    };
+
+    [folderRequest performRequestWithCached:^(BOXFolder *folder, NSError *error) {
+        itemFetchBlock(folder, YES, error);
+
+    } refreshed:^(BOXFolder *folder, NSError *error) {
+        itemFetchBlock(folder, NO, error);
     }];
 }
 
-- (void)fetchItemsInFolderID:(NSString *)folderID withCompletion:(void (^)(NSArray *items, NSError *error))completion
+- (void)fetchItemsInFolder:(BOXFolder *)folder cacheBlock:(void (^)(NSArray *items, NSError *error))cacheBlock refreshBlock:(void (^)(NSArray *items, NSError *error))refreshBlock
 {
-    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folderID];
+    BOXFolderItemsRequest *request = [self.contentClient folderItemsRequestWithID:folder.modelID];
     request.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     request.SDKVersion = BOX_BROWSE_SDK_VERSION;
     [request setRequestAllItemFields:YES];
-    [request performRequestWithCompletion:^(NSArray *items, NSError *error) {
-        if (completion) {
-            completion(items, error);
-        }
-    }];
+    [request performRequestWithCached:cacheBlock refreshed:refreshBlock];
+}
+
+- (void)setCurrentFolder:(BOXFolder *)folder
+{
+    self.folder = folder;
+    self.title = self.folder.name;
 }
 
 - (void)switchToEmptyStateWithError:(NSError *)error
