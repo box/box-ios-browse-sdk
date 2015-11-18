@@ -399,6 +399,7 @@
     BOXFolderRequest *folderRequest = [self.contentClient folderInfoRequestWithID:self.folderID];
     folderRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
     folderRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+    folderRequest.requestAllFolderFields = YES;
     [folderRequest performRequestWithCompletion:^(BOXFolder *folder, NSError *error) {
         if (error) {
             [self didFailToLoadItemsWithError:error];
