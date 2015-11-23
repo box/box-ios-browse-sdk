@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)fetchItemsWithCompletion:(void (^)(NSArray *items, BOOL fromCache, NSError *error))completion
+- (void)fetchItemsWithCompletion:(void (^)(NSArray *items))completion
 {
     BOXAbstract();
 }
@@ -176,23 +176,19 @@
 
 - (void)refresh
 {
-    [self fetchItemsWithCompletion:^(NSArray *items, BOOL fromCache, NSError *error) {
-        if (items && !error) {
-            items = [self filterItems:items];
-            BOOL shouldSort = YES;
-
-            if ([self.delegate respondsToSelector:@selector(itemsViewControllerShouldSortItems:)]) {
-                shouldSort = [self.delegate itemsViewControllerShouldSortItems:self];
-            }
-
-            if (shouldSort) {
-                items = [self sortItems:items];
-            }
-
-            self.items = items;
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
+    [self fetchItemsWithCompletion:^(NSArray *items) {
+        items = [self filterItems:items];
+        BOOL shouldSort = YES;
+        if ([self.delegate respondsToSelector:@selector(itemsViewControllerShouldSortItems:)]) {
+            shouldSort = [self.delegate itemsViewControllerShouldSortItems:self];
         }
+        if (shouldSort) {
+            items = [self sortItems:items];
+        }
+        
+        self.items = items;
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     }];
 }
 
