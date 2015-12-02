@@ -308,6 +308,7 @@
                                                                                                       folder:folder];
             viewController.delegate = self.folderBrowserDelegate;
             self.navigationItem.backBarButtonItem.title = folder.parentFolder.name;
+            viewController.navigationItem.prompt = self.navigationItem.prompt;
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }
