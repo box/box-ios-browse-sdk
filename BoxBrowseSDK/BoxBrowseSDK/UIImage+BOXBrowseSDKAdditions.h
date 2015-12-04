@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class BOXItem;
+
 @interface UIImage (BOXBrowseSDKAdditions)
+
+/**
+ * Returns an item's corresponding default icon
+ *
+ * @return An icon corresponding to the item's file type
+ */
++ (UIImage *)box_iconForItem:(BOXItem *)item;
 
 /**
  * Returns an image with the appropriate scale factor given the device.
