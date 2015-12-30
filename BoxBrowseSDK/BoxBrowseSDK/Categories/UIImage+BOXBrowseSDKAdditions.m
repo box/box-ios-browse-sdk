@@ -10,14 +10,13 @@
 #import <BoxContentSDK/BoxContentSDK.h>
 #import <BoxBrowseSDK.h>
 #import "NSString+BOXBrowseSDKAdditions.h"
+#import "NSBundle+BOXBrowseSDKAdditions.h"
 
 @implementation UIImage (BOXBrowseSDKAdditions)
 
 + (UIImage *)box_iconForItem:(BOXItem *)item
 {
-    NSBundle *browseBundle = [NSBundle bundleForClass:[BoxBrowseSDK class]];
-    NSString *bundlePath = [browseBundle.bundlePath stringByAppendingPathComponent:@"BoxBrowseSDKResources.bundle"];
-    NSBundle *browseResourceBundle = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *browseResourceBundle = [NSBundle boxBrowseSDKResourcesBundle];
 
     UIImage *icon = nil;
 
