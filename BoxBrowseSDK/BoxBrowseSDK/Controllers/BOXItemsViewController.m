@@ -189,11 +189,44 @@
                 items = [self sortItems:items];
             }
 
-            self.items = items;
-            [self.tableView reloadData];
+            if ([self shouldReloadTableViewWithNewItems:items]) {
+                self.items = items;
+                [self.tableView reloadData];
+            }
             [self.refreshControl endRefreshing];
         }
     }];
+}
+
+- (BOOL)shouldReloadTableViewWithNewItems:(NSArray *)newItems
+{
+    if (self.items.count != newItems.count) {
+        return YES;
+    } else {
+        for (NSUInteger i = 0; i < self.items.count; i++) {
+            BOXItem *originalItem = self.items[i];
+            BOXItem *newItem = newItems[i];
+
+            if (![originalItem.name isEqualToString:newItem.name]) {
+                return YES;
+            }
+
+            if (originalItem.isFile) {
+                if (!newItem.isFile) {
+                    return YES;
+                } else {
+                    BOXFile *originalFile = (BOXFile *)originalItem;
+                    BOXFile *newFile = (BOXFile *)newItem;
+
+                    if (![originalFile.SHA1 isEqualToString:newFile.SHA1]) {
+                        return YES;
+                    }
+                }
+            }
+        }
+    }
+
+    return NO;
 }
 
 - (NSArray *)sortItems:(NSArray *)items
