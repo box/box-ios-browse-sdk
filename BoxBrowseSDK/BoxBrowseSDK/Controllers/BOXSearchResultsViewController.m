@@ -34,7 +34,7 @@
     self.searchRequest = nil;
 }
 
-- (void)fetchItemsWithCompletion:(void (^)(NSArray *))completion
+- (void)fetchItemsWithCompletion:(void (^)(NSArray *, BOOL fromCache, NSError *))completion
 {
     [self.searchRequest cancel];
     
@@ -44,11 +44,7 @@
     self.searchRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
     self.searchRequest.ancestorFolderIDs = @[self.folderID];
     [self.searchRequest performRequestWithCompletion:^(NSArray *items, NSUInteger totalCount, NSRange range, NSError *error) {
-        if (error) {
-            // TODO
-        } else {
-            completion(items);
-        }
+        completion(items, NO, error);
     }];
 }
 

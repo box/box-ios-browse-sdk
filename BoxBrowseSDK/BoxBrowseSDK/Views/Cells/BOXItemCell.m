@@ -7,9 +7,10 @@
 //
 
 #import "BOXItemCell.h"
-#import "UIImage+BOXBrowseSDKAdditions.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BOXThumbnailCache.h"
+#import "UIImage+BOXBrowseSDKAdditions.h"
+#import "NSString+BOXBrowseSDKAdditions.h"
 
 long long const BOX_BROWSE_SDK_KILOBYTE = 1024;
 long long const BOX_BROWSE_SDK_MEGABYTE = BOX_BROWSE_SDK_KILOBYTE * 1024;
@@ -124,7 +125,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
             }];
         } else {
             UIImageView *imageView = self.thumbnailImageView;
-            imageView.image = [self iconForItem:item];
+            imageView.image = [UIImage box_iconForItem:item];
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if (error == nil) {
                     if ([me.item.modelID isEqualToString:file.modelID]) {
@@ -139,7 +140,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
             }];
         }
     } else {
-        self.thumbnailImageView.image = [self iconForItem:item];
+        self.thumbnailImageView.image = [UIImage box_iconForItem:item];
     }
 }
 
@@ -203,67 +204,9 @@ CGFloat const BOXItemCellHeight = 60.0f;
     return dateString;
 }
 
-- (UIImage *)iconForItem:(BOXItem *)item
-{
-    UIImage *icon = nil;
-    
-    if (item.isFolder) {
-        BOXFolder *folder = (BOXFolder *)item;
-        if (folder.isExternallyOwned == BOXAPIBooleanYES) {
-            icon = [UIImage imageNamed:@"icon-folder-external"];
-        } else if (folder.hasCollaborations == BOXAPIBooleanYES) {
-            icon = [UIImage imageNamed:@"icon-folder-shared"];
-        } else {
-            icon = [UIImage imageNamed:@"icon-folder"];
-        }
-    } else if (item.isFile) {
-        NSString *extension = [[self pathExtensionAccountingForZippedPackagesFromFileName:item.name] lowercaseString];
-        NSString *defaultIconPath = [NSString stringWithFormat:@"icon-file-%@", extension];
-        icon = [UIImage imageNamed:defaultIconPath];
-        if (icon == nil) {
-            icon = [UIImage imageNamed:@"icon-file-generic"];
-        }
-    } else if (item.isBookmark) {
-        icon = [UIImage imageNamed:@"icon-file-weblink"];
-    }
-
-    return icon;
-}
-            
-- (NSString *)pathExtensionAccountingForZippedPackagesFromFileName:(NSString *)fileName
-{
-    NSString *extension = nil;
-    
-    if ([self fileNameHasTwoFileExtensions:fileName]) {
-        extension = [[fileName stringByDeletingPathExtension] pathExtension];
-    } else {
-        extension = [fileName pathExtension];
-    }
-    
-    return extension;
-}
-
-- (BOOL)fileNameHasTwoFileExtensions:(NSString *)fileName
-{
-    // 5 cases : .pages.zip, .key.zip, .keynote.zip, .numbers.zip, .rtfd.zip.
-    if ([[fileName pathExtension] isEqualToString:@"zip"]) {
-        fileName = [fileName stringByDeletingPathExtension];
-        
-        if ([[fileName pathExtension] isEqualToString:@"pages"] ||
-            [[fileName pathExtension] isEqualToString:@"key"] ||
-            [[fileName pathExtension] isEqualToString:@"keynote"] ||
-            [[fileName pathExtension] isEqualToString:@"numbers"] ||
-            [[fileName pathExtension] isEqualToString:@"rtfd"]) {
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
 - (NSString *)UTIFromFilePath:(NSString *)filePath
 {
-    CFStringRef fileExtension = (__bridge CFStringRef)[self pathExtensionAccountingForZippedPackagesFromFileName:filePath];
+    CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtensionAccountingForZippedPackages];
     CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
     NSString *strUTI = (__bridge_transfer NSString *)UTI;
     

@@ -19,7 +19,15 @@
 
 - (instancetype)initWithContentClient:(BOXContentClient *)contentClient;
 
-- (void)fetchItemsWithCompletion:(void (^)(NSArray *items))completion;
+/**
+ *  Retrieve all items within the current folder
+ *
+ *  @param completion Block to be executed after items are fetched, passing an array of the items and an
+ *  error object if applicable. If the BOXContentCacheClientProtocol is implemented, the completion block
+ *  will be executed twice, first passing results from the cache and then from Box; use the boolean fromCache
+ *  to differentiate between the two scenarios if necessary.
+ */
+- (void)fetchItemsWithCompletion:(void (^)(NSArray *items, BOOL fromCache, NSError *error))completion;
 
 - (BOXItem *)itemForRowAtIndexPath:(NSIndexPath *)indexPath;
 
