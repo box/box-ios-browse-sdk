@@ -11,6 +11,7 @@
 #import "BOXThumbnailCache.h"
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import "NSString+BOXBrowseSDKAdditions.h"
+#import "BOXItem+BOXBrowseSDKAdditions.h"
 
 long long const BOX_BROWSE_SDK_KILOBYTE = 1024;
 long long const BOX_BROWSE_SDK_MEGABYTE = BOX_BROWSE_SDK_KILOBYTE * 1024;
@@ -198,7 +199,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
 
 - (NSString *)displayDateForItem:(BOXItem *)item
 {
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:item.contentModifiedDate
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:[item effectiveUpdateDate]
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
     return dateString;

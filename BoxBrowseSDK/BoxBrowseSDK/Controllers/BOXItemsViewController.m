@@ -9,6 +9,7 @@
 #import "BOXItemsViewController.h"
 #import "BOXItemCell.h"
 #import "BOXFolderViewController.h"
+#import "BOXItem+BOXBrowseSDKAdditions.h"
 
 @interface BOXItemsViewController ()
 
@@ -248,7 +249,7 @@
                                         
                                         // Then we go by date descending
                                     } else {
-                                        order = [itemB.contentModifiedDate compare:itemA.contentModifiedDate];
+                                        order = [[itemB effectiveUpdateDate] compare:[itemA effectiveUpdateDate]];
                                     }
                                 }
                                 
