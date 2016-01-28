@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15146EB41AC20B77000BA380 /* BoxBrowseSDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */; };
+		11B5CF841C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF801C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m */; };
+		11B5CF851C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF801C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m */; };
+		11B5CF871C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF821C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m */; };
+		11B5CF881C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF821C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m */; };
+		11B5CF8E1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */; };
+		11B5CF8F1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */; };
+		11B5CF931C59BC1F00FDBE0F /* BoxBrowseSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15146EB61AC20B77000BA380 /* BoxBrowseSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */; };
 		153113951AC3569100996D00 /* BOXFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153113941AC3569100996D00 /* BOXFolderViewController.m */; };
 		153113961AC3569100996D00 /* BOXFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153113941AC3569100996D00 /* BOXFolderViewController.m */; };
@@ -225,20 +231,13 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		15146EAE1AC20B77000BA380 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				15146EB41AC20B77000BA380 /* BoxBrowseSDK.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		11B5CF7F1C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+BOXBrowseSDKAdditions.h"; sourceTree = "<group>"; };
+		11B5CF801C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+BOXBrowseSDKAdditions.m"; sourceTree = "<group>"; };
+		11B5CF811C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BOXBrowseSDKAdditions.h"; sourceTree = "<group>"; };
+		11B5CF821C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BOXBrowseSDKAdditions.m"; sourceTree = "<group>"; };
+		11B5CF8B1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOXBrowseSDKResourceLocator.h; path = Helpers/BOXBrowseSDKResourceLocator.h; sourceTree = "<group>"; };
+		11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOXBrowseSDKResourceLocator.m; path = Helpers/BOXBrowseSDKResourceLocator.m; sourceTree = "<group>"; };
 		1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXBrowseSDKConstants.h; sourceTree = "<group>"; };
 		15146EB01AC20B77000BA380 /* libBoxBrowseSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBoxBrowseSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxBrowseSDK.h; sourceTree = "<group>"; };
@@ -475,6 +474,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11B5CF731C59A0A300FDBE0F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				15CE09F91ACC7653006B8614 /* BOXCreateFolderViewController.h */,
+				15CE09FA1ACC7653006B8614 /* BOXCreateFolderViewController.m */,
+				153113931AC3569100996D00 /* BOXFolderViewController.h */,
+				153113941AC3569100996D00 /* BOXFolderViewController.m */,
+				15CE0A081ACDEE1A006B8614 /* BOXItemsViewController.h */,
+				15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */,
+				15764E0A1ACF42710023C535 /* BOXSearchResultsViewController.h */,
+				15764E0B1ACF42710023C535 /* BOXSearchResultsViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		11B5CF741C59A17400FDBE0F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				11B5CF7F1C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.h */,
+				11B5CF801C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m */,
+				11B5CF811C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.h */,
+				11B5CF821C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m */,
+				1564A5341ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.h */,
+				1564A5351ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		11B5CF751C59A1B000FDBE0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11B5CF761C59A1B900FDBE0F /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11B5CF761C59A1B900FDBE0F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1564A5531ACA1D68005DD04F /* BOXItemCell.h */,
+				1564A5541ACA1D68005DD04F /* BOXItemCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		11B5CF8A1C59A51E00FDBE0F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				11B5CF8B1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.h */,
+				11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		15146EA71AC20B77000BA380 = {
 			isa = PBXGroup;
 			children = (
@@ -503,23 +556,15 @@
 			children = (
 				15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */,
 				15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */,
-				153113931AC3569100996D00 /* BOXFolderViewController.h */,
-				153113941AC3569100996D00 /* BOXFolderViewController.m */,
-				1564A5341ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.h */,
-				1564A5351ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m */,
-				1564A5531ACA1D68005DD04F /* BOXItemCell.h */,
-				1564A5541ACA1D68005DD04F /* BOXItemCell.m */,
 				1564A6D71ACB3C9E005DD04F /* BOXThumbnailCache.h */,
 				1564A6D81ACB3C9E005DD04F /* BOXThumbnailCache.m */,
-				15CE09F91ACC7653006B8614 /* BOXCreateFolderViewController.h */,
-				15CE09FA1ACC7653006B8614 /* BOXCreateFolderViewController.m */,
 				15CE0A051ACD15BA006B8614 /* DummyStrings.h */,
 				15CE0A061ACD15BA006B8614 /* DummyStrings.m */,
-				15CE0A081ACDEE1A006B8614 /* BOXItemsViewController.h */,
-				15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */,
-				15764E0A1ACF42710023C535 /* BOXSearchResultsViewController.h */,
-				15764E0B1ACF42710023C535 /* BOXSearchResultsViewController.m */,
 				1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */,
+				11B5CF741C59A17400FDBE0F /* Categories */,
+				11B5CF731C59A0A300FDBE0F /* Controllers */,
+				11B5CF8A1C59A51E00FDBE0F /* Helpers */,
+				11B5CF751C59A1B000FDBE0F /* Views */,
 			);
 			path = BoxBrowseSDK;
 			sourceTree = "<group>";
@@ -778,6 +823,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		11B5CF911C59BBBF00FDBE0F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11B5CF931C59BC1F00FDBE0F /* BoxBrowseSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		15146EAF1AC20B77000BA380 /* BoxBrowseSDK */ = {
 			isa = PBXNativeTarget;
@@ -786,7 +842,7 @@
 				1098612717CDA1B7FC3F4FE5 /* Check Pods Manifest.lock */,
 				15146EAC1AC20B77000BA380 /* Sources */,
 				15146EAD1AC20B77000BA380 /* Frameworks */,
-				15146EAE1AC20B77000BA380 /* CopyFiles */,
+				11B5CF911C59BBBF00FDBE0F /* Headers */,
 				888F12C745D6E55301C33AF0 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1145,8 +1201,11 @@
 				15146EB61AC20B77000BA380 /* BoxBrowseSDK.m in Sources */,
 				15764E0C1ACF42710023C535 /* BOXSearchResultsViewController.m in Sources */,
 				153113951AC3569100996D00 /* BOXFolderViewController.m in Sources */,
+				11B5CF871C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m in Sources */,
 				15CE09FB1ACC7653006B8614 /* BOXCreateFolderViewController.m in Sources */,
+				11B5CF841C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m in Sources */,
 				15CE0A071ACD15BA006B8614 /* DummyStrings.m in Sources */,
+				11B5CF8E1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */,
 				1564A5361ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m in Sources */,
 				15CE0A0A1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */,
 			);
@@ -1157,9 +1216,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				15DC5B261AE01EFE003FB3E9 /* BOXItemCell.m in Sources */,
+				11B5CF8F1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */,
 				15764E0D1ACF42710023C535 /* BOXSearchResultsViewController.m in Sources */,
+				11B5CF851C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m in Sources */,
 				1564A5371ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m in Sources */,
 				1564A6DA1ACB3C9E005DD04F /* BOXThumbnailCache.m in Sources */,
+				11B5CF881C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m in Sources */,
 				15CE09FC1ACC7653006B8614 /* BOXCreateFolderViewController.m in Sources */,
 				153113961AC3569100996D00 /* BOXFolderViewController.m in Sources */,
 				15CE0A0B1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */,

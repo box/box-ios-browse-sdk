@@ -8,7 +8,7 @@
 
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import <BoxContentSDK/BoxContentSDK.h>
-#import <BoxBrowseSDK.h>
+#import <BoxBrowseSDK/BoxBrowseSDK.h>
 #import "NSString+BOXBrowseSDKAdditions.h"
 #import "NSBundle+BOXBrowseSDKAdditions.h"
 

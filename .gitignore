@@ -14,6 +14,7 @@ app/build/*
 *.pbxuser
 xcuserdata
 *.xccheckout
+*.xcscmblueprint
 
 # podfiles
 BoxBrowseSDKSampleApp/Pods/
