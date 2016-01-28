@@ -14,6 +14,8 @@
 		11B5CF8E1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */; };
 		11B5CF8F1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */; };
 		11B5CF931C59BC1F00FDBE0F /* BoxBrowseSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11B5CF961C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 11B5CF941C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h */; };
+		11B5CF971C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF951C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m */; };
 		15146EB61AC20B77000BA380 /* BoxBrowseSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */; };
 		153113951AC3569100996D00 /* BOXFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153113941AC3569100996D00 /* BOXFolderViewController.m */; };
 		153113961AC3569100996D00 /* BOXFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153113941AC3569100996D00 /* BOXFolderViewController.m */; };
@@ -238,6 +240,8 @@
 		11B5CF821C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BOXBrowseSDKAdditions.m"; sourceTree = "<group>"; };
 		11B5CF8B1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOXBrowseSDKResourceLocator.h; path = Helpers/BOXBrowseSDKResourceLocator.h; sourceTree = "<group>"; };
 		11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOXBrowseSDKResourceLocator.m; path = Helpers/BOXBrowseSDKResourceLocator.m; sourceTree = "<group>"; };
+		11B5CF941C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BOXItem+BOXBrowseSDKAdditions.h"; sourceTree = "<group>"; };
+		11B5CF951C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BOXItem+BOXBrowseSDKAdditions.m"; sourceTree = "<group>"; };
 		1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXBrowseSDKConstants.h; sourceTree = "<group>"; };
 		15146EB01AC20B77000BA380 /* libBoxBrowseSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBoxBrowseSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxBrowseSDK.h; sourceTree = "<group>"; };
@@ -498,6 +502,8 @@
 				11B5CF821C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m */,
 				1564A5341ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.h */,
 				1564A5351ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m */,
+				11B5CF941C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h */,
+				11B5CF951C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -828,6 +834,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B5CF961C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h in Headers */,
 				11B5CF931C59BC1F00FDBE0F /* BoxBrowseSDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1207,6 +1214,7 @@
 				15CE0A071ACD15BA006B8614 /* DummyStrings.m in Sources */,
 				11B5CF8E1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */,
 				1564A5361ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m in Sources */,
+				11B5CF971C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m in Sources */,
 				15CE0A0A1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
