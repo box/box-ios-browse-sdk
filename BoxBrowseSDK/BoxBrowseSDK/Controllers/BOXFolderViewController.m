@@ -160,12 +160,11 @@
         [self.searchController.searchBar sizeToFit];
         self.searchController.searchBar.delegate = self;
         self.searchController.searchBar.showsCancelButton = NO;
-        self.searchController.searchBar.hidden = YES; // Starts of hidden, and only when we've fetched items do we bring it in.
+        self.searchController.searchBar.hidden = YES; // Starts off hidden, and only when we've fetched items do we bring it in.
         if (self.folder.name.length > 0 && ![self.folder.modelID isEqualToString:BOXAPIFolderIDRoot]) {
             self.searchController.searchBar.placeholder =
                 [NSString stringWithFormat:NSLocalizedString(@"Search “%@”", @"Label: Files Search Bar Placeholder"), self.folder.name];
         }
-        self.tableView.tableHeaderView = self.searchController.searchBar;
     }
 }
 
@@ -412,9 +411,27 @@
     void (^internalCompletionBlock)(NSArray *, BOOL, NSError *) = ^void(NSArray *items, BOOL fromCache, NSError *error) {
 
         [BOXDispatchHelper callCompletionBlock:^{
-            if (items.count > 0 && !error) {
-                [self switchToNonEmptyView];
+            if (!error) {
+                if (items.count == 0) {
+                    if (!fromCache) {
+                        if (self.tableView.tableHeaderView != nil) {
+                            self.tableView.tableHeaderView = nil;
+                        }
+                        [self switchToEmptyStateWithError:nil];
+                    }
+                } else {
+                    [self switchToNonEmptyView];
+                
+                    if (self.searchController.searchBar.hidden) {
+                        self.tableView.tableHeaderView = nil;
+                    } else {
+                        self.tableView.tableHeaderView = self.searchController.searchBar;
+                    }
+                }
             } else if (!fromCache && self.tableView.visibleCells.count < 1) {
+                if (self.tableView.tableHeaderView != nil) {
+                    self.tableView.tableHeaderView = nil;
+                }
                 [self switchToEmptyStateWithError:error];
             }
 
@@ -488,6 +505,9 @@
 
 - (void)switchToNonEmptyView
 {
+    if (self.folderInfoLabel.hidden == NO) {
+	self.folderInfoLabel.hidden = YES;
+    }
     [self.activityIndicator stopAnimating];
 }
 
