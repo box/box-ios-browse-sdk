@@ -165,6 +165,7 @@
             self.searchController.searchBar.placeholder =
                 [NSString stringWithFormat:NSLocalizedString(@"Search “%@”", @"Label: Files Search Bar Placeholder"), self.folder.name];
         }
+        self.tableView.tableHeaderView = self.searchController.searchBar;
     }
 }
 
@@ -414,24 +415,12 @@
             if (!error) {
                 if (items.count == 0) {
                     if (!fromCache) {
-                        if (self.tableView.tableHeaderView != nil) {
-                            self.tableView.tableHeaderView = nil;
-                        }
                         [self switchToEmptyStateWithError:nil];
                     }
                 } else {
                     [self switchToNonEmptyView];
-                
-                    if (self.searchController.searchBar.hidden) {
-                        self.tableView.tableHeaderView = nil;
-                    } else {
-                        self.tableView.tableHeaderView = self.searchController.searchBar;
-                    }
                 }
             } else if (!fromCache && self.tableView.visibleCells.count < 1) {
-                if (self.tableView.tableHeaderView != nil) {
-                    self.tableView.tableHeaderView = nil;
-                }
                 [self switchToEmptyStateWithError:error];
             }
 
@@ -500,14 +489,22 @@
     }
     self.folderInfoLabel.text = errorMessage;
     self.folderInfoLabel.hidden = NO;
+    
+    self.searchController.searchBar.hidden = YES;
+    
     [self.activityIndicator stopAnimating];
 }
 
 - (void)switchToNonEmptyView
 {
     if (self.folderInfoLabel.hidden == NO) {
-	self.folderInfoLabel.hidden = YES;
+        self.folderInfoLabel.hidden = YES;
     }
+    
+    if ([self.searchController.searchBar isHidden]) {
+        self.searchController.searchBar.hidden = NO;
+    }
+    
     [self.activityIndicator stopAnimating];
 }
 
