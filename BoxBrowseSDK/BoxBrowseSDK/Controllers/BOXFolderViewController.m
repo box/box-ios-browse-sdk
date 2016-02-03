@@ -160,7 +160,7 @@
         [self.searchController.searchBar sizeToFit];
         self.searchController.searchBar.delegate = self;
         self.searchController.searchBar.showsCancelButton = NO;
-        self.searchController.searchBar.hidden = YES; // Starts off hidden, and only when we've fetched items do we bring it in.
+        self.searchController.searchBar.hidden = shouldShowSearchBar; // Starts off hidden, and only when we've fetched items do we bring it in.
         if (self.folder.name.length > 0 && ![self.folder.modelID isEqualToString:BOXAPIFolderIDRoot]) {
             self.searchController.searchBar.placeholder =
                 [NSString stringWithFormat:NSLocalizedString(@"Search “%@”", @"Label: Files Search Bar Placeholder"), self.folder.name];
