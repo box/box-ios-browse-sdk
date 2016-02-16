@@ -11,7 +11,7 @@ This SDK allows you to show UI that allows users to browse their folders on Box.
 
 Developer Setup
 ---------------
-* Ensure you have the latest version of [XCode](https://developer.apple.com/xcode/) installed.
+* Ensure you have the latest version of [Xcode](https://developer.apple.com/xcode/) installed.
 * We encourage you to use [Cocoa Pods](http://cocoapods.org/) to import the SDK into your project. Cocoa Pods is a simple, but powerful dependency management tool. If you do not already use Cocoa Pods, it's very easy to [get started](http://guides.cocoapods.org/using/getting-started.html).
 
 Quickstart
