@@ -12,6 +12,7 @@
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import "NSString+BOXBrowseSDKAdditions.h"
 #import "BOXItem+BOXBrowseSDKAdditions.h"
+#import <BoxContentSDK/BOXContentSDK.h>
 
 long long const BOX_BROWSE_SDK_KILOBYTE = 1024;
 long long const BOX_BROWSE_SDK_MEGABYTE = BOX_BROWSE_SDK_KILOBYTE * 1024;

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BoxContentSDK/BOXContentSDK.h>
+#import <BoxContentSDK/BOXContentClient.h>
+#import <BoxContentSDK/BOXFileThumbnailRequest.h>
 
 @interface BOXThumbnailCache : NSObject
 

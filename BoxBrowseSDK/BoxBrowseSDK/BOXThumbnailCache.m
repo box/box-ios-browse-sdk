@@ -9,6 +9,7 @@
 #import "BOXThumbnailCache.h"
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import "BOXBrowseSDKConstants.h"
+#import <BoxContentSDK/BOXContentSDK.h>
 
 @interface BOXThumbnailCache ()
 

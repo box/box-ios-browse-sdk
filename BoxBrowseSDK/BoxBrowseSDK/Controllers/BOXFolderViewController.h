@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BOXItemsViewController.h"
 
+@class BOXFolderMini;
+
 @protocol BOXFolderViewControllerDelegate;
 
 @interface BOXFolderViewController : BOXItemsViewController

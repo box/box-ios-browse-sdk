@@ -16,7 +16,6 @@
 		11B5CF931C59BC1F00FDBE0F /* BoxBrowseSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11B5CF961C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 11B5CF941C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h */; };
 		11B5CF971C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF951C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m */; };
-		15146EB61AC20B77000BA380 /* BoxBrowseSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */; };
 		153113951AC3569100996D00 /* BOXFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153113941AC3569100996D00 /* BOXFolderViewController.m */; };
 		153113961AC3569100996D00 /* BOXFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153113941AC3569100996D00 /* BOXFolderViewController.m */; };
 		1564A5361ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564A5351ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m */; };
@@ -245,7 +244,6 @@
 		1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXBrowseSDKConstants.h; sourceTree = "<group>"; };
 		15146EB01AC20B77000BA380 /* libBoxBrowseSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBoxBrowseSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxBrowseSDK.h; sourceTree = "<group>"; };
-		15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxBrowseSDK.m; sourceTree = "<group>"; };
 		15146EBB1AC20B78000BA380 /* BoxBrowseSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxBrowseSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EC11AC20B78000BA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153113931AC3569100996D00 /* BOXFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXFolderViewController.h; sourceTree = "<group>"; };
@@ -561,7 +559,6 @@
 			isa = PBXGroup;
 			children = (
 				15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */,
-				15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */,
 				1564A6D71ACB3C9E005DD04F /* BOXThumbnailCache.h */,
 				1564A6D81ACB3C9E005DD04F /* BOXThumbnailCache.m */,
 				15CE0A051ACD15BA006B8614 /* DummyStrings.h */,
@@ -1205,7 +1202,6 @@
 			files = (
 				1564A5551ACA1D68005DD04F /* BOXItemCell.m in Sources */,
 				1564A6D91ACB3C9E005DD04F /* BOXThumbnailCache.m in Sources */,
-				15146EB61AC20B77000BA380 /* BoxBrowseSDK.m in Sources */,
 				15764E0C1ACF42710023C535 /* BOXSearchResultsViewController.m in Sources */,
 				153113951AC3569100996D00 /* BOXFolderViewController.m in Sources */,
 				11B5CF871C59A3F900FDBE0F /* NSString+BOXBrowseSDKAdditions.m in Sources */,

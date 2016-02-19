@@ -27,6 +27,7 @@ pod install
 Step 3: Import
 ```objectivec
 #import <BoxBrowseSDK/BoxBrowseSDK.h>
+#import <BoxContentSDK/BOXContentSDK.h>
 ```
 Step 4: Set the Box Client ID and Client Secret that you obtain from [creating a developer account](http://developers.box.com/)
 ```objectivec

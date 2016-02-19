@@ -10,6 +10,7 @@
 #import "BOXItemCell.h"
 #import "BOXFolderViewController.h"
 #import "BOXItem+BOXBrowseSDKAdditions.h"
+#import <BoxContentSDK/BOXContentSDK.h>
 
 @interface BOXItemsViewController ()
 

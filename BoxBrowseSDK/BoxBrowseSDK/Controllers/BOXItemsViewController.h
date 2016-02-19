@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BoxContentSDK/BOXContentSDK.h>
+
+@class BOXContentClient, BOXItem, BOXFile, BOXFolder, BOXBookmark;
 
 @protocol BOXItemsViewControllerDelegate;
 
