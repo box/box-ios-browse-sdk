@@ -7,9 +7,4 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BoxContentSDK/BOXContentSDK.h>
 #import "BOXFolderViewController.h"
-
-@interface BoxBrowseSDK : NSObject
-
-@end

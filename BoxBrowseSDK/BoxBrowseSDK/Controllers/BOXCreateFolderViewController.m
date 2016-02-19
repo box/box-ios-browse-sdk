@@ -9,6 +9,7 @@
 #import "BOXCreateFolderViewController.h"
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import "BOXBrowseSDKConstants.h"
+#import <BoxContentSDK/BOXContentSDK.h>
 
 #define kTitleViewHeight  60.0
 #define kTextFieldOffsetX 64.0

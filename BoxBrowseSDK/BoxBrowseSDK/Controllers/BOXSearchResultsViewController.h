@@ -7,7 +7,6 @@
 //
 
 #import "BOXItemsViewController.h"
-#import <BoxContentSDK/BOXContentSDK.h>
 
 @interface BOXSearchResultsViewController : BOXItemsViewController
 

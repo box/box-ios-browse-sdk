@@ -9,6 +9,7 @@
 #import "BOXSearchResultsViewController.h"
 #import "BOXFolderViewController.h"
 #import "BOXBrowseSDKConstants.h"
+#import <BoxContentSDK/BOXContentSDK.h>
 
 @interface BOXSearchResultsViewController ()
 
