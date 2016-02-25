@@ -377,16 +377,20 @@
 
 - (void)createFolderButtonAction:(id)sender
 {
+    __weak BOXFolderViewController *weakSelf = self;
     BOXCreateFolderViewController *createFolderViewController = [[BOXCreateFolderViewController alloc] initWithContentClient:self.contentClient parentFolderID:self.folderID completion:^(BOXFolder *folder, NSError *error) {
-        [self refresh];
-        BOXFolderViewController *folderBrowserViewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient folder:folder];
-        folderBrowserViewController.delegate = self.delegate;
-        [self.navigationController pushViewController:folderBrowserViewController animated:YES];
+        [weakSelf refresh];
+        BOXFolderViewController *folderBrowserViewController = [[BOXFolderViewController alloc] initWithContentClient:weakSelf.contentClient folder:folder];
+        folderBrowserViewController.delegate = weakSelf.delegate;
+        folderBrowserViewController.navigationItem.prompt = weakSelf.navigationItem.prompt;
+        [weakSelf.navigationController pushViewController:folderBrowserViewController animated:YES];
 
-        if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didCreateNewFolder:)]) {
-            [self.folderBrowserDelegate folderViewController:self didCreateNewFolder:folder];
+        if ([weakSelf.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didCreateNewFolder:)]) {
+            [weakSelf.folderBrowserDelegate folderViewController:weakSelf didCreateNewFolder:folder];
         }
     }];
+    
+    createFolderViewController.navigationItem.prompt = self.navigationItem.prompt;
     [self.navigationController pushViewController:createFolderViewController animated:YES];
 }
 
