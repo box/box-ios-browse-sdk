@@ -151,7 +151,7 @@
         if ([self.delegate respondsToSelector:@selector(itemsViewControllerCloseButtonTitle:)]) {
             closeButtonTitle = [self.delegate itemsViewControllerCloseButtonTitle:self];
         } else {
-            closeButtonTitle = NSLocalizedString(@"Close", @"Title : button closing the folder picker");
+            closeButtonTitle = NSLocalizedString(@"Close", @"Label: Close action, often used on buttons");
         }
 
         UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:closeButtonTitle
