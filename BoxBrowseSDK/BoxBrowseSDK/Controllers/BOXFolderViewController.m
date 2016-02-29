@@ -60,7 +60,7 @@
         if ([folderID isEqualToString:BOXAPIFolderIDRoot]) {
             _folder = [[BOXFolder alloc] init];
             _folder.modelID = BOXAPIFolderIDRoot;
-            _folder.name = NSLocalizedString(@"All Files", @"Root folder title.");
+            _folder.name = NSLocalizedString(@"All Files", @"Title: The title of the main Files and Folders navigation section and view, also the name for the root folder");
             self.title = _folder.name;
         }
     }
@@ -239,8 +239,8 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Item", @"Label: title for item deletion confirmation alert")
                                                         message:NSLocalizedString(@"Are you sure you want to delete this item?", @"Label: confirmation message for item deletion")
                                                        delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cancel", @"Label: Cancel action ")
-                                              otherButtonTitles:NSLocalizedString(@"Delete", @"Label: Delete action "), nil];
+                                              cancelButtonTitle:NSLocalizedString(@"Cancel", @"Label: Cancel action. Usually used on buttons.")
+                                              otherButtonTitles:NSLocalizedString(@"Delete", @"Label: Delete action on a single or multiple files and folders, often used on buttons. The space is very small so it needs to be abbreviated if possible."), nil];
     [alertView show];
 
     self.indexPathForDeleteCandidate = indexPath;
@@ -344,7 +344,7 @@
     }
     
     if (shouldShowChooseFolderButton) {
-        NSString *chooseFolderButtonTitle = NSLocalizedString(@"Choose", @"Button to indicate that the folder being displayed was chosen");
+        NSString *chooseFolderButtonTitle = NSLocalizedString(@"Choose", @"Title: Button allowing to choose the current selection (for example, the currently viewed folder, date, share permission settings, etc)");
         if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewControllerChooseFolderButtonTitle:)]) {
             chooseFolderButtonTitle = [self.folderBrowserDelegate folderViewControllerChooseFolderButtonTitle:self];
         }
@@ -489,7 +489,7 @@
     if (error == nil) {
         errorMessage = NSLocalizedString(@"This folder is empty.", @"Label: Label displayed when the current folder is empty");
     } else {
-        errorMessage = NSLocalizedString(@"Unable to load contents of folder.", @"Label: Label displayed when the current folder is empty");
+        errorMessage = NSLocalizedString(@"Unable to load contents of folder.", @"Message: shown when a folder's contents could not be loaded.");
     }
     self.folderInfoLabel.text = errorMessage;
     self.folderInfoLabel.hidden = NO;
@@ -517,7 +517,7 @@
     if (self.tableView.visibleCells.count > 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = NSLocalizedString(@"Unable to load contents of folder.", @"Error message shown when a folder's contents could not be loaded.");
+            hud.labelText = NSLocalizedString(@"Unable to load contents of folder.", @"Message: shown when a folder's contents could not be loaded.");
             hud.mode = MBProgressHUDModeCustomView;
             hud.removeFromSuperViewOnHide = YES;
             [hud show:YES];
