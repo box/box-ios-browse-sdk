@@ -191,7 +191,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
     }
     else
     {
-        result_str = NSLocalizedString(@"Empty", @"File size 0 bytes");
+        result_str = [NSString stringWithFormat:NSLocalizedString(@"%1.1f B", @"File size in bytes (example: 1 B)"), 0];
     }
     
     return result_str;
