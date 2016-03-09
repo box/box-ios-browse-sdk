@@ -14,7 +14,7 @@
 #import "MBProgressHUD.h"
 #import "BOXBrowseSDKConstants.h"
 
-@interface BOXFolderViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UIAlertViewDelegate>
+@interface BOXFolderViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, readwrite, strong) BOXFolder *folder;
 
@@ -236,58 +236,77 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Item", @"Label: title for item deletion confirmation alert")
-                                                        message:NSLocalizedString(@"Are you sure you want to delete this item?", @"Label: confirmation message for item deletion")
-                                                       delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cancel", @"Label: Cancel action. Usually used on buttons.")
-                                              otherButtonTitles:NSLocalizedString(@"Delete", @"Label: Delete action on a single or multiple files and folders, often used on buttons. The space is very small so it needs to be abbreviated if possible."), nil];
-    [alertView show];
-
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete Item", @"Label: title for item deletion confirmation alert")
+                                                                             message:NSLocalizedString(@"Are you sure you want to delete this item?", @"Label: confirmation message for item deletion")
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Label: Cancel action. Usually used on buttons.")
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction *action) {
+                                                              [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+    
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", @"Label: Delete action on a single or multiple files and folders, often used on buttons. The space is very small so it needs to be abbreviated if possible.")
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+                                                              [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                              [self deleteItemAction];
+                                                          }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:deleteAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
     self.indexPathForDeleteCandidate = indexPath;
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)deleteItemAction
 {
-    if (buttonIndex == 1) {
-        BOXItem *item = [self itemForRowAtIndexPath:self.indexPathForDeleteCandidate];
-
-        BOXErrorBlock errorBlock = ^(NSError *error){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                if (error) {
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Unable to Delete", @"Label: title for item deletion failure alert")
-                                                                        message:NSLocalizedString(@"Unable to delete this item.", @"Label: alert message for item deletion failure")
-                                                                       delegate:self
-                                                              cancelButtonTitle:NSLocalizedString(@"Ok", @"Label: Ok action ")
-                                                              otherButtonTitles:nil];
-                    [alertView show];
-                } else {
-                    [self refresh];
-                    if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didDeleteItem:)]) {
-                        [self.folderBrowserDelegate folderViewController:self didDeleteItem:item];
-                    }
+    BOXItem *item = [self itemForRowAtIndexPath:self.indexPathForDeleteCandidate];
+    
+    BOXErrorBlock errorBlock = ^(NSError *error){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            if (error) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Unable to Delete", @"Label: title for item deletion failure alert")
+                                                                                         message:NSLocalizedString(@"Unable to delete this item.", @"Label: alert message for item deletion failure")
+                                                                                  preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Label: Allow the user to dismiss the current view or interface, often used on buttons to dismiss alerts")
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction *action) {
+                                                                     [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                                 }];
+                [alertController addAction:dismissAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+            } else {
+                [self refresh];
+                if ([self.folderBrowserDelegate respondsToSelector:@selector(folderViewController:didDeleteItem:)]) {
+                    [self.folderBrowserDelegate folderViewController:self didDeleteItem:item];
                 }
-            });
-        };
-
-        if (item.isFile) {
-            BOXFileDeleteRequest *deleteRequest = [self.contentClient fileDeleteRequestWithID:item.modelID];
-            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
-            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
-            [deleteRequest performRequestWithCompletion:errorBlock];
-        } else if (item.isFolder) {
-            BOXFolderDeleteRequest *deleteRequest = [self.contentClient folderDeleteRequestWithID:item.modelID];
-            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
-            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
-            [deleteRequest performRequestWithCompletion:errorBlock];
-        } else if (item.isBookmark) {
-            BOXBookmarkDeleteRequest *deleteRequest = [self.contentClient bookmarkDeleteRequestWithID:item.modelID];
-            deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
-            deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
-            [deleteRequest performRequestWithCompletion:errorBlock];
-        }
+            }
+        });
+    };
+    
+    if (item.isFile) {
+        BOXFileDeleteRequest *deleteRequest = [self.contentClient fileDeleteRequestWithID:item.modelID];
+        deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+        deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+        [deleteRequest performRequestWithCompletion:errorBlock];
+    } else if (item.isFolder) {
+        BOXFolderDeleteRequest *deleteRequest = [self.contentClient folderDeleteRequestWithID:item.modelID];
+        deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+        deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+        [deleteRequest performRequestWithCompletion:errorBlock];
+    } else if (item.isBookmark) {
+        BOXBookmarkDeleteRequest *deleteRequest = [self.contentClient bookmarkDeleteRequestWithID:item.modelID];
+        deleteRequest.SDKIdentifier = BOX_BROWSE_SDK_IDENTIFIER;
+        deleteRequest.SDKVersion = BOX_BROWSE_SDK_VERSION;
+        [deleteRequest performRequestWithCompletion:errorBlock];
     }
-
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = NSLocalizedString(@"Deleting item...", @"HUD message for when item is being deleted");
     hud.mode = MBProgressHUDModeCustomView;
