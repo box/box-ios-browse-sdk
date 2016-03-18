@@ -61,7 +61,7 @@
             _folder = [[BOXFolder alloc] init];
             _folder.modelID = BOXAPIFolderIDRoot;
             _folder.name = NSLocalizedString(@"All Files", @"Title: The title of the main Files and Folders navigation section and view, also the name for the root folder");
-            self.title = _folder.name;
+            [self updateNavigationBarTitle];
         }
     }
     return self;
@@ -71,7 +71,7 @@
                            folderMini:(BOXFolderMini *)folderMini
 {
     if (self = [self initWithContentClient:contentClient folderID:folderMini.modelID]) {
-        self.title = folderMini.name;
+        [self updateNavigationBarTitle];
     }
     return self;
 }
@@ -81,9 +81,18 @@
 {
     if (self = [self initWithContentClient:contentClient folderID:folder.modelID]) {
         _folder = folder;
-        self.title = folder.name;
+        [self updateNavigationBarTitle];
     }
     return self;
+}
+
+- (void)updateNavigationBarTitle
+{
+    if ([self.folder isRoot]) {
+        self.title = NSLocalizedString(@"All Files", @"Title: The title of the main Files and Folders navigation section and view, also the name for the root folder");
+    } else {
+        self.title = self.folder.name;
+    }
 }
 
 - (void)viewDidLoad
@@ -498,7 +507,7 @@
 - (void)setCurrentFolder:(BOXFolder *)folder
 {
     self.folder = folder;
-    self.title = self.folder.name;
+    [self updateNavigationBarTitle];
 }
 
 - (void)switchToEmptyStateWithError:(NSError *)error
