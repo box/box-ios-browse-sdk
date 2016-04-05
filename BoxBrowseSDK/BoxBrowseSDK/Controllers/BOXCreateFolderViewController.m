@@ -25,6 +25,7 @@
 @property (nonatomic, readwrite, strong) UIView *horizontalSeparator;
 @property (nonatomic, readwrite, strong) UILabel *helpLabel;
 @property (nonatomic, readwrite, assign) BOOL wasToolbarHiddenOnLoad;
+@property (nonatomic, readwrite, assign) BOOL wasNavigationBarTranslucentOnLoad;
 
 @end
 
@@ -45,7 +46,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    self.wasNavigationBarTranslucentOnLoad = self.navigationController.navigationBar.translucent;
     self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor colorWithWhite:245/255.0 alpha:1];
     self.wasToolbarHiddenOnLoad = self.navigationController.toolbarHidden;
@@ -110,6 +112,7 @@
 {
     [super viewWillDisappear:animated];
     self.navigationController.toolbarHidden = self.wasToolbarHiddenOnLoad;
+    self.navigationController.navigationBar.translucent = self.wasNavigationBarTranslucentOnLoad;
 }
 
 - (void)saveButtonAction:(id)sender
