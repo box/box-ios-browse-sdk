@@ -47,8 +47,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.wasNavigationBarTranslucentOnLoad = self.navigationController.navigationBar.translucent;
-    self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor colorWithWhite:245/255.0 alpha:1];
     self.wasToolbarHiddenOnLoad = self.navigationController.toolbarHidden;
     self.navigationController.toolbarHidden = YES;
@@ -106,6 +104,14 @@
     [self.textFieldContainer addSubview:icon];
     
     [self.view addSubview:self.textFieldContainer];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    self.wasNavigationBarTranslucentOnLoad = self.navigationController.navigationBar.translucent;
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
