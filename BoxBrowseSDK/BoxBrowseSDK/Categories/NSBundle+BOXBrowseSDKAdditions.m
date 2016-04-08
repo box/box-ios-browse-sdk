@@ -13,14 +13,9 @@
 
 + (NSBundle *)boxBrowseSDKResourcesBundle
 {
-    static NSBundle *browseSDKResourceBundle = nil;
-    static dispatch_once_t predicate;
-    dispatch_once(&predicate, ^{
-        NSBundle *browseSDKBundle = [NSBundle bundleForClass:[BOXBrowseSDKResourceLocator class]];
-        NSString *browseSDKResourceBundlePath = [browseSDKBundle.bundlePath stringByAppendingPathComponent:@"BoxBrowseSDKResources.bundle"];
-        browseSDKResourceBundle = [NSBundle bundleWithPath:browseSDKResourceBundlePath];
-    });
-
+    NSBundle *browseSDKBundle = [NSBundle bundleForClass:[BOXBrowseSDKResourceLocator class]];
+    NSString *browseSDKResourceBundlePath = [browseSDKBundle.bundlePath stringByAppendingPathComponent:@"BoxBrowseSDKResources.bundle"];
+    NSBundle *browseSDKResourceBundle = [NSBundle bundleWithPath:browseSDKResourceBundlePath];
     return browseSDKResourceBundle;
 }
 
