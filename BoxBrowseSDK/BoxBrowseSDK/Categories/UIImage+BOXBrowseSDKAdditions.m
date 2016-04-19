@@ -7,10 +7,10 @@
 //
 
 #import "UIImage+BOXBrowseSDKAdditions.h"
-#import <BoxContentSDK/BoxContentSDK.h>
-#import <BoxBrowseSDK/BoxBrowseSDK.h>
-#import "NSString+BOXBrowseSDKAdditions.h"
 #import "NSBundle+BOXBrowseSDKAdditions.h"
+#import <BoxBrowseSDK/BoxBrowseSDK.h>
+
+@import BoxContentSDK.NSString_BOXContentSDKAdditions;
 
 @implementation UIImage (BOXBrowseSDKAdditions)
 
@@ -30,7 +30,7 @@
             icon = [UIImage imageNamed:@"icon-folder" inBundle:browseResourceBundle compatibleWithTraitCollection:nil];
         }
     } else if (item.isFile) {
-        NSString *extension = [item.name pathExtensionAccountingForZippedPackages].lowercaseString;
+        NSString *extension = [item.name box_pathExtensionAccountingForZippedPackages].lowercaseString;
         NSString *imageName = [NSString stringWithFormat:@"icon-file-%@", extension];
         icon = [UIImage imageNamed:imageName inBundle:browseResourceBundle compatibleWithTraitCollection:nil];
         if (icon == nil) {

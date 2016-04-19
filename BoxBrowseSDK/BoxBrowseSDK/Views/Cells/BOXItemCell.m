@@ -10,8 +10,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BOXThumbnailCache.h"
 #import "UIImage+BOXBrowseSDKAdditions.h"
-#import "NSString+BOXBrowseSDKAdditions.h"
 #import "BOXItem+BOXBrowseSDKAdditions.h"
+
+@import BoxContentSDK.NSString_BOXContentSDKAdditions;
 
 long long const BOX_BROWSE_SDK_KILOBYTE = 1024;
 long long const BOX_BROWSE_SDK_MEGABYTE = BOX_BROWSE_SDK_KILOBYTE * 1024;
@@ -207,7 +208,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
 
 - (NSString *)UTIFromFilePath:(NSString *)filePath
 {
-    CFStringRef fileExtension = (__bridge CFStringRef) [filePath pathExtensionAccountingForZippedPackages];
+    CFStringRef fileExtension = (__bridge CFStringRef) [filePath box_pathExtensionAccountingForZippedPackages];
     CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
     NSString *strUTI = (__bridge_transfer NSString *)UTI;
     
