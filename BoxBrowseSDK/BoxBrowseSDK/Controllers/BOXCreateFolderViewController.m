@@ -99,7 +99,7 @@
     [self.textFieldContainer addSubview:self.textField];
 
     UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(9.0, 9.0, 40, 40)];
-    icon.image = [UIImage imageNamed:@"icon-folder"];
+    icon.image = [UIImage imageNamed:@"Personal"];
     icon.contentMode = UIViewContentModeCenter;
     [self.textFieldContainer addSubview:icon];
     
@@ -180,7 +180,9 @@
             [self didFailToCreateFolderWithError:error];
         } else {
             [self.navigationController popViewControllerAnimated:YES];
-            self.completion(folder, error);
+            if (self.completion) {
+                self.completion(folder, error);
+            }
         }
     }];
 }
