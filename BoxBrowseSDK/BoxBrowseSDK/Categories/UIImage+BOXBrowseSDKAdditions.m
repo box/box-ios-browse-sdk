@@ -16,42 +16,52 @@
 
 + (UIImage *)box_iconForItem:(BOXItem *)item
 {
-    NSBundle *browseResourceBundle = [NSBundle boxBrowseSDKResourcesBundle];
-
     UIImage *icon = nil;
 
-    @synchronized (browseResourceBundle) {
-        if (item.isFolder) {
-            BOXFolder *folder = (BOXFolder *)item;
-            if (folder.isExternallyOwned == BOXAPIBooleanYES) {
-                icon = [UIImage imageNamed:@"icon-folder-external"
-                                  inBundle:browseResourceBundle
-             compatibleWithTraitCollection:nil];
-            } else if (folder.hasCollaborations == BOXAPIBooleanYES) {
-                icon = [UIImage imageNamed:@"icon-folder-shared"
-                                  inBundle:browseResourceBundle
-             compatibleWithTraitCollection:nil];
-            } else {
-                icon = [UIImage imageNamed:@"icon-folder"
-                                  inBundle:browseResourceBundle
-             compatibleWithTraitCollection:nil];
-            }
-        } else if (item.isFile) {
-            NSString *extension = [item.name pathExtensionAccountingForZippedPackages].lowercaseString;
-            NSString *imageName = [NSString stringWithFormat:@"icon-file-%@", extension];
-            icon = [UIImage imageNamed:imageName
-                              inBundle:browseResourceBundle
-         compatibleWithTraitCollection:nil];
-            if (icon == nil) {
-                icon = [UIImage imageNamed:@"icon-file-generic"
-                                  inBundle:browseResourceBundle
-             compatibleWithTraitCollection:nil];
-            }
-        } else if (item.isBookmark) {
-            icon = [UIImage imageNamed:@"icon-file-weblink"
-                              inBundle:browseResourceBundle
-         compatibleWithTraitCollection:nil];
+    if (item.isFolder) {
+        BOXFolder *folder = (BOXFolder *)item;
+        if (folder.isExternallyOwned == BOXAPIBooleanYES) {
+            icon = [UIImage box_iconWithName:@"icon-folder-external"];
+        } else if (folder.hasCollaborations == BOXAPIBooleanYES) {
+            icon = [UIImage box_iconWithName:@"icon-folder-shared"];
+        } else {
+            icon = [UIImage box_iconWithName:@"icon-folder"];
         }
+    } else if (item.isFile) {
+        icon = [UIImage box_iconForFileName:item.name];
+
+        if (icon == nil) {
+            icon = [UIImage box_genericFileIcon];
+        }
+    } else if (item.isBookmark) {
+        icon = [UIImage box_iconWithName:@"icon-file-weblink"];
+    }
+
+    return icon;
+}
+
++ (UIImage *)box_iconForFileName:(NSString *)fileName
+{
+    NSString *fileExtension = [fileName pathExtensionAccountingForZippedPackages].lowercaseString;
+    NSString *imageName = [NSString stringWithFormat:@"icon-file-%@", fileExtension];
+
+    return [UIImage box_iconWithName:imageName];
+}
+
++ (UIImage *)box_genericFileIcon
+{
+    return [UIImage box_iconWithName:@"icon-file-generic"];
+}
+
++ (UIImage *)box_iconWithName:(NSString *)name
+{
+    UIImage *icon = nil;
+    NSBundle *browseSDKResourceBundle = [NSBundle boxBrowseSDKResourcesBundle];
+
+    @synchronized (browseSDKResourceBundle) {
+        icon = [UIImage imageNamed:name
+                          inBundle:browseSDKResourceBundle
+     compatibleWithTraitCollection:nil];
     }
 
     return icon;

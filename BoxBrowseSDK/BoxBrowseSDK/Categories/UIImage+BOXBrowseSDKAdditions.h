@@ -20,6 +20,20 @@
 + (UIImage *)box_iconForItem:(BOXItem *)item;
 
 /**
+ * Returns a default icon for a given corresponding filename with extension
+ *
+ * @return An icon corresponding to the item's file type
+ */
++ (UIImage *)box_iconForFileName:(NSString *)fileName;
+
+/**
+ * Returns a default icon for a generic file
+ *
+ * @return A default file icon
+ */
++ (UIImage *)box_genericFileIcon;
+
+/**
  * Returns an image with the appropriate scale factor given the device.
  *
  * @return An image with the appropriate scale.
