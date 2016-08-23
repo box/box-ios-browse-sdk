@@ -30,9 +30,6 @@
     } else if (item.isFile) {
         icon = [UIImage box_iconForFileName:item.name];
 
-        if (icon == nil) {
-            icon = [UIImage box_genericFileIcon];
-        }
     } else if (item.isBookmark) {
         icon = [UIImage box_iconWithName:@"icon-file-weblink"];
     }
@@ -44,8 +41,13 @@
 {
     NSString *fileExtension = [fileName pathExtensionAccountingForZippedPackages].lowercaseString;
     NSString *imageName = [NSString stringWithFormat:@"icon-file-%@", fileExtension];
+    UIImage *image = [UIImage box_iconWithName:imageName];
 
-    return [UIImage box_iconWithName:imageName];
+    if (image == nil) {
+        image = [UIImage box_genericFileIcon];
+    }
+
+    return image;
 }
 
 + (UIImage *)box_genericFileIcon
