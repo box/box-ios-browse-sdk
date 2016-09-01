@@ -30,8 +30,7 @@
 		15CE0A0A1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */; };
 		15CE0A0B1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */; };
 		15DC5B261AE01EFE003FB3E9 /* BOXItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564A5541ACA1D68005DD04F /* BOXItemCell.m */; };
-		1C6E5394A7F19AE4673FFCCC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A03A2EFCE068CBE5D11D74D /* libPods.a */; };
-		C1E7651D66F260349D91B959 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A03A2EFCE068CBE5D11D74D /* libPods.a */; };
+		A3DAF34160188D517F8283B9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0BEF5A387588BCBD69581C /* Pods.framework */; };
 		C5B053AE1D2F38180009E483 /* Audio.png in Resources */ = {isa = PBXBuildFile; fileRef = C5B0536C1D2F38100009E483 /* Audio.png */; };
 		C5B053AF1D2F38180009E483 /* Audio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5B0536D1D2F38100009E483 /* Audio@2x.png */; };
 		C5B053B01D2F38180009E483 /* Audio@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5B0536E1D2F38100009E483 /* Audio@3x.png */; };
@@ -148,7 +147,6 @@
 		15CE0A061ACD15BA006B8614 /* DummyStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyStrings.m; sourceTree = "<group>"; };
 		15CE0A081ACDEE1A006B8614 /* BOXItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXItemsViewController.h; sourceTree = "<group>"; };
 		15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOXItemsViewController.m; sourceTree = "<group>"; };
-		4A03A2EFCE068CBE5D11D74D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		828F7163FC02E1D6797DD3DE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C5B0536C1D2F38100009E483 /* Audio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Audio.png; sourceTree = "<group>"; };
 		C5B0536D1D2F38100009E483 /* Audio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Audio@2x.png"; sourceTree = "<group>"; };
@@ -216,6 +214,7 @@
 		C5B053AB1D2F38100009E483 /* Word.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Word.png; sourceTree = "<group>"; };
 		C5B053AC1D2F38100009E483 /* Word@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word@2x.png"; sourceTree = "<group>"; };
 		C5B053AD1D2F38100009E483 /* Word@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word@3x.png"; sourceTree = "<group>"; };
+		CD0BEF5A387588BCBD69581C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B78BAC81BD978D5336A21A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,7 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1E7651D66F260349D91B959 /* libPods.a in Frameworks */,
+				A3DAF34160188D517F8283B9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +231,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C6E5394A7F19AE4673FFCCC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +390,7 @@
 		492B2B63CCF1DB357F428F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4A03A2EFCE068CBE5D11D74D /* libPods.a */,
+				CD0BEF5A387588BCBD69581C /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
