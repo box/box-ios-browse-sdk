@@ -30,7 +30,6 @@
 		15CE0A0A1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */; };
 		15CE0A0B1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */; };
 		15DC5B261AE01EFE003FB3E9 /* BOXItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564A5541ACA1D68005DD04F /* BOXItemCell.m */; };
-		1C6E5394A7F19AE4673FFCCC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A3DAF34160188D517F8283B9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0BEF5A387588BCBD69581C /* Pods.framework */; };
 		C5B053AE1D2F38180009E483 /* Audio.png in Resources */ = {isa = PBXBuildFile; fileRef = C5B0536C1D2F38100009E483 /* Audio.png */; };
 		C5B053AF1D2F38180009E483 /* Audio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5B0536D1D2F38100009E483 /* Audio@2x.png */; };
@@ -232,7 +231,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C6E5394A7F19AE4673FFCCC /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
