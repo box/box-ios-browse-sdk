@@ -9,4 +9,4 @@
 #import <Foundation/Foundation.h>
 
 #define BOX_BROWSE_SDK_IDENTIFIER @"box-browse-sdk"
-#define BOX_BROWSE_SDK_VERSION @"1.0.5"
+#define BOX_BROWSE_SDK_VERSION @"1.0.6"
