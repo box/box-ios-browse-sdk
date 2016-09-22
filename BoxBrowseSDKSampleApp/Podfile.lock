@@ -1,5 +1,5 @@
 PODS:
-  - box-ios-browse-sdk (1.0.4):
+  - box-ios-browse-sdk (1.0.5):
     - box-ios-sdk
     - MBProgressHUD (~> 0.9.1)
   - box-ios-sdk (1.0.13):
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  box-ios-browse-sdk: 05ee061f8f6b3d79295ac8ad7e782fddba699543
+  box-ios-browse-sdk: b8f399d155360101f3ed6670dbe07d65cc0798c9
   box-ios-sdk: fe2af3f53d4958919195a00a2d281aa29857943c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
 

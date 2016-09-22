@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 BOX. All rights reserved.
 //
 
+@import BoxBrowseSDK;
+
 #import "ViewController.h"
 
 @interface ViewController () <BOXFolderViewControllerDelegate>

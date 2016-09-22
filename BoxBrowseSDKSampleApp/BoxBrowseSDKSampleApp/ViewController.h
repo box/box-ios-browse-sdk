@@ -6,11 +6,8 @@
 //  Copyright (c) 2015 BOX. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <BoxBrowseSDK/BoxBrowseSDK.h>
+@import UIKit;
 
 @interface ViewController : UIViewController
 
-
 @end
-
