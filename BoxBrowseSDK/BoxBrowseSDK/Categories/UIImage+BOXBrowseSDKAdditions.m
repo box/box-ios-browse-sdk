@@ -6,11 +6,10 @@
 //  Copyright (c) 2015 BOX. All rights reserved.
 //
 
+@import BoxContentSDK;
+
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import "NSBundle+BOXBrowseSDKAdditions.h"
-#import <BoxBrowseSDK/BoxBrowseSDK.h>
-
-@import BoxContentSDK.NSString_BOXContentSDKAdditions;
 
 @implementation UIImage (BOXBrowseSDKAdditions)
 
