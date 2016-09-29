@@ -49,7 +49,7 @@
 {
     [super viewWillAppear:animated];
     
-    if (self.contentClient.user == nil) {
+    if (self.contentClient.user == nil && self.contentClient.accessTokenDelegate == nil) {
         BOXAuthorizationViewController *authViewController = [[BOXAuthorizationViewController alloc] initWithSDKClient:self.contentClient completionBlock:^(BOXAuthorizationViewController *authorizationViewController, BOXUser *user, NSError *error) {
             [authorizationViewController dismissViewControllerAnimated:YES completion:^{
                 [self refresh];
