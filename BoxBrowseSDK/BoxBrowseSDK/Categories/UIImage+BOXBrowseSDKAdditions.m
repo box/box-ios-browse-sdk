@@ -24,20 +24,20 @@
     if (item.isFolder) {
         BOXFolder *folder = (BOXFolder *)item;
         if (folder.isExternallyOwned == BOXAPIBooleanYES) {
-            icon = [UIImage box_iconWithName:@"External"];
+            icon = [UIImage box_iconWithName:@"external_folder"];
 
         } else if (folder.hasCollaborations == BOXAPIBooleanYES) {
             icon = [UIImage box_iconWithName:@"shared_folder"];
 
         } else {
-            icon = [UIImage box_iconWithName:@"Personal"];
+            icon = [UIImage box_iconWithName:@"personal_folder"];
 
         }
     } else if (item.isFile) {
         icon = [UIImage box_iconForFileName:item.name];
 
     } else if (item.isBookmark) {
-        icon = [UIImage box_iconWithName:@"Linked"];
+        icon = [UIImage box_iconWithName:@"link"];
 
     }
 
@@ -60,7 +60,7 @@
 
 + (UIImage *)box_genericFileIcon
 {
-    return [UIImage box_iconWithName:@"icon-file-generic"];
+    return [UIImage box_iconWithName:@"generic"];
 }
 
 - (UIImage *)box_imageAtAppropriateScaleFactor
@@ -94,49 +94,52 @@
 {
     NSString *iconName = nil;
     if ([[self audioFileExtensions] containsObject:fileExtension])  {
-        iconName = @"Audio";
+        iconName = @"audio";
     }
     else if ([[self imageFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Image";
+        iconName = @"image";
     }
     else if ([[self videoFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Movie";
+        iconName = @"video";
     }
     else if ([[self docFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Word";
+        iconName = @"document";
     }
     else if ([[self codeFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Code";
+        iconName = @"code";
     }
     else if ([[self textFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Doc";
+        iconName = @"text";
     }
     else if ([[self presentationFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Presentation";
+        iconName = @"presentation";
     }
     else if ([[self sheetFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Spreadsheet";
+        iconName = @"spreadsheet";
     }
     else if ([[self compressedFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Compressed";
+        iconName = @"zip";
     }
     else if ([[self vectorImageFileExtensions] containsObject:fileExtension]) {
-        iconName = @"Vector";
+        iconName = @"vector";
+    }
+    else if ([[self dbFileExtensions] containsObject:fileExtension]) {
+        iconName = @"database";
     }
     else if ([fileExtension isEqualToString:@"boxnote"]) {
-        iconName = @"Box Note";
+        iconName = @"boxnote";
     }
     else if ([fileExtension isEqualToString:@"ai"]) {
-        iconName = @"Illustrator";
+        iconName = @"illustrator";
     }
     else if ([fileExtension isEqualToString:@"indd"]) {
-        iconName = @"InDesign";
+        iconName = @"inDesign";
     }
     else if ([fileExtension isEqualToString:@"pdf"]) {
-        iconName = @"PDF";
+        iconName = @"pdf";
     }
     else if ([fileExtension isEqualToString:@"psd"]) {
-        iconName = @"Photoshop";
+        iconName = @"photoshop";
     }
     
     return iconName;
@@ -158,7 +161,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"bmp",@"dcm", @"gdraw", @"gif", @"jpeg", @"jpg", @"tiff", nil];
+        extensions = [NSSet setWithObjects:@"bmp",@"dcm", @"gdraw", @"gif", @"jpeg", @"jpg", @"tiff", @"png", nil];
     }
     
     return extensions;
@@ -249,6 +252,16 @@
         extensions = [NSSet setWithObjects:@"csv",@"gsheet", @"numbers", @"ods", @"ots", @"xls", @"xlsx", @"xlt", @"xltx", nil];
     }
     
+    return extensions;
+}
+
++ (NSSet *)dbFileExtensions
+{
+    NSSet *extensions = nil;
+
+    if (extensions == nil) {
+        extensions = [NSSet setWithObjects:@"db", @"sql", @"sqlite", nil];
+    }
     return extensions;
 }
 
