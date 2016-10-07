@@ -2,4 +2,4 @@ use_frameworks!
 platform :ios, '8.0'
 
 pod 'box-ios-sdk'
-pod 'MBProgressHUD', '~> 0.9.1'
+pod 'MBProgressHUD', '~> 1.0.0’

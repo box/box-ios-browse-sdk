@@ -320,7 +320,7 @@
     hud.labelText = NSLocalizedString(@"Deleting item...", @"HUD message for when item is being deleted");
     hud.mode = MBProgressHUDModeCustomView;
     hud.removeFromSuperViewOnHide = YES;
-    [hud show:YES];
+    [hud showAnimated:YES];
 }
 
 #pragma mark - Table view data source
@@ -548,8 +548,8 @@
             hud.labelText = NSLocalizedString(@"Unable to load contents of folder.", @"Message: shown when a folder's contents could not be loaded.");
             hud.mode = MBProgressHUDModeCustomView;
             hud.removeFromSuperViewOnHide = YES;
-            [hud show:YES];
-            [hud hide:YES afterDelay:3.0];
+            [hud showAnimated:YES];
+            [hud hideAnimated:YES afterDelay:3.0];
         });
     }
 }
