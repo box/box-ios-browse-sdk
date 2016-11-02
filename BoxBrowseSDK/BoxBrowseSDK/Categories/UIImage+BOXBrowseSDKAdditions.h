@@ -42,4 +42,11 @@
  */
 + (UIImage *)box_genericFileIcon;
 
+/**
+ * Returns a default icon for a generic folder
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_genericFolderIcon;
+
 @end

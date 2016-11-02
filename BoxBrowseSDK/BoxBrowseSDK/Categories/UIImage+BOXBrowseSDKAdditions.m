@@ -63,6 +63,11 @@
     return [UIImage box_iconWithName:@"generic"];
 }
 
++ (UIImage *)box_genericFolderIcon
+{
+    return [UIImage box_iconWithName:@"personal_folder"];
+}
+
 - (UIImage *)box_imageAtAppropriateScaleFactor
 {
     UIImage *image = self;
@@ -216,7 +221,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"markdown",@"md", @"mdown", @"txt", nil];
+        extensions = [NSSet setWithObjects:@"markdown", @"md", @"mdown", @"txt", nil];
     }
     
     return extensions;
