@@ -150,7 +150,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"aac",@"aiff", @"m3u", @"m4a", @"mid", @"mp3", @"wav", @"wpl", @"wma", nil];
+        extensions = [NSSet setWithObjects:@"aac", @"aiff", @"m3u", @"m4a", @"mid", @"mp3", @"wav", @"wpl", @"wma", nil];
     }
     
     return extensions;
@@ -161,7 +161,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"bmp",@"dcm", @"gdraw", @"gif", @"jpeg", @"jpg", @"tiff", @"png", nil];
+        extensions = [NSSet setWithObjects:@"bmp", @"dcm", @"gdraw", @"gif", @"jpeg", @"jpg", @"tiff", @"png", nil];
     }
     
     return extensions;
@@ -172,7 +172,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"eps",@"svg", nil];
+        extensions = [NSSet setWithObjects:@"eps", @"svg", nil];
     }
     
     return extensions;
@@ -183,7 +183,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"avi",@"flv", @"m4v", @"mov", @"mp4", @"mpeg", @"mpg", @"qt", @"wmv", nil];
+        extensions = [NSSet setWithObjects:@"avi", @"flv", @"m4v", @"mov", @"mp4", @"mpeg", @"mpg", @"qt", @"wmv", nil];
     }
     
     return extensions;
@@ -194,7 +194,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"doc",@"docx", @"dot", @"dotx", @"gdoc", @"odt", @"ott", @"pages", @"rtf", nil];
+        extensions = [NSSet setWithObjects:@"doc", @"docx", @"dot", @"dotx", @"gdoc", @"odt", @"ott", @"pages", @"rtf", nil];
     }
     
     return extensions;
@@ -205,7 +205,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"aspx",@"c", @"c++", @"cpp", @"css", @"htm", @"html", @"java", @"js", @"php", @"scala", @"webba", @"xhtml", @"xml", nil];
+        extensions = [NSSet setWithObjects:@"aspx", @"c", @"c++", @"cpp", @"css", @"htm", @"html", @"java", @"js", @"php", @"scala", @"webba", @"xhtml", @"xml", nil];
     }
     
     return extensions;
@@ -227,7 +227,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"rar",@"zip", @"tgz", nil];
+        extensions = [NSSet setWithObjects:@"rar", @"zip", @"tgz", nil];
     }
     
     return extensions;
@@ -238,7 +238,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"gslide",@"key", @"opd", @"otp", @"pot", @"potx", @"ppt", @"pptx", nil];
+        extensions = [NSSet setWithObjects:@"gslide", @"key", @"opd", @"otp", @"pot", @"potx", @"ppt", @"pptx", nil];
     }
     
     return extensions;
@@ -249,7 +249,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"csv",@"gsheet", @"numbers", @"ods", @"ots", @"xls", @"xlsx", @"xlt", @"xltx", nil];
+        extensions = [NSSet setWithObjects:@"csv", @"gsheet", @"numbers", @"ods", @"ots", @"xls", @"xlsx", @"xlt", @"xltx", nil];
     }
     
     return extensions;
