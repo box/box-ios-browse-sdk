@@ -90,9 +90,6 @@
 		C50D41C51DA5CF4300413876 /* sketch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sketch.png; sourceTree = "<group>"; };
 		C50D41C61DA5CF4300413876 /* sketch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sketch@2x.png"; sourceTree = "<group>"; };
 		C50D41C71DA5CF4300413876 /* sketch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sketch@3x.png"; sourceTree = "<group>"; };
-		C50D41C81DA5CF4300413876 /* speadsheet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speadsheet@2x.png"; sourceTree = "<group>"; };
-		C50D41C91DA5CF4300413876 /* speadsheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speadsheet.png; sourceTree = "<group>"; };
-		C50D41CA1DA5CF4300413876 /* speadsheet@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speadsheet@3x.png"; sourceTree = "<group>"; };
 		C50D41CB1DA5CF4300413876 /* text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text.png; sourceTree = "<group>"; };
 		C50D41CC1DA5CF4300413876 /* text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text@2x.png"; sourceTree = "<group>"; };
 		C50D41CD1DA5CF4300413876 /* text@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text@3x.png"; sourceTree = "<group>"; };
@@ -154,6 +151,9 @@
 		C50D42051DA5CF4300413876 /* vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vector.png; sourceTree = "<group>"; };
 		C50D42061DA5CF4300413876 /* vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vector@2x.png"; sourceTree = "<group>"; };
 		C50D42071DA5CF4300413876 /* vector@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vector@3x.png"; sourceTree = "<group>"; };
+		C5DEC7561DD2BD420087F5A5 /* spreadsheet@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spreadsheet@3x.png"; sourceTree = "<group>"; };
+		C5DEC7571DD2BD420087F5A5 /* spreadsheet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spreadsheet@2x.png"; sourceTree = "<group>"; };
+		C5DEC7581DD2BD420087F5A5 /* spreadsheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spreadsheet.png; sourceTree = "<group>"; };
 		CD0BEF5A387588BCBD69581C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B78BAC81BD978D5336A21A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -347,6 +347,9 @@
 		C5B0536B1D2F38100009E483 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				C5DEC7561DD2BD420087F5A5 /* spreadsheet@3x.png */,
+				C5DEC7571DD2BD420087F5A5 /* spreadsheet@2x.png */,
+				C5DEC7581DD2BD420087F5A5 /* spreadsheet.png */,
 				C50D41C01DA5CF4300413876 /* personal_folder@2x.png */,
 				C50D41C11DA5CF4300413876 /* personal_folder@3x.png */,
 				C50D41C21DA5CF4300413876 /* shared_folder.png */,
@@ -355,9 +358,6 @@
 				C50D41C51DA5CF4300413876 /* sketch.png */,
 				C50D41C61DA5CF4300413876 /* sketch@2x.png */,
 				C50D41C71DA5CF4300413876 /* sketch@3x.png */,
-				C50D41C81DA5CF4300413876 /* speadsheet@2x.png */,
-				C50D41C91DA5CF4300413876 /* speadsheet.png */,
-				C50D41CA1DA5CF4300413876 /* speadsheet@3x.png */,
 				C50D41CB1DA5CF4300413876 /* text.png */,
 				C50D41CC1DA5CF4300413876 /* text@2x.png */,
 				C50D41CD1DA5CF4300413876 /* text@3x.png */,
