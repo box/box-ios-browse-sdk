@@ -44,6 +44,41 @@
     return icon;
 }
 
++ (UIImage *)box_smallIconForItem:(BOXItem *)item
+{
+    NSBundle *browseResourceBundle = [NSBundle boxBrowseSDKResourcesBundle];
+    
+    UIImage *icon = nil;
+    
+    if (item.isFolder) {
+        BOXFolder *folder = (BOXFolder *)item;
+        if (folder.isExternallyOwned == BOXAPIBooleanYES) {
+            icon = [UIImage box_iconWithName:@"small_external_folder"];
+            
+        } else if (folder.hasCollaborations == BOXAPIBooleanYES) {
+            icon = [UIImage box_iconWithName:@"small_shared_folder"];
+            
+        } else {
+            icon = [UIImage box_iconWithName:@"small_personal_folder"];
+            
+        }
+    } else if (item.isFile) {
+        NSString *fileExtension = [item.name box_pathExtensionAccountingForZippedPackages].lowercaseString;
+        NSString *iconName = [self iconNameForFileExtension:fileExtension];
+
+        UIImage *image = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
+
+        if (image == nil) {
+            image = icon = [UIImage box_iconWithName:@"small_generic"];
+        }
+        
+    } else if (item.isBookmark) {
+        icon = [UIImage box_iconWithName:@"small_link"];
+    }
+    
+    return icon;
+}
+
 + (UIImage *)box_iconForFileName:(NSString *)fileName
 {
     NSString *fileExtension = [fileName box_pathExtensionAccountingForZippedPackages].lowercaseString;
