@@ -66,10 +66,10 @@
         NSString *fileExtension = [item.name box_pathExtensionAccountingForZippedPackages].lowercaseString;
         NSString *iconName = [self iconNameForFileExtension:fileExtension];
 
-        UIImage *image = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
+        icon = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
 
-        if (image == nil) {
-            image = icon = [UIImage box_iconWithName:@"small_generic"];
+        if (icon == nil) {
+            icon = [UIImage box_iconWithName:@"small_generic"];
         }
         
     } else if (item.isBookmark) {
