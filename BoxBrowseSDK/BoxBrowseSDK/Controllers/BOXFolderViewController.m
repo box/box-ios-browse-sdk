@@ -276,7 +276,7 @@
     
     BOXErrorBlock errorBlock = ^(NSError *error){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error) {
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Unable to Delete", @"Label: title for item deletion failure alert")
                                                                                          message:NSLocalizedString(@"Unable to delete this item.", @"Label: alert message for item deletion failure")
