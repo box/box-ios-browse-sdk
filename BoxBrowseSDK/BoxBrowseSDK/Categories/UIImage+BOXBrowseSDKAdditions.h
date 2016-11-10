@@ -20,6 +20,14 @@
 + (UIImage *)box_iconForItem:(BOXItem *)item;
 
 /**
+ * Returns an item's corresponding default icon (smaller size)
+ *
+ * @return An icon corresponding to the item's file type
+ */
++ (UIImage *)box_smallIconForItem:(BOXItem *)item;
+
+
+/**
  * Returns an image with the appropriate scale factor given the device.
  *
  * @return An image with the appropriate scale.
