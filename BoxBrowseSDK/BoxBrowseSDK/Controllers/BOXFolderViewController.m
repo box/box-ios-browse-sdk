@@ -513,7 +513,7 @@
 - (void)switchToEmptyStateWithError:(NSError *)error
 {
     // No error means it's just an empty folder.
-    NSString *errorMessage = [[NSString alloc] init];
+    NSString *errorMessage = nil;
     if (error == nil) {
         errorMessage = NSLocalizedString(@"This folder is empty.", @"Label: Label displayed when the current folder is empty");
     } else {
