@@ -11,14 +11,14 @@
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import "NSBundle+BOXBrowseSDKAdditions.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation UIImage (BOXBrowseSDKAdditions)
 
 #pragma mark - Public Methods
 
 + (UIImage *)box_iconForItem:(BOXItem *)item
 {
-    NSBundle *browseResourceBundle = [NSBundle boxBrowseSDKResourcesBundle];
-
     UIImage *icon = nil;
 
     if (item.isFolder) {
@@ -41,13 +41,12 @@
 
     }
 
+    BOXAssert(icon != nil, @"No icon for item %@.", item);
     return icon;
 }
 
 + (UIImage *)box_smallIconForItem:(BOXItem *)item
 {
-    NSBundle *browseResourceBundle = [NSBundle boxBrowseSDKResourcesBundle];
-    
     UIImage *icon = nil;
     
     if (item.isFolder) {
@@ -66,7 +65,9 @@
         NSString *fileExtension = [item.name box_pathExtensionAccountingForZippedPackages].lowercaseString;
         NSString *iconName = [self iconNameForFileExtension:fileExtension];
 
-        icon = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
+        if (iconName) {
+            icon = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
+        }
 
         if (icon == nil) {
             icon = [UIImage box_iconWithName:@"small_generic"];
@@ -75,7 +76,8 @@
     } else if (item.isBookmark) {
         icon = [UIImage box_iconWithName:@"small_link"];
     }
-    
+
+    BOXAssert(icon != nil, @"No small icon for item %@.", item);
     return icon;
 }
 
@@ -116,7 +118,7 @@
 
 #pragma mark - Private Methods
 
-+ (UIImage *)box_iconWithName:(NSString *)name
++ (nullable UIImage *)box_iconWithName:(NSString *)name
 {
     UIImage *icon = nil;
     NSBundle *browseSDKResourceBundle = [NSBundle boxBrowseSDKResourcesBundle];
@@ -130,7 +132,7 @@
     return icon;
 }
 
-+ (NSString *)iconNameForFileExtension:(NSString *)fileExtension
++ (nullable NSString *)iconNameForFileExtension:(NSString *)fileExtension
 {
     NSString *iconName = nil;
     if ([[self audioFileExtensions] containsObject:fileExtension])  {
@@ -306,3 +308,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

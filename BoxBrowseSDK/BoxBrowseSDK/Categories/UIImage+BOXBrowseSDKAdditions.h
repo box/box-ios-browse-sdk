@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 BOX. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class BOXItem;
 
@@ -58,3 +60,5 @@
 + (UIImage *)box_genericFolderIcon;
 
 @end
+
+NS_ASSUME_NONNULL_END
