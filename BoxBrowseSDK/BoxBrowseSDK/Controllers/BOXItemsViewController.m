@@ -146,8 +146,7 @@
     
     if (shouldShowCloseButton) {
 
-        NSString *closeButtonTitle = [[NSString alloc] init];
-
+        NSString *closeButtonTitle;
         if ([self.delegate respondsToSelector:@selector(itemsViewControllerCloseButtonTitle:)]) {
             closeButtonTitle = [self.delegate itemsViewControllerCloseButtonTitle:self];
         } else {
