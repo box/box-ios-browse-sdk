@@ -65,14 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
         NSString *fileExtension = [item.name box_pathExtensionAccountingForZippedPackages].lowercaseString;
         NSString *iconName = [self iconNameForFileExtension:fileExtension];
 
-        if (iconName) {
-            icon = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
-        }
+        icon = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
 
-        if (icon == nil) {
-            icon = [UIImage box_iconWithName:@"small_generic"];
-        }
-        
     } else if (item.isBookmark) {
         icon = [UIImage box_iconWithName:@"small_link"];
     }
@@ -132,9 +126,9 @@ NS_ASSUME_NONNULL_BEGIN
     return icon;
 }
 
-+ (nullable NSString *)iconNameForFileExtension:(NSString *)fileExtension
++ (NSString *)iconNameForFileExtension:(NSString *)fileExtension
 {
-    NSString *iconName = nil;
+    NSString *iconName = @"generic";
     if ([[self audioFileExtensions] containsObject:fileExtension])  {
         iconName = @"audio";
     }
