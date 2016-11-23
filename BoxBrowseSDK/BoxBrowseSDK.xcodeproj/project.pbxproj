@@ -52,9 +52,9 @@
 		C5C547611DD5057A005128EB /* generic.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C546891DD5054C005128EB /* generic.png */; };
 		C5C547621DD5057A005128EB /* generic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468A1DD5054C005128EB /* generic@2x.png */; };
 		C5C547631DD5057A005128EB /* generic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468B1DD5054C005128EB /* generic@3x.png */; };
-		C5C547641DD5057A005128EB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468C1DD5054C005128EB /* Icon.png */; };
-		C5C547651DD5057A005128EB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468D1DD5054C005128EB /* Icon@2x.png */; };
-		C5C547661DD5057A005128EB /* Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468E1DD5054C005128EB /* Icon@3x.png */; };
+		C5C547641DD5057A005128EB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468C1DD5054C005128EB /* icon.png */; };
+		C5C547651DD5057A005128EB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468D1DD5054C005128EB /* icon@2x.png */; };
+		C5C547661DD5057A005128EB /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468E1DD5054C005128EB /* icon@3x.png */; };
 		C5C547671DD5057A005128EB /* illustrator.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C5468F1DD5054C005128EB /* illustrator.png */; };
 		C5C547681DD5057A005128EB /* illustrator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C546901DD5054C005128EB /* illustrator@2x.png */; };
 		C5C547691DD5057A005128EB /* illustrator@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C546911DD5054C005128EB /* illustrator@3x.png */; };
@@ -121,9 +121,9 @@
 		C5C547EE1DD50677005128EB /* small_external_folder.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547A61DD50669005128EB /* small_external_folder.png */; };
 		C5C547EF1DD50677005128EB /* small_external_folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547A71DD50669005128EB /* small_external_folder@2x.png */; };
 		C5C547F01DD50677005128EB /* small_external_folder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547A81DD50669005128EB /* small_external_folder@3x.png */; };
-		C5C547F11DD50677005128EB /* small_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547A91DD50669005128EB /* small_Icon.png */; };
-		C5C547F21DD50677005128EB /* small_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547AA1DD50669005128EB /* small_Icon@2x.png */; };
-		C5C547F31DD50677005128EB /* small_Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547AB1DD50669005128EB /* small_Icon@3x.png */; };
+		C5C547F11DD50677005128EB /* small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547A91DD50669005128EB /* small_icon.png */; };
+		C5C547F21DD50677005128EB /* small_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547AA1DD50669005128EB /* small_icon@2x.png */; };
+		C5C547F31DD50677005128EB /* small_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547AB1DD50669005128EB /* small_icon@3x.png */; };
 		C5C547F41DD50677005128EB /* small_illustrator.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547AC1DD50669005128EB /* small_illustrator.png */; };
 		C5C547F51DD50677005128EB /* small_illustrator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547AD1DD50669005128EB /* small_illustrator@2x.png */; };
 		C5C547F61DD50677005128EB /* small_illustrator@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547AE1DD50669005128EB /* small_illustrator@3x.png */; };
@@ -247,9 +247,9 @@
 		C5C546891DD5054C005128EB /* generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = generic.png; sourceTree = "<group>"; };
 		C5C5468A1DD5054C005128EB /* generic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generic@2x.png"; sourceTree = "<group>"; };
 		C5C5468B1DD5054C005128EB /* generic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generic@3x.png"; sourceTree = "<group>"; };
-		C5C5468C1DD5054C005128EB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		C5C5468D1DD5054C005128EB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		C5C5468E1DD5054C005128EB /* Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@3x.png"; sourceTree = "<group>"; };
+		C5C5468C1DD5054C005128EB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C5C5468D1DD5054C005128EB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		C5C5468E1DD5054C005128EB /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
 		C5C5468F1DD5054C005128EB /* illustrator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = illustrator.png; sourceTree = "<group>"; };
 		C5C546901DD5054C005128EB /* illustrator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "illustrator@2x.png"; sourceTree = "<group>"; };
 		C5C546911DD5054C005128EB /* illustrator@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "illustrator@3x.png"; sourceTree = "<group>"; };
@@ -316,9 +316,9 @@
 		C5C547A61DD50669005128EB /* small_external_folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_external_folder.png; sourceTree = "<group>"; };
 		C5C547A71DD50669005128EB /* small_external_folder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_external_folder@2x.png"; sourceTree = "<group>"; };
 		C5C547A81DD50669005128EB /* small_external_folder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_external_folder@3x.png"; sourceTree = "<group>"; };
-		C5C547A91DD50669005128EB /* small_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_Icon.png; sourceTree = "<group>"; };
-		C5C547AA1DD50669005128EB /* small_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_Icon@2x.png"; sourceTree = "<group>"; };
-		C5C547AB1DD50669005128EB /* small_Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_Icon@3x.png"; sourceTree = "<group>"; };
+		C5C547A91DD50669005128EB /* small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_icon.png; sourceTree = "<group>"; };
+		C5C547AA1DD50669005128EB /* small_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_icon@2x.png"; sourceTree = "<group>"; };
+		C5C547AB1DD50669005128EB /* small_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_icon@3x.png"; sourceTree = "<group>"; };
 		C5C547AC1DD50669005128EB /* small_illustrator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_illustrator.png; sourceTree = "<group>"; };
 		C5C547AD1DD50669005128EB /* small_illustrator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_illustrator@2x.png"; sourceTree = "<group>"; };
 		C5C547AE1DD50669005128EB /* small_illustrator@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_illustrator@3x.png"; sourceTree = "<group>"; };
@@ -581,9 +581,9 @@
 				C5C547A61DD50669005128EB /* small_external_folder.png */,
 				C5C547A71DD50669005128EB /* small_external_folder@2x.png */,
 				C5C547A81DD50669005128EB /* small_external_folder@3x.png */,
-				C5C547A91DD50669005128EB /* small_Icon.png */,
-				C5C547AA1DD50669005128EB /* small_Icon@2x.png */,
-				C5C547AB1DD50669005128EB /* small_Icon@3x.png */,
+				C5C547A91DD50669005128EB /* small_icon.png */,
+				C5C547AA1DD50669005128EB /* small_icon@2x.png */,
+				C5C547AB1DD50669005128EB /* small_icon@3x.png */,
 				C5C547AC1DD50669005128EB /* small_illustrator.png */,
 				C5C547AD1DD50669005128EB /* small_illustrator@2x.png */,
 				C5C547AE1DD50669005128EB /* small_illustrator@3x.png */,
@@ -656,9 +656,9 @@
 				C5C546891DD5054C005128EB /* generic.png */,
 				C5C5468A1DD5054C005128EB /* generic@2x.png */,
 				C5C5468B1DD5054C005128EB /* generic@3x.png */,
-				C5C5468C1DD5054C005128EB /* Icon.png */,
-				C5C5468D1DD5054C005128EB /* Icon@2x.png */,
-				C5C5468E1DD5054C005128EB /* Icon@3x.png */,
+				C5C5468C1DD5054C005128EB /* icon.png */,
+				C5C5468D1DD5054C005128EB /* icon@2x.png */,
+				C5C5468E1DD5054C005128EB /* icon@3x.png */,
 				C5C5468F1DD5054C005128EB /* illustrator.png */,
 				C5C546901DD5054C005128EB /* illustrator@2x.png */,
 				C5C546911DD5054C005128EB /* illustrator@3x.png */,
@@ -853,9 +853,9 @@
 				C5C547EE1DD50677005128EB /* small_external_folder.png in Resources */,
 				C5C547EF1DD50677005128EB /* small_external_folder@2x.png in Resources */,
 				C5C547F01DD50677005128EB /* small_external_folder@3x.png in Resources */,
-				C5C547F11DD50677005128EB /* small_Icon.png in Resources */,
-				C5C547F21DD50677005128EB /* small_Icon@2x.png in Resources */,
-				C5C547F31DD50677005128EB /* small_Icon@3x.png in Resources */,
+				C5C547F11DD50677005128EB /* small_icon.png in Resources */,
+				C5C547F21DD50677005128EB /* small_icon@2x.png in Resources */,
+				C5C547F31DD50677005128EB /* small_icon@3x.png in Resources */,
 				C5C547F41DD50677005128EB /* small_illustrator.png in Resources */,
 				C5C547F51DD50677005128EB /* small_illustrator@2x.png in Resources */,
 				C5C547F61DD50677005128EB /* small_illustrator@3x.png in Resources */,
@@ -927,9 +927,9 @@
 				C5C547611DD5057A005128EB /* generic.png in Resources */,
 				C5C547621DD5057A005128EB /* generic@2x.png in Resources */,
 				C5C547631DD5057A005128EB /* generic@3x.png in Resources */,
-				C5C547641DD5057A005128EB /* Icon.png in Resources */,
-				C5C547651DD5057A005128EB /* Icon@2x.png in Resources */,
-				C5C547661DD5057A005128EB /* Icon@3x.png in Resources */,
+				C5C547641DD5057A005128EB /* icon.png in Resources */,
+				C5C547651DD5057A005128EB /* icon@2x.png in Resources */,
+				C5C547661DD5057A005128EB /* icon@3x.png in Resources */,
 				C5C547671DD5057A005128EB /* illustrator.png in Resources */,
 				C5C547681DD5057A005128EB /* illustrator@2x.png in Resources */,
 				C5C547691DD5057A005128EB /* illustrator@3x.png in Resources */,
