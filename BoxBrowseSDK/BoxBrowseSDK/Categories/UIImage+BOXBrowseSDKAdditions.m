@@ -162,6 +162,9 @@ NS_ASSUME_NONNULL_BEGIN
     else if ([[self dbFileExtensions] containsObject:fileExtension]) {
         iconName = @"database";
     }
+    else if ([[self iconFileExtensions] containsObject:fileExtension]) {
+        iconName = @"icon";
+    }
     else if ([fileExtension isEqualToString:@"boxnote"]) {
         iconName = @"boxnote";
     }
@@ -176,6 +179,9 @@ NS_ASSUME_NONNULL_BEGIN
     }
     else if ([fileExtension isEqualToString:@"psd"]) {
         iconName = @"photoshop";
+    }
+    else if ([fileExtension isEqualToString:@"sketch"]) {
+        iconName = @"sketch";
     }
     
     return iconName;
@@ -293,10 +299,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSSet *)dbFileExtensions
 {
-    NSSet *extensions = nil;
+    static NSSet *extensions = nil;
 
     if (extensions == nil) {
         extensions = [NSSet setWithObjects:@"db", @"sql", @"sqlite", nil];
+    }
+    return extensions;
+}
+
++ (NSSet *)iconFileExtensions
+{
+    static NSSet *extensions = nil;
+
+    if (extensions == nil) {
+        extensions = [NSSet setWithObjects:@"ico", @"icns", nil];
     }
     return extensions;
 }
