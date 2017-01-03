@@ -10,6 +10,7 @@
 
 #import "UIImage+BOXBrowseSDKAdditions.h"
 #import "NSBundle+BOXBrowseSDKAdditions.h"
+#import "BOXBrowseSDKFileTypeHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -129,40 +130,40 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)iconNameForFileExtension:(NSString *)fileExtension
 {
     NSString *iconName = @"generic";
-    if ([[self audioFileExtensions] containsObject:fileExtension])  {
+    if ([[BOXBrowseSDKFileTypeHelper audioFileExtensions] containsObject:fileExtension])  {
         iconName = @"audio";
     }
-    else if ([[self imageFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper imageFileExtensions] containsObject:fileExtension]) {
         iconName = @"image";
     }
-    else if ([[self videoFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper videoFileExtensions] containsObject:fileExtension]) {
         iconName = @"video";
     }
-    else if ([[self docFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper docFileExtensions] containsObject:fileExtension]) {
         iconName = @"document";
     }
-    else if ([[self codeFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper codeFileExtensions] containsObject:fileExtension]) {
         iconName = @"code";
     }
-    else if ([[self textFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper textFileExtensions] containsObject:fileExtension]) {
         iconName = @"text";
     }
-    else if ([[self presentationFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper presentationFileExtensions] containsObject:fileExtension]) {
         iconName = @"presentation";
     }
-    else if ([[self sheetFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper sheetFileExtensions] containsObject:fileExtension]) {
         iconName = @"spreadsheet";
     }
-    else if ([[self compressedFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper compressedFileExtensions] containsObject:fileExtension]) {
         iconName = @"zip";
     }
-    else if ([[self vectorImageFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper vectorImageFileExtensions] containsObject:fileExtension]) {
         iconName = @"vector";
     }
-    else if ([[self dbFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper dbFileExtensions] containsObject:fileExtension]) {
         iconName = @"database";
     }
-    else if ([[self iconFileExtensions] containsObject:fileExtension]) {
+    else if ([[BOXBrowseSDKFileTypeHelper iconFileExtensions] containsObject:fileExtension]) {
         iconName = @"icon";
     }
     else if ([fileExtension isEqualToString:@"boxnote"]) {
@@ -185,136 +186,6 @@ NS_ASSUME_NONNULL_BEGIN
     }
     
     return iconName;
-}
-
-+ (NSSet *)audioFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"aac", @"aiff", @"m3u", @"m4a", @"mid", @"mp3", @"wav", @"wpl", @"wma", @"amr", @"3gp", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)imageFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"bmp", @"dcm", @"gdraw", @"gif", @"jpeg", @"jpg", @"tiff", @"tif", @"png", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)vectorImageFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"eps", @"svg", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)videoFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"avi", @"flv", @"m4v", @"mov", @"mp4", @"mpeg", @"mpg", @"qt", @"wmv", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)docFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"doc", @"docx", @"dot", @"dotx", @"gdoc", @"odt", @"ott", @"pages", @"rtf", @"rtfd", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)codeFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"aspx", @"h", @"c", @"c++", @"cpp", @"m", @"css", @"htm", @"html", @"java", @"js", @"php", @"scala", @"webba", @"xhtml", @"xml", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)textFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"markdown", @"md", @"mdown", @"txt", @"text", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)compressedFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"rar", @"zip", @"gz", @"tgz", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)presentationFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"gslide", @"key", @"opd", @"otp", @"pot", @"potx", @"ppt", @"pptx", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)sheetFileExtensions
-{
-    static NSSet *extensions = nil;
-    
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"csv", @"gsheet", @"numbers", @"ods", @"ots", @"xls", @"xlsx", @"xlt", @"xltx", nil];
-    }
-    
-    return extensions;
-}
-
-+ (NSSet *)dbFileExtensions
-{
-    static NSSet *extensions = nil;
-
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"db", @"sql", @"sqlite", nil];
-    }
-    return extensions;
-}
-
-+ (NSSet *)iconFileExtensions
-{
-    static NSSet *extensions = nil;
-
-    if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"ico", @"icns", nil];
-    }
-    return extensions;
 }
 
 @end
