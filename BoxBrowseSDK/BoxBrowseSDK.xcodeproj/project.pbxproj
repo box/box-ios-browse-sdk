@@ -172,6 +172,9 @@
 		C5C548241DD50677005128EB /* small_zip.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547DC1DD50669005128EB /* small_zip.png */; };
 		C5C548251DD50677005128EB /* small_zip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547DD1DD50669005128EB /* small_zip@2x.png */; };
 		C5C548261DD50677005128EB /* small_zip@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5C547DE1DD50669005128EB /* small_zip@3x.png */; };
+		C5DB7DCC1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = C5DB7DCA1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.h */; };
+		C5DB7DCD1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DB7DCB1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m */; };
+		C5DB7DCE1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DB7DCB1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m */; };
 		E18A822A1DD7DD8B001B005E /* small_generic.png in Resources */ = {isa = PBXBuildFile; fileRef = E18A82261DD7DD8B001B005E /* small_generic.png */; };
 		E18A822C1DD7DD8B001B005E /* small_generic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E18A82271DD7DD8B001B005E /* small_generic@2x.png */; };
 		E18A822E1DD7DD8B001B005E /* small_generic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E18A82281DD7DD8B001B005E /* small_generic@3x.png */; };
@@ -367,6 +370,8 @@
 		C5C547DC1DD50669005128EB /* small_zip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_zip.png; sourceTree = "<group>"; };
 		C5C547DD1DD50669005128EB /* small_zip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_zip@2x.png"; sourceTree = "<group>"; };
 		C5C547DE1DD50669005128EB /* small_zip@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_zip@3x.png"; sourceTree = "<group>"; };
+		C5DB7DCA1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOXBrowseSDKFileTypeHelper.h; path = Helpers/BOXBrowseSDKFileTypeHelper.h; sourceTree = "<group>"; };
+		C5DB7DCB1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOXBrowseSDKFileTypeHelper.m; path = Helpers/BOXBrowseSDKFileTypeHelper.m; sourceTree = "<group>"; };
 		CD0BEF5A387588BCBD69581C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18A82261DD7DD8B001B005E /* small_generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_generic.png; sourceTree = "<group>"; };
 		E18A82271DD7DD8B001B005E /* small_generic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small_generic@2x.png"; sourceTree = "<group>"; };
@@ -450,6 +455,8 @@
 			children = (
 				11B5CF8B1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.h */,
 				11B5CF8C1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m */,
+				C5DB7DCA1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.h */,
+				C5DB7DCB1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -721,6 +728,7 @@
 			files = (
 				11B5CF961C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.h in Headers */,
 				11B5CF931C59BC1F00FDBE0F /* BoxBrowseSDK.h in Headers */,
+				C5DB7DCC1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,6 +1068,7 @@
 				15CE09FB1ACC7653006B8614 /* BOXCreateFolderViewController.m in Sources */,
 				11B5CF841C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m in Sources */,
 				15CE0A071ACD15BA006B8614 /* DummyStrings.m in Sources */,
+				C5DB7DCD1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m in Sources */,
 				11B5CF8E1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */,
 				1564A5361ACA12D1005DD04F /* UIImage+BOXBrowseSDKAdditions.m in Sources */,
 				11B5CF971C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m in Sources */,
@@ -1071,6 +1080,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5DB7DCE1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m in Sources */,
 				15DC5B261AE01EFE003FB3E9 /* BOXItemCell.m in Sources */,
 				11B5CF8F1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.m in Sources */,
 				15764E0D1ACF42710023C535 /* BOXSearchResultsViewController.m in Sources */,
