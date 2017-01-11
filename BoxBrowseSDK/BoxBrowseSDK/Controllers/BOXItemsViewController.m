@@ -14,6 +14,7 @@
 @interface BOXItemsViewController ()
 
 @property (nonatomic, readwrite, strong) NSArray *items;
+@property (nonatomic, readwrite, assign) BOOL authenticationAttempted;
 
 @end
 
@@ -48,19 +49,28 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if (self.contentClient.user == nil) {
+    // We only want to display the authentication screen if :
+    // - the user is not using app users (the contentClient's accessTokenDelegate is nil)
+    // - the user is not logged in (the contentClient's user is nil)
+    // - we did not present the authentication screen already.
+    if (self.contentClient.user == nil && self.contentClient.accessTokenDelegate == nil && self.authenticationAttempted == NO) {
+        
         BOXAuthorizationViewController *authViewController = [[BOXAuthorizationViewController alloc] initWithSDKClient:self.contentClient completionBlock:^(BOXAuthorizationViewController *authorizationViewController, BOXUser *user, NSError *error) {
             [authorizationViewController dismissViewControllerAnimated:YES completion:^{
                 [self refresh];
             }];
         } cancelBlock:^(BOXAuthorizationViewController *authorizationViewController) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [authorizationViewController dismissViewControllerAnimated:YES completion:^{
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
         }];
-        [self presentViewController:authViewController animated:YES completion:nil];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:authViewController];
+        [self presentViewController:navigationController animated:YES completion:nil];
+        self.authenticationAttempted = YES;
     } else {
         [self refresh];
     }
+    
 }
 
 #pragma mark - Table view data source
