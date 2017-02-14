@@ -16,9 +16,9 @@ xcuserdata
 *.xccheckout
 *.xcscmblueprint
 
-# podfiles
-BoxBrowseSDKSampleApp/Pods/
-BoxBrowseSDK/Pods/
+# Carthage
+BoxBrowseSDK/Carthage/
+BoxBrowseSDKSampleApp/Carthage
 
 # Box build artifacts
 buildArtifacts
