@@ -1,7 +1,4 @@
 # Box SDKs
-git "git@github.com:box/box-ios-browse-sdk.git" "carthageConversion"
-git "git@github.com:box/box-ios-sdk.git" "carthageConversion"
+git "git@github.com:box/box-ios-browse-sdk.git" "carthageConversion":wq
 
-# 3rd Party SDK's
-github "jdg/MBProgressHUD" ~> 1.0.0
 
