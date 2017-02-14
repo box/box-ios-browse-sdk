@@ -14,6 +14,7 @@
 		15146EE41AC20C71000BA380 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE31AC20C71000BA380 /* Images.xcassets */; };
 		15146EE71AC20C71000BA380 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE51AC20C71000BA380 /* LaunchScreen.xib */; };
 		15146EF31AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */; };
+		591806071E53BA3C004E1B28 /* BoxBrowseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		15146EEC1AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxBrowseSDKSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EF11AC20C71000BA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxBrowseSDKSampleAppTests.m; sourceTree = "<group>"; };
+		591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxBrowseSDK.framework; path = Carthage/Build/iOS/BoxBrowseSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				591806071E53BA3C004E1B28 /* BoxBrowseSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +126,7 @@
 		EB811E4165AEF29672AF1AE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,7 +138,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15146EF61AC20C71000BA380 /* Build configuration list for PBXNativeTarget "BoxBrowseSDKSampleApp" */;
 			buildPhases = (
-				CC1AA1DB48F4DA05278C597B /* Check Pods Manifest.lock */,
 				15146ECF1AC20C71000BA380 /* Sources */,
 				15146ED01AC20C71000BA380 /* Frameworks */,
 				15146ED11AC20C71000BA380 /* Resources */,
@@ -222,24 +225,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CC1AA1DB48F4DA05278C597B /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15146ECF1AC20C71000BA380 /* Sources */ = {
@@ -381,6 +366,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BoxBrowseSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.box.$(PRODUCT_NAME:rfc1034identifier)";
@@ -392,6 +381,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BoxBrowseSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.box.$(PRODUCT_NAME:rfc1034identifier)";
