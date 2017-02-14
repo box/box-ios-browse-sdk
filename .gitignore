@@ -17,6 +17,7 @@ xcuserdata
 *.xcscmblueprint
 
 # Carthage
+/Carthage
 BoxBrowseSDK/Carthage/
 BoxBrowseSDKSampleApp/Carthage
 
