@@ -20,6 +20,8 @@ xcuserdata
 /Carthage
 BoxBrowseSDK/Carthage/
 BoxBrowseSDKSampleApp/Carthage
+Cartfile.resolved
+BoxBrowseSDKSampleApp/Cartfile.resolved
 
 # Box build artifacts
 buildArtifacts
