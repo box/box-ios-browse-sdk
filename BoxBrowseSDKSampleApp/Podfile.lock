@@ -1,14 +1,14 @@
 PODS:
-  - box-ios-browse-sdk (1.0.5):
+  - box-ios-browse-sdk (1.0.7):
     - box-ios-sdk
-    - MBProgressHUD (~> 0.9.1)
-  - box-ios-sdk (1.0.13):
-    - box-ios-sdk/logger (= 1.0.13)
-    - box-ios-sdk/no-arc (= 1.0.13)
-  - box-ios-sdk/logger (1.0.13)
-  - box-ios-sdk/no-arc (1.0.13):
+    - MBProgressHUD (~> 1.0.0)
+  - box-ios-sdk (1.0.14):
+    - box-ios-sdk/logger (= 1.0.14)
+    - box-ios-sdk/no-arc (= 1.0.14)
+  - box-ios-sdk/logger (1.0.14)
+  - box-ios-sdk/no-arc (1.0.14):
     - box-ios-sdk/logger
-  - MBProgressHUD (0.9.2)
+  - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
   - box-ios-browse-sdk (from `../`)
@@ -18,8 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  box-ios-browse-sdk: b8f399d155360101f3ed6670dbe07d65cc0798c9
-  box-ios-sdk: fe2af3f53d4958919195a00a2d281aa29857943c
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  box-ios-browse-sdk: 5f8d1739585f878e4e64cf20023244b6a72d0ed3
+  box-ios-sdk: 8034a7b0fcac562105725afa744011c81da99398
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 6ef0eb0f6fd2dac5374fd1746097002aae3d5cc3
+
+COCOAPODS: 1.0.0
