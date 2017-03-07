@@ -12,16 +12,25 @@ PODS:
 
 DEPENDENCIES:
   - box-ios-browse-sdk (from `../`)
+  - box-ios-sdk (from `https://github.com/box/box-ios-sdk.git`, branch `nsurlsession`)
 
 EXTERNAL SOURCES:
   box-ios-browse-sdk:
     :path: "../"
+  box-ios-sdk:
+    :branch: nsurlsession
+    :git: https://github.com/box/box-ios-sdk.git
+
+CHECKOUT OPTIONS:
+  box-ios-sdk:
+    :commit: 85b5ac4a692f33492c8175ffa246452202d7f28c
+    :git: https://github.com/box/box-ios-sdk.git
 
 SPEC CHECKSUMS:
   box-ios-browse-sdk: 5f8d1739585f878e4e64cf20023244b6a72d0ed3
-  box-ios-sdk: 8034a7b0fcac562105725afa744011c81da99398
+  box-ios-sdk: 5a7ff7f3c0604db1bf5c8a87e090c9711b007afe
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: 6ef0eb0f6fd2dac5374fd1746097002aae3d5cc3
+PODFILE CHECKSUM: 6817930cd4980c8d734421b0996ea9dc5f558029
 
 COCOAPODS: 1.0.0
