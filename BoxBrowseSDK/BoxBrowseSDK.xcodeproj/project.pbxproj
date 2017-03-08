@@ -16,7 +16,6 @@
 		15CE09FC1ACC7653006B8614 /* BOXCreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE09FA1ACC7653006B8614 /* BOXCreateFolderViewController.m */; };
 		15CE0A0B1ACDEE1A006B8614 /* BOXItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A091ACDEE1A006B8614 /* BOXItemsViewController.m */; };
 		15DC5B261AE01EFE003FB3E9 /* BOXItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564A5541ACA1D68005DD04F /* BOXItemCell.m */; };
-		591805ED1E4E69B7004E1B28 /* BoxBrowseSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */; };
 		591805EE1E4E69BD004E1B28 /* BOXThumbnailCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564A6D81ACB3C9E005DD04F /* BOXThumbnailCache.m */; };
 		591805EF1E4E69C1004E1B28 /* DummyStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CE0A061ACD15BA006B8614 /* DummyStrings.m */; };
 		591805F01E4E69C5004E1B28 /* NSBundle+BOXBrowseSDKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B5CF801C59A3F900FDBE0F /* NSBundle+BOXBrowseSDKAdditions.m */; };
@@ -45,6 +44,7 @@
 		591806161E53BC80004E1B28 /* BOXBrowseSDKResourceLocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 11B5CF8B1C59A53700FDBE0F /* BOXBrowseSDKResourceLocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		591806171E53BC80004E1B28 /* BOXItemCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1564A5531ACA1D68005DD04F /* BOXItemCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59D112BA1E565C7400DCAFD9 /* Resource in Resources */ = {isa = PBXBuildFile; fileRef = 59D112B91E565C7400DCAFD9 /* Resource */; };
+		59FBD1671E70C1D4008589E4 /* BOXBrowseSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5DB7DCE1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DB7DCB1E1BAF40000E91A2 /* BOXBrowseSDKFileTypeHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +57,6 @@
 		11B5CF951C5A88DD00FDBE0F /* BOXItem+BOXBrowseSDKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BOXItem+BOXBrowseSDKAdditions.m"; sourceTree = "<group>"; };
 		1501083F1AE5E6B100E1FD4C /* BOXBrowseSDKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXBrowseSDKConstants.h; sourceTree = "<group>"; };
 		15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxBrowseSDK.h; sourceTree = "<group>"; };
-		15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxBrowseSDK.m; sourceTree = "<group>"; };
 		15146EBB1AC20B78000BA380 /* BoxBrowseSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxBrowseSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EC11AC20B78000BA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153113931AC3569100996D00 /* BOXFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXFolderViewController.h; sourceTree = "<group>"; };
@@ -184,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				15146EB31AC20B77000BA380 /* BoxBrowseSDK.h */,
-				15146EB51AC20B77000BA380 /* BoxBrowseSDK.m */,
 				1564A6D71ACB3C9E005DD04F /* BOXThumbnailCache.h */,
 				1564A6D81ACB3C9E005DD04F /* BOXThumbnailCache.m */,
 				15CE0A051ACD15BA006B8614 /* DummyStrings.h */,
@@ -243,6 +241,7 @@
 				591806171E53BC80004E1B28 /* BOXItemCell.h in Headers */,
 				591805FB1E4E6C80004E1B28 /* BOXItem+BOXBrowseSDKAdditions.h in Headers */,
 				591805FC1E4E6C80004E1B28 /* BOXBrowseSDKFileTypeHelper.h in Headers */,
+				59FBD1671E70C1D4008589E4 /* BOXBrowseSDKConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +384,6 @@
 				591805F11E4E69C9004E1B28 /* UIImage+BOXBrowseSDKAdditions.m in Sources */,
 				591805F71E4E69DE004E1B28 /* BOXBrowseSDKResourceLocator.m in Sources */,
 				591805F91E4E6BF0004E1B28 /* BOXItemCell.m in Sources */,
-				591805ED1E4E69B7004E1B28 /* BoxBrowseSDK.m in Sources */,
 				591805F81E4E69E1004E1B28 /* BOXBrowseSDKFileTypeHelper.m in Sources */,
 				591805F31E4E69D0004E1B28 /* BOXCreateFolderViewController.m in Sources */,
 				591805EE1E4E69BD004E1B28 /* BOXThumbnailCache.m in Sources */,
