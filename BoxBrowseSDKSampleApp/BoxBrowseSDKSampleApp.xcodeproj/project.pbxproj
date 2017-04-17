@@ -20,6 +20,9 @@
 		59F265101E72193900B95BC1 /* BoxContentSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59F265121E72195900B95BC1 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; };
 		59F265131E72195900B95BC1 /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5BB0F711EA56D860037CAF1 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; };
+		C5BB0F721EA56D9B0037CAF1 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; };
+		C5BB0F731EA56D9B0037CAF1 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,7 @@
 			files = (
 				59D112BC1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Embed Frameworks */,
 				59F265101E72193900B95BC1 /* BoxContentSDK.framework in Embed Frameworks */,
+				C5BB0F731EA56D9B0037CAF1 /* Masonry.framework in Embed Frameworks */,
 				59F265131E72195900B95BC1 /* MBProgressHUD.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -65,6 +69,7 @@
 		591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxBrowseSDK.framework; path = Carthage/Build/iOS/BoxBrowseSDK.framework; sourceTree = "<group>"; };
 		59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxContentSDK.framework; path = Carthage/Build/iOS/BoxContentSDK.framework; sourceTree = "<group>"; };
 		59F265111E72195900B95BC1 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
+		C5BB0F701EA56D860037CAF1 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = Carthage/Build/iOS/Masonry.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,8 @@
 			files = (
 				59D112BB1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Frameworks */,
 				59F2650F1E72193900B95BC1 /* BoxContentSDK.framework in Frameworks */,
+				C5BB0F721EA56D9B0037CAF1 /* Masonry.framework in Frameworks */,
+				C5BB0F711EA56D860037CAF1 /* Masonry.framework in Frameworks */,
 				59F265121E72195900B95BC1 /* MBProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +166,7 @@
 		EB811E4165AEF29672AF1AE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5BB0F701EA56D860037CAF1 /* Masonry.framework */,
 				59F265111E72195900B95BC1 /* MBProgressHUD.framework */,
 				59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */,
 				591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */,
