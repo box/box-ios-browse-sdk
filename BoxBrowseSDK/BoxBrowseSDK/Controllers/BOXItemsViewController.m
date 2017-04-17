@@ -36,7 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.separatorInset = UIEdgeInsetsZero;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // eliminate extra separators
     self.tableView.separatorColor = [UIColor colorWithWhite:244.0f/255.0f alpha:1.0f];
     

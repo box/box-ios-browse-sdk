@@ -7,6 +7,7 @@
 //
 
 @import BoxContentSDK;
+@import Masonry;
 
 #import "BOXItemCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -21,8 +22,9 @@ long long const BOX_BROWSE_SDK_TERABYTE = BOX_BROWSE_SDK_GIGABYTE * 1024;
 
 CGFloat const BOXItemCellHeight = 60.0f;
 
-#define kImageViewWidth 40.0
-#define kImageHorizontalPadding 12.0
+#define CELL_TITLE_LABEL_HEIGHT 20.0f
+#define CELL_SUBTITLE_LABEL_HEIGHT 17.0f
+
 #define kDisabledAlphaValue 0.3f
 
 #define kTextLabelColorEnabled [UIColor colorWithWhite:86.0f/255.0f alpha:1.0]
@@ -37,7 +39,8 @@ CGFloat const BOXItemCellHeight = 60.0f;
 @property (nonatomic) BOXFileThumbnailRequest *thumbnailRequest;
 
 @property (nonatomic, readwrite, strong) UIImageView *thumbnailImageView;
-
+@property (nonatomic, readwrite, strong) UILabel *titleLabel;
+@property (nonatomic, readwrite, strong) UILabel *descriptionLabel;
 @end
 
 @implementation BOXItemCell
@@ -48,17 +51,67 @@ CGFloat const BOXItemCellHeight = 60.0f;
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _contentClient = contentClient;
-        
-        self.textLabel.font = [UIFont systemFontOfSize:17.0f];
-        self.textLabel.textColor = kTextLabelColorEnabled;
-        
-        self.detailTextLabel.font = [UIFont systemFontOfSize:13.0f];
-        self.detailTextLabel.textColor = kDetailTextLabelColorEnabled;
 
-        _thumbnailImageView = [[UIImageView alloc] init];
+        [self addSubview:self.thumbnailImageView];
+        [self addSubview:self.titleLabel];
+        [self addSubview:self.descriptionLabel];
+        
+        [self createConstraints];
     }
     
     return self;
+}
+
+- (UIImageView *)thumbnailImageView
+{
+    if (_thumbnailImageView == nil) {
+        _thumbnailImageView = [UIImageView new];
+        _thumbnailImageView.contentMode = UIViewContentModeCenter;
+    }
+    return _thumbnailImageView;
+}
+
+- (UILabel *)titleLabel
+{
+    if (_titleLabel == nil) {
+        _titleLabel = [UILabel new];
+        _titleLabel.font = [UIFont systemFontOfSize:17.0f];
+        _titleLabel.textColor = kTextLabelColorEnabled;
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    return _titleLabel;
+}
+
+- (UILabel *)descriptionLabel
+{
+    if (_descriptionLabel == nil) {
+        _descriptionLabel = [UILabel new];
+        _descriptionLabel.font = [UIFont systemFontOfSize:13.0f];
+        _descriptionLabel.textColor = kDetailTextLabelColorEnabled;
+        _descriptionLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    return _descriptionLabel;
+}
+
+- (void)createConstraints
+{
+    [self.thumbnailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.height.equalTo(self);
+        make.width.equalTo(self.mas_height);
+    }];
+    
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.thumbnailImageView.mas_right);
+        make.right.equalTo(self);
+        make.bottom.equalTo(self.mas_centerY);
+        make.height.equalTo(@(CELL_TITLE_LABEL_HEIGHT));
+    }];
+    
+    [self.descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.titleLabel);
+        make.top.equalTo(self.mas_centerY);
+        make.height.equalTo(@(CELL_SUBTITLE_LABEL_HEIGHT));
+    }];
 }
 
 - (void)prepareForReuse
@@ -68,25 +121,6 @@ CGFloat const BOXItemCellHeight = 60.0f;
     _item = nil;
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.thumbnailImageView.frame = CGRectMake(0, (self.frame.size.height - kImageViewWidth) * 0.5f, kImageViewWidth + kImageHorizontalPadding * 2, kImageViewWidth);
-    self.thumbnailImageView.contentMode = UIViewContentModeScaleAspectFit;
-    if (self.thumbnailImageView.superview == nil) {
-        [self.contentView addSubview:self.thumbnailImageView];
-    }
-    
-    CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.origin.x = CGRectGetMaxX(self.thumbnailImageView.frame);
-    textLabelFrame.size.width = CGRectGetMaxX(self.frame) - textLabelFrame.origin.x - kImageHorizontalPadding;
-    self.textLabel.frame = textLabelFrame;
-    
-    CGRect detailTextLabelFrame = self.detailTextLabel.frame;
-    detailTextLabelFrame.origin.x = CGRectGetMaxX(self.thumbnailImageView.frame);
-    detailTextLabelFrame.size.width = CGRectGetMaxX(self.frame) - detailTextLabelFrame.origin.x - kImageHorizontalPadding;
-    self.detailTextLabel.frame = detailTextLabelFrame;
-}
 
 // Cell separators get inset without this.
 - (UIEdgeInsets)layoutMargins
@@ -99,7 +133,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
     _item = item;
     
     // Name
-    self.textLabel.text = item.name;
+    self.titleLabel.text = item.name;
     
     // Description
     NSString *description = nil;
@@ -108,7 +142,15 @@ CGFloat const BOXItemCellHeight = 60.0f;
     } else {
         description = [NSString stringWithFormat:@"%@, %@", [self displaySizeForItem:item], [self displayDateForItem:item]];
     }
-    self.detailTextLabel.text = description;
+    self.descriptionLabel.text = description;
+    
+    
+    __weak BOXItemCell *me = self;
+    void (^imageSetBlock)(UIImage *image, UIViewContentMode contentMode) = ^void(UIImage *image,UIViewContentMode contentMode) {
+        me.thumbnailImageView.image = image;
+        me.thumbnailImageView.contentMode = contentMode;
+    };
+    
     
     // Icon / thumbnail
     if ([self shouldShowThumbnailForItem:self.item] && item.isFile) {
@@ -121,28 +163,28 @@ CGFloat const BOXItemCellHeight = 60.0f;
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if ([me.item.modelID isEqualToString:file.modelID]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        me.thumbnailImageView.image = image;
+                        imageSetBlock(image, UIViewContentModeScaleAspectFill);
                     });
                 }
             }];
         } else {
-            UIImageView *imageView = self.thumbnailImageView;
-            imageView.image = [UIImage box_iconForItem:item];
+            imageSetBlock([UIImage box_iconForItem:item], UIViewContentModeCenter);
+            
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if (error == nil) {
                     if ([me.item.modelID isEqualToString:file.modelID]) {
-                        imageView.image = image;
+                        imageSetBlock(image, UIViewContentModeScaleAspectFill);
                         CATransition *transition = [CATransition animation];
                         transition.duration = 0.3f;
                         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
                         transition.type = kCATransitionFade;
-                        [imageView.layer addAnimation:transition forKey:nil];
+                        [me.thumbnailImageView.layer addAnimation:transition forKey:nil];
                     }
                 }
             }];
         }
     } else {
-        self.thumbnailImageView.image = [UIImage box_iconForItem:item];
+        imageSetBlock([UIImage box_iconForItem:item], UIViewContentModeCenter);
     }
 }
 
@@ -151,13 +193,13 @@ CGFloat const BOXItemCellHeight = 60.0f;
     if (enabled) {
         self.userInteractionEnabled = YES;
         self.thumbnailImageView.alpha = 1.0f;
-        self.textLabel.textColor = kTextLabelColorEnabled;
-        self.detailTextLabel.textColor = kDetailTextLabelColorEnabled;
+        self.titleLabel.textColor = kTextLabelColorEnabled;
+        self.descriptionLabel.textColor = kDetailTextLabelColorEnabled;
     } else {
         self.userInteractionEnabled = NO;
         self.thumbnailImageView.alpha = kDisabledAlphaValue;
-        self.textLabel.textColor = kTextLabelColorDisabled;
-        self.detailTextLabel.textColor = kDetailTextLabelColorDisabled;
+        self.titleLabel.textColor = kTextLabelColorDisabled;
+        self.descriptionLabel.textColor = kDetailTextLabelColorDisabled;
     }
 }
 
