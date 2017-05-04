@@ -25,6 +25,8 @@ CGFloat const BOXItemCellHeight = 60.0f;
 #define CELL_TITLE_LABEL_HEIGHT 20.0f
 #define CELL_SUBTITLE_LABEL_HEIGHT 17.0f
 
+#define CELL_ELEMENT_OFFSET 5.0f
+
 #define kDisabledAlphaValue 0.3f
 
 #define kTextLabelColorEnabled [UIColor colorWithWhite:86.0f/255.0f alpha:1.0]
@@ -96,12 +98,14 @@ CGFloat const BOXItemCellHeight = 60.0f;
 - (void)createConstraints
 {
     [self.thumbnailImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.height.equalTo(self);
+        make.left.equalTo(self);
+        make.top.equalTo(self).offset(CELL_ELEMENT_OFFSET);
+        make.height.equalTo(self).offset(-2.0f * CELL_ELEMENT_OFFSET);
         make.width.equalTo(self.mas_height);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.thumbnailImageView.mas_right);
+        make.left.equalTo(self.thumbnailImageView.mas_right).offset(2.0f * CELL_ELEMENT_OFFSET);
         make.right.equalTo(self);
         make.bottom.equalTo(self.mas_centerY);
         make.height.equalTo(@(CELL_TITLE_LABEL_HEIGHT));
@@ -146,7 +150,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
     
     
     __weak BOXItemCell *me = self;
-    void (^imageSetBlock)(UIImage *image, UIViewContentMode contentMode) = ^void(UIImage *image,UIViewContentMode contentMode) {
+    void (^imageSetBlock)(UIImage *image, UIViewContentMode contentMode) = ^void(UIImage *image, UIViewContentMode contentMode) {
         me.thumbnailImageView.image = image;
         me.thumbnailImageView.contentMode = contentMode;
     };
@@ -163,7 +167,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if ([me.item.modelID isEqualToString:file.modelID]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        imageSetBlock(image, UIViewContentModeScaleAspectFill);
+                        imageSetBlock(image, UIViewContentModeScaleAspectFit);
                     });
                 }
             }];
@@ -173,7 +177,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
             self.thumbnailRequest = [thumbnailCache fetchThumbnailForFile:file size:BOXThumbnailSize128 completion:^(UIImage *image, NSError *error) {
                 if (error == nil) {
                     if ([me.item.modelID isEqualToString:file.modelID]) {
-                        imageSetBlock(image, UIViewContentModeScaleAspectFill);
+                        imageSetBlock(image, UIViewContentModeScaleAspectFit);
                         CATransition *transition = [CATransition animation];
                         transition.duration = 0.3f;
                         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
