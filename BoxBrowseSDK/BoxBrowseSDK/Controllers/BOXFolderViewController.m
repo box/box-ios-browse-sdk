@@ -317,7 +317,7 @@
     }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = NSLocalizedString(@"Deleting item...", @"HUD message for when item is being deleted");
+    hud.label.text = NSLocalizedString(@"Deleting item...", @"HUD message for when item is being deleted");
     hud.mode = MBProgressHUDModeCustomView;
     hud.removeFromSuperViewOnHide = YES;
     [hud showAnimated:YES];
@@ -545,7 +545,7 @@
     if (self.tableView.visibleCells.count > 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = NSLocalizedString(@"Unable to load contents of folder.", @"Message: shown when a folder's contents could not be loaded.");
+            hud.label.text = NSLocalizedString(@"Unable to load contents of folder.", @"Message: shown when a folder's contents could not be loaded.");
             hud.mode = MBProgressHUDModeCustomView;
             hud.removeFromSuperViewOnHide = YES;
             [hud showAnimated:YES];
