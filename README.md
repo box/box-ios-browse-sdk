@@ -11,23 +11,24 @@ This SDK allows you to show UI that allows users to browse their folders on Box.
 
 Developer Setup
 ---------------
-* Ensure you have the latest version of [XCode](https://developer.apple.com/xcode/) installed.
-* We encourage you to use [CocoaPods](http://cocoapods.org/) to import the SDK into your project. CocoaPods is a simple, but powerful dependency management tool. If you do not already use CocoaPods, it's very easy to [get started](http://guides.cocoapods.org/using/getting-started.html).
+ * Ensure you have the latest version of [Xcode](https://developer.apple.com/xcode/) installed.
+ * We encourage you to use [Carthage](https://github.com/Carthage/Carthage) to import the SDK into your project.
 
 Quickstart
 ----------
-Step 1: Add to your Podfile
+Step 1: Install Carthage
 ```
-pod 'box-ios-browse-sdk'
+brew install carthage
 ```
-Step 2: Install
+Step 2: Run Carthage Update
 ```
-pod install
+carthage update --platform ios
 ```
 Step 3: Import
 ```objectivec
-#import <BoxBrowseSDK/BoxBrowseSDK.h>
+@import BoxBrowseSDK;
 ```
+
 Step 4: Set the Box Client ID and Client Secret that you obtain from [creating a developer account](http://developers.box.com/)
 ```objectivec
 [BOXContentClient setClientID:@"your-client-id" clientSecret:@"your-client-secret"];
