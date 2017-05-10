@@ -46,10 +46,10 @@ UINavigationController *navigationController = [[UINavigationController alloc] i
 Sample App
 ----------
 A sample app can be found in the [BoxBrowseSDKSampleApp](../../tree/master/BoxBrowseSDKSampleApp) folder. To execute the sample app:
-Step 1: Install Pods
+Step 1: Update Carthage
 ```
 cd BoxBrowseSDKSampleApp
-pod install
+carthage update --platform iOS
 ```
 Step 2: Open Workspace
 ```
