@@ -13,10 +13,7 @@
 
 + (NSBundle *)boxBrowseSDKResourcesBundle
 {
-    NSBundle *browseSDKBundle = [NSBundle bundleForClass:[BOXBrowseSDKResourceLocator class]];
-    NSString *browseSDKResourceBundlePath = [browseSDKBundle.bundlePath stringByAppendingPathComponent:@"BoxBrowseSDKResources.bundle"];
-    NSBundle *browseSDKResourceBundle = [NSBundle bundleWithPath:browseSDKResourceBundlePath];
-    return browseSDKResourceBundle;
+    return [NSBundle bundleForClass:[BOXBrowseSDKResourceLocator class]];
 }
 
 @end

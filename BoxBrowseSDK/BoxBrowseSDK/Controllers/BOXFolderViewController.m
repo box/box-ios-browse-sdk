@@ -11,7 +11,7 @@
 #import "BOXItemCell.h"
 #import "BOXCreateFolderViewController.h"
 #import "BOXSearchResultsViewController.h"
-#import "MBProgressHUD.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "BOXBrowseSDKConstants.h"
 
 @interface BOXFolderViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>

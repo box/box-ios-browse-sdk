@@ -14,7 +14,15 @@
 		15146EE41AC20C71000BA380 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE31AC20C71000BA380 /* Images.xcassets */; };
 		15146EE71AC20C71000BA380 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE51AC20C71000BA380 /* LaunchScreen.xib */; };
 		15146EF31AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */; };
-		4758F548A9E5AD0F097FD384 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AFA1C80E6DAE088319C3B3 /* Pods.framework */; };
+		59D112BB1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */; };
+		59D112BC1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59F2650F1E72193900B95BC1 /* BoxContentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */; };
+		59F265101E72193900B95BC1 /* BoxContentSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59F265121E72195900B95BC1 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; };
+		59F265131E72195900B95BC1 /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5BB0F711EA56D860037CAF1 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; };
+		C5BB0F721EA56D9B0037CAF1 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; };
+		C5BB0F731EA56D9B0037CAF1 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +35,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		59D112BD1E565CC500DCAFD9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				59D112BC1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Embed Frameworks */,
+				59F265101E72193900B95BC1 /* BoxContentSDK.framework in Embed Frameworks */,
+				C5BB0F731EA56D9B0037CAF1 /* Masonry.framework in Embed Frameworks */,
+				59F265131E72195900B95BC1 /* MBProgressHUD.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		00AFA1C80E6DAE088319C3B3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146ED31AC20C71000BA380 /* BoxBrowseSDKSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxBrowseSDKSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146ED71AC20C71000BA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15146ED81AC20C71000BA380 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,8 +66,10 @@
 		15146EEC1AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxBrowseSDKSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15146EF11AC20C71000BA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxBrowseSDKSampleAppTests.m; sourceTree = "<group>"; };
-		2BF25194D4CF9F10E599F2F3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		CF99696CF15113BE93F20F94 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxBrowseSDK.framework; path = Carthage/Build/iOS/BoxBrowseSDK.framework; sourceTree = "<group>"; };
+		59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxContentSDK.framework; path = Carthage/Build/iOS/BoxContentSDK.framework; sourceTree = "<group>"; };
+		59F265111E72195900B95BC1 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
+		C5BB0F701EA56D860037CAF1 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = Carthage/Build/iOS/Masonry.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +77,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4758F548A9E5AD0F097FD384 /* Pods.framework in Frameworks */,
+				59D112BB1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Frameworks */,
+				59F2650F1E72193900B95BC1 /* BoxContentSDK.framework in Frameworks */,
+				C5BB0F721EA56D9B0037CAF1 /* Masonry.framework in Frameworks */,
+				C5BB0F711EA56D860037CAF1 /* Masonry.framework in Frameworks */,
+				59F265121E72195900B95BC1 /* MBProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,10 +98,10 @@
 		15146ECA1AC20C71000BA380 = {
 			isa = PBXGroup;
 			children = (
+				59F2650B1E72176400B95BC1 /* BoxBrowseSDK */,
 				15146ED51AC20C71000BA380 /* BoxBrowseSDKSampleApp */,
 				15146EEF1AC20C71000BA380 /* BoxBrowseSDKSampleAppTests */,
 				15146ED41AC20C71000BA380 /* Products */,
-				E96187EF51202D96C2701814 /* Pods */,
 				EB811E4165AEF29672AF1AE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -126,19 +156,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E96187EF51202D96C2701814 /* Pods */ = {
+		59F2650B1E72176400B95BC1 /* BoxBrowseSDK */ = {
 			isa = PBXGroup;
 			children = (
-				2BF25194D4CF9F10E599F2F3 /* Pods.debug.xcconfig */,
-				CF99696CF15113BE93F20F94 /* Pods.release.xcconfig */,
 			);
-			name = Pods;
+			name = BoxBrowseSDK;
 			sourceTree = "<group>";
 		};
 		EB811E4165AEF29672AF1AE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00AFA1C80E6DAE088319C3B3 /* Pods.framework */,
+				C5BB0F701EA56D860037CAF1 /* Masonry.framework */,
+				59F265111E72195900B95BC1 /* MBProgressHUD.framework */,
+				59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */,
+				591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -150,12 +181,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15146EF61AC20C71000BA380 /* Build configuration list for PBXNativeTarget "BoxBrowseSDKSampleApp" */;
 			buildPhases = (
-				CC1AA1DB48F4DA05278C597B /* Check Pods Manifest.lock */,
 				15146ECF1AC20C71000BA380 /* Sources */,
 				15146ED01AC20C71000BA380 /* Frameworks */,
 				15146ED11AC20C71000BA380 /* Resources */,
-				1668CCBC7CEDA45145E678FE /* Copy Pods Resources */,
-				3C3783E00438BE6E200C4428 /* Embed Pods Frameworks */,
+				59D112BD1E565CC500DCAFD9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,54 +269,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1668CCBC7CEDA45145E678FE /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3C3783E00438BE6E200C4428 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CC1AA1DB48F4DA05278C597B /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15146ECF1AC20C71000BA380 /* Sources */ = {
@@ -427,9 +408,12 @@
 		};
 		15146EF71AC20C71000BA380 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BF25194D4CF9F10E599F2F3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BoxBrowseSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.box.$(PRODUCT_NAME:rfc1034identifier)";
@@ -439,9 +423,12 @@
 		};
 		15146EF81AC20C71000BA380 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF99696CF15113BE93F20F94 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BoxBrowseSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.box.$(PRODUCT_NAME:rfc1034identifier)";

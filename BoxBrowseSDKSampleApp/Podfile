@@ -1,6 +1,0 @@
-use_frameworks!
-platform :ios, '8.0'
-
-target 'BoxBrowseSDKSampleApp' do
-	pod 'box-ios-browse-sdk', :path => '../'
-end
