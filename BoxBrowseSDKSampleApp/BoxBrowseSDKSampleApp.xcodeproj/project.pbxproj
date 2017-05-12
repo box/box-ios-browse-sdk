@@ -14,15 +14,8 @@
 		15146EE41AC20C71000BA380 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE31AC20C71000BA380 /* Images.xcassets */; };
 		15146EE71AC20C71000BA380 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE51AC20C71000BA380 /* LaunchScreen.xib */; };
 		15146EF31AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */; };
-		59D112BB1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */; };
-		59D112BC1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		59F2650F1E72193900B95BC1 /* BoxContentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */; };
-		59F265101E72193900B95BC1 /* BoxContentSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		59F265121E72195900B95BC1 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; };
-		59F265131E72195900B95BC1 /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C5BB0F711EA56D860037CAF1 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; };
-		C5BB0F721EA56D9B0037CAF1 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; };
-		C5BB0F731EA56D9B0037CAF1 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		591E13CE1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */; };
+		591E13CF1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,16 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		59D112BD1E565CC500DCAFD9 /* Embed Frameworks */ = {
+		591E13D01EC64DEB008AFA5C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				59D112BC1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Embed Frameworks */,
-				59F265101E72193900B95BC1 /* BoxContentSDK.framework in Embed Frameworks */,
-				C5BB0F731EA56D9B0037CAF1 /* Masonry.framework in Embed Frameworks */,
-				59F265131E72195900B95BC1 /* MBProgressHUD.framework in Embed Frameworks */,
+				591E13CF1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +57,7 @@
 		15146EF11AC20C71000BA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxBrowseSDKSampleAppTests.m; sourceTree = "<group>"; };
 		591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxBrowseSDK.framework; path = Carthage/Build/iOS/BoxBrowseSDK.framework; sourceTree = "<group>"; };
+		591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxBrowseSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxContentSDK.framework; path = Carthage/Build/iOS/BoxContentSDK.framework; sourceTree = "<group>"; };
 		59F265111E72195900B95BC1 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		C5BB0F701EA56D860037CAF1 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = Carthage/Build/iOS/Masonry.framework; sourceTree = "<group>"; };
@@ -77,11 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59D112BB1E565CC500DCAFD9 /* BoxBrowseSDK.framework in Frameworks */,
-				59F2650F1E72193900B95BC1 /* BoxContentSDK.framework in Frameworks */,
-				C5BB0F721EA56D9B0037CAF1 /* Masonry.framework in Frameworks */,
-				C5BB0F711EA56D860037CAF1 /* Masonry.framework in Frameworks */,
-				59F265121E72195900B95BC1 /* MBProgressHUD.framework in Frameworks */,
+				591E13CE1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +85,7 @@
 		15146ECA1AC20C71000BA380 = {
 			isa = PBXGroup;
 			children = (
+				591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */,
 				59F2650B1E72176400B95BC1 /* BoxBrowseSDK */,
 				15146ED51AC20C71000BA380 /* BoxBrowseSDKSampleApp */,
 				15146EEF1AC20C71000BA380 /* BoxBrowseSDKSampleAppTests */,
@@ -184,7 +172,7 @@
 				15146ECF1AC20C71000BA380 /* Sources */,
 				15146ED01AC20C71000BA380 /* Frameworks */,
 				15146ED11AC20C71000BA380 /* Resources */,
-				59D112BD1E565CC500DCAFD9 /* Embed Frameworks */,
+				591E13D01EC64DEB008AFA5C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -413,6 +401,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BoxBrowseSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -428,6 +417,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = BoxBrowseSDKSampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
