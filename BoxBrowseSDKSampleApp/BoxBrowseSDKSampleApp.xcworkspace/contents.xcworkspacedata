@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../BoxBrowseSDK/BoxBrowseSDK.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:BoxBrowseSDKSampleApp.xcodeproj">
    </FileRef>
 </Workspace>
