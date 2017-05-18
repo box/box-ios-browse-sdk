@@ -14,8 +14,8 @@
 		15146EE41AC20C71000BA380 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE31AC20C71000BA380 /* Images.xcassets */; };
 		15146EE71AC20C71000BA380 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15146EE51AC20C71000BA380 /* LaunchScreen.xib */; };
 		15146EF31AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */; };
-		591E13CE1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */; };
-		591E13CF1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59DDA9721ECE514300512AF5 /* BoxBrowseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DDA9711ECE512D00512AF5 /* BoxBrowseSDK.framework */; };
+		59DDA9731ECE514300512AF5 /* BoxBrowseSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59DDA9711ECE512D00512AF5 /* BoxBrowseSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +26,27 @@
 			remoteGlobalIDString = 15146ED21AC20C71000BA380;
 			remoteInfo = BoxBrowseSDKSampleApp;
 		};
+		59DDA96E1ECE512D00512AF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59DDA9691ECE512D00512AF5 /* BoxBrowseSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 15146EBB1AC20B78000BA380;
+			remoteInfo = BoxBrowseSDKTests;
+		};
+		59DDA9701ECE512D00512AF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59DDA9691ECE512D00512AF5 /* BoxBrowseSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 591805E51E4E698B004E1B28;
+			remoteInfo = BoxBrowseSDK;
+		};
+		59DDA9741ECE514300512AF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59DDA9691ECE512D00512AF5 /* BoxBrowseSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 591805E41E4E698B004E1B28;
+			remoteInfo = BoxBrowseSDK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,7 +56,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				591E13CF1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Embed Frameworks */,
+				59DDA9731ECE514300512AF5 /* BoxBrowseSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +78,7 @@
 		15146EF11AC20C71000BA380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoxBrowseSDKSampleAppTests.m; sourceTree = "<group>"; };
 		591806061E53BA3C004E1B28 /* BoxBrowseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxBrowseSDK.framework; path = Carthage/Build/iOS/BoxBrowseSDK.framework; sourceTree = "<group>"; };
-		591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoxBrowseSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59DDA9691ECE512D00512AF5 /* BoxBrowseSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BoxBrowseSDK.xcodeproj; path = ../BoxBrowseSDK/BoxBrowseSDK.xcodeproj; sourceTree = "<group>"; };
 		59F2650E1E72193900B95BC1 /* BoxContentSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoxContentSDK.framework; path = Carthage/Build/iOS/BoxContentSDK.framework; sourceTree = "<group>"; };
 		59F265111E72195900B95BC1 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		C5BB0F701EA56D860037CAF1 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = Carthage/Build/iOS/Masonry.framework; sourceTree = "<group>"; };
@@ -68,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				591E13CE1EC64DEB008AFA5C /* BoxBrowseSDK.framework in Frameworks */,
+				59DDA9721ECE514300512AF5 /* BoxBrowseSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +106,7 @@
 		15146ECA1AC20C71000BA380 = {
 			isa = PBXGroup;
 			children = (
-				591E13CD1EC64DEB008AFA5C /* BoxBrowseSDK.framework */,
+				59DDA9691ECE512D00512AF5 /* BoxBrowseSDK.xcodeproj */,
 				59F2650B1E72176400B95BC1 /* BoxBrowseSDK */,
 				15146ED51AC20C71000BA380 /* BoxBrowseSDKSampleApp */,
 				15146EEF1AC20C71000BA380 /* BoxBrowseSDKSampleAppTests */,
@@ -144,6 +165,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		59DDA96A1ECE512D00512AF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59DDA96F1ECE512D00512AF5 /* BoxBrowseSDKTests.xctest */,
+				59DDA9711ECE512D00512AF5 /* BoxBrowseSDK.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		59F2650B1E72176400B95BC1 /* BoxBrowseSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +207,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				59DDA9751ECE514300512AF5 /* PBXTargetDependency */,
 			);
 			name = BoxBrowseSDKSampleApp;
 			productName = BoxBrowseSDKSampleApp;
@@ -230,6 +261,12 @@
 			mainGroup = 15146ECA1AC20C71000BA380;
 			productRefGroup = 15146ED41AC20C71000BA380 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 59DDA96A1ECE512D00512AF5 /* Products */;
+					ProjectRef = 59DDA9691ECE512D00512AF5 /* BoxBrowseSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				15146ED21AC20C71000BA380 /* BoxBrowseSDKSampleApp */,
@@ -237,6 +274,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		59DDA96F1ECE512D00512AF5 /* BoxBrowseSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BoxBrowseSDKTests.xctest;
+			remoteRef = 59DDA96E1ECE512D00512AF5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59DDA9711ECE512D00512AF5 /* BoxBrowseSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BoxBrowseSDK.framework;
+			remoteRef = 59DDA9701ECE512D00512AF5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		15146ED11AC20C71000BA380 /* Resources */ = {
@@ -284,6 +338,11 @@
 			isa = PBXTargetDependency;
 			target = 15146ED21AC20C71000BA380 /* BoxBrowseSDKSampleApp */;
 			targetProxy = 15146EED1AC20C71000BA380 /* PBXContainerItemProxy */;
+		};
+		59DDA9751ECE514300512AF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BoxBrowseSDK;
+			targetProxy = 59DDA9741ECE514300512AF5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

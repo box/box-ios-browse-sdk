@@ -16,15 +16,26 @@ Developer Setup
 
 Quickstart
 ----------
-Step 1: Install Carthage
+Step 1: Setup Carthage
 ```
 brew install carthage
 ```
+Create Cartfile in your project directory, add the following line:
+```
+ git "git@github.com:box/box-ios-browse-sdk.git" "master"
+```
+This will fetch the latest commit on master branch.
+ 
 Step 2: Run Carthage Update
+ 
+In the same directory as your Cartfile, run the following command:
 ```
 carthage update --platform ios
 ```
 Step 3: Import
+
+In your project:
+ 
 ```objectivec
 @import BoxBrowseSDK;
 ```
