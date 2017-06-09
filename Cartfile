@@ -1,5 +1,5 @@
 #Box SDKs
-git "git@github.com:box/box-ios-sdk.git"
+git "git@github.com:box/box-ios-sdk.git" "b54ca11c015cbf9ced440a1f50efca529393d6cd"
 
 # 3rd party SDKs
 github "jdg/MBProgressHUD" ~> 1.0.0
