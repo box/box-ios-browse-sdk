@@ -118,7 +118,7 @@
  *  The user tapped on a Bookmark from the list.
  *
  *  @param itemsViewController The instance of BOXItemsViewController calling this method.
- *  @param file The bookmark the user selected.
+ *  @param bookmark The bookmark the user selected.
  *  @param items The list of items that the tap occured from. The array will include the tapped item itself.
  */
 - (void)itemsViewController:(BOXItemsViewController *)itemsViewController didTapBookmark:(BOXBookmark *)bookmark inItems:(NSArray *)items;

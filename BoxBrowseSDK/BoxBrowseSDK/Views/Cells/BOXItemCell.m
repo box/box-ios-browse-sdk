@@ -120,6 +120,8 @@ CGFloat const BOXItemCellHeight = 60.0f;
 
 - (void)prepareForReuse
 {
+    [super prepareForReuse];
+    
     [self.thumbnailRequest cancel];
     self.thumbnailRequest = nil;
     _item = nil;
