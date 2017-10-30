@@ -340,7 +340,7 @@
         if (shouldNavigateToFolder) {
             BOXFolderViewController *viewController = [[BOXFolderViewController alloc] initWithContentClient:self.contentClient
                                                                                                       folder:folder];
-            viewController.delegate = self.folderBrowserDelegate;
+            viewController.delegate = self.delegate;
             self.navigationItem.backBarButtonItem.title = folder.parentFolder.name;
             viewController.navigationItem.prompt = self.navigationItem.prompt;
             [self.navigationController pushViewController:viewController animated:YES];
