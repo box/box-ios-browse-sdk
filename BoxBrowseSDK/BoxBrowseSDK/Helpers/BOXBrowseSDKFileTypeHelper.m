@@ -26,7 +26,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"bmp", @"dcm", @"gdraw", @"gif", @"jpeg", @"jpg", @"tiff", @"tif", @"png", nil];
+        extensions = [NSSet setWithObjects:@"bmp", @"dcm", @"gdraw", @"gif", @"jpeg", @"jpg", @"tiff", @"tif", @"png", @"heic", @"heif", nil];
     }
     
     return extensions;
