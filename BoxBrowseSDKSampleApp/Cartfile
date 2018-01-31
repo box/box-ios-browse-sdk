@@ -1,3 +1,3 @@
 # Box SDKs
-git "git@github.com:box/box-ios-browse-sdk.git" "master"
-
+git "box/box-ios-browse-sdk.git" ~> 1.0
+git "box/box-ios-sdk" ~> 1.0

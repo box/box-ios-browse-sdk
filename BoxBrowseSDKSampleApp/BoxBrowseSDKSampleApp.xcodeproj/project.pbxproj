@@ -16,6 +16,10 @@
 		15146EF31AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15146EF21AC20C71000BA380 /* BoxBrowseSDKSampleAppTests.m */; };
 		59DDA9721ECE514300512AF5 /* BoxBrowseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DDA9711ECE512D00512AF5 /* BoxBrowseSDK.framework */; };
 		59DDA9731ECE514300512AF5 /* BoxBrowseSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59DDA9711ECE512D00512AF5 /* BoxBrowseSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A52B6FF52022446E0057F175 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; };
+		A52B6FF62022446E0057F175 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5BB0F701EA56D860037CAF1 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A52B6FF72022446E0057F175 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; };
+		A52B6FF82022446E0057F175 /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59F265111E72195900B95BC1 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A53C4E951F7B060B009F1AB9 /* BoxContentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53C4E941F7B060B009F1AB9 /* BoxContentSDK.framework */; };
 		A53C4E961F7B060B009F1AB9 /* BoxContentSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A53C4E941F7B060B009F1AB9 /* BoxContentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -58,8 +62,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A52B6FF82022446E0057F175 /* MBProgressHUD.framework in Embed Frameworks */,
 				59DDA9731ECE514300512AF5 /* BoxBrowseSDK.framework in Embed Frameworks */,
 				A53C4E961F7B060B009F1AB9 /* BoxContentSDK.framework in Embed Frameworks */,
+				A52B6FF62022446E0057F175 /* Masonry.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,8 +99,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52B6FF72022446E0057F175 /* MBProgressHUD.framework in Frameworks */,
 				59DDA9721ECE514300512AF5 /* BoxBrowseSDK.framework in Frameworks */,
 				A53C4E951F7B060B009F1AB9 /* BoxContentSDK.framework in Frameworks */,
+				A52B6FF52022446E0057F175 /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +217,7 @@
 				15146ED01AC20C71000BA380 /* Frameworks */,
 				15146ED11AC20C71000BA380 /* Resources */,
 				591E13D01EC64DEB008AFA5C /* Embed Frameworks */,
+				A52B6FF4202244040057F175 /* Carthage Copy Script */,
 			);
 			buildRules = (
 			);
@@ -317,6 +326,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A52B6FF4202244040057F175 /* Carthage Copy Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Masonry.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+			);
+			name = "Carthage Copy Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15146ECF1AC20C71000BA380 /* Sources */ = {
