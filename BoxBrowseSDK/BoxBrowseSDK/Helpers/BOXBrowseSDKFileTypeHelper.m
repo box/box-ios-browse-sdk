@@ -103,7 +103,7 @@
     static NSSet *extensions = nil;
     
     if (extensions == nil) {
-        extensions = [NSSet setWithObjects:@"gslide", @"key", @"keynote", @"opd", @"otp", @"pot", @"potx", @"ppt", @"pptx", nil];
+        extensions = [NSSet setWithObjects:@"gslide", @"gslides", @"key", @"keynote", @"opd", @"otp", @"pot", @"potx", @"ppt", @"pptx", nil];
     }
     
     return extensions;
