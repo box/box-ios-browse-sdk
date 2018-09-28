@@ -256,7 +256,7 @@ CGFloat const BOXItemCellHeight = 60.0f;
 
 - (NSString *)UTIFromFilePath:(NSString *)filePath
 {
-    CFStringRef fileExtension = (__bridge CFStringRef) [filePath box_pathExtensionAccountingForZippedPackages];
+    CFStringRef fileExtension = (__bridge CFStringRef) [filePath box_pathExtensionAccountingForMultipleExtensionsAndEmptyName];
     CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, NULL);
     NSString *strUTI = (__bridge_transfer NSString *)UTI;
     
