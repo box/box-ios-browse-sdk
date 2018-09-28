@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
             
         }
     } else if (item.isFile) {
-        NSString *fileExtension = [item.name box_pathExtensionAccountingForZippedPackages].lowercaseString;
+        NSString *fileExtension = [item.name box_pathExtensionAccountingForMultipleExtensionsAndEmptyName].lowercaseString;
         NSString *iconName = [self iconNameForFileExtension:fileExtension];
 
         icon = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *)box_iconForFileName:(NSString *)fileName
 {
-    NSString *fileExtension = [fileName box_pathExtensionAccountingForZippedPackages].lowercaseString;
+    NSString *fileExtension = [fileName box_pathExtensionAccountingForMultipleExtensionsAndEmptyName].lowercaseString;
     NSString *iconName = [self iconNameForFileExtension:fileExtension];
 
     UIImage *image = [UIImage box_iconWithName:iconName];
