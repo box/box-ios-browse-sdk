@@ -40,7 +40,11 @@
     self.tableView.separatorColor = [UIColor colorWithWhite:244.0f/255.0f alpha:1.0f];
     
     [self setupNavigationBar];
-    
+    [self installRefreshControl];
+}
+
+-(void)installRefreshControl
+{
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 }
@@ -202,7 +206,9 @@
                 self.items = items;
                 [self.tableView reloadData];
             }
-            [self.refreshControl endRefreshing];
+            if (self.refreshControl) {
+                [self.refreshControl endRefreshing];
+            }
         }
     }];
 }
