@@ -36,6 +36,7 @@
  * Refresh the items shown.
  */
 - (void)refresh;
+- (void)installRefreshControl;
 
 @end
 

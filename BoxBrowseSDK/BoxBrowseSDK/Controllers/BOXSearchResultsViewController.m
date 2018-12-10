@@ -28,6 +28,12 @@
     [self refresh];
 }
 
+-(void)installRefreshControl
+{
+    // override to prevent the installation of the UIRefreshControl
+    // which is causing IOS-16566
+}
+
 - (void)dealloc
 {
     [self.searchRequest cancel];
