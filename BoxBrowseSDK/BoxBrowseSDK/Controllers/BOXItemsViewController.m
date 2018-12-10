@@ -206,9 +206,7 @@
                 self.items = items;
                 [self.tableView reloadData];
             }
-            if (self.refreshControl) {
-                [self.refreshControl endRefreshing];
-            }
+            [self.refreshControl endRefreshing];
         }
     }];
 }
