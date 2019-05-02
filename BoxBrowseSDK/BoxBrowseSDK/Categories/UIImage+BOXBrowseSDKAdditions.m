@@ -100,6 +100,16 @@ NS_ASSUME_NONNULL_BEGIN
     return [UIImage box_iconWithName:@"personal_folder"];
 }
 
++ (UIImage *)box_sharedFolderIcon
+{
+    return [UIImage box_iconWithName:@"shared_folder"];
+}
+
++ (UIImage *)box_externalFolderIcon
+{
+    return [UIImage box_iconWithName:@"external_folder"];
+}
+
 - (UIImage *)box_imageAtAppropriateScaleFactor
 {
     UIImage *image = self;

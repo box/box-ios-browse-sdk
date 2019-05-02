@@ -59,6 +59,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIImage *)box_genericFolderIcon;
 
+/**
+ * Returns a default icon for a shared (aka collaborated) folder
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_sharedFolderIcon;
+
+/**
+ * Returns a default icon for an external folder
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_externalFolderIcon;
+
 @end
 
 NS_ASSUME_NONNULL_END
