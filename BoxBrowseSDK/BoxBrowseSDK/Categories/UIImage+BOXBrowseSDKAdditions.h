@@ -46,18 +46,68 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)box_iconForFileName:(NSString *)fileName;
 
 /**
- * Returns a default icon for a generic file
+ * Returns a default icon for a generic file. If you have a BoxItem
+ * use box_iconForItem:item to get the correct icon for the item.
  *
  * @return A default file icon
  */
 + (UIImage *)box_genericFileIcon;
 
 /**
- * Returns a default icon for a generic folder
+ * Returns a default icon for a generic folder. If you have a BoxItem
+ * use box_iconForItem:item to get the correct icon for the item.
  *
  * @return A default folder icon
  */
 + (UIImage *)box_genericFolderIcon;
+
+/**
+ * Returns a default icon for a shared (aka collaborated) folder. If you have a BoxItem
+ * use box_iconForItem:item to get the correct icon for the item.
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_sharedFolderIcon;
+
+/**
+ * Returns a default icon for an external folder. If you have a BoxItem
+ * use box_iconForItem:item to get the correct icon for the item.
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_externalFolderIcon;
+
+/**
+ * Returns a default icon for a generic file (smaller size). If you have a BoxItem
+ * use box_iconForItem:item to get the correct icon for the item.
+ *
+ * @return A default file icon
+ */
++ (UIImage *)box_smallGenericFileIcon;
+
+/**
+ * Returns a default icon for a generic folder (smaller size). If you have a BOXItem
+ * use box_iconForItem:item to get the correct icon for the item.
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_smallGenericFolderIcon;
+
+/**
+ * Returns a default icon for a shared (aka collaborated) folder (smaller size). If you have a BoxItem
+ * use box_iconForItem:item to get the correct icon for the item.
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_smallSharedFolderIcon;
+
+/**
+ * Returns a default icon for an external folder (smaller size). If you have a BoxItem
+ * use box_iconForItem:item to get the correct icon for the item.
+ *
+ * @return A default folder icon
+ */
++ (UIImage *)box_smallExternalFolderIcon;
 
 @end
 
