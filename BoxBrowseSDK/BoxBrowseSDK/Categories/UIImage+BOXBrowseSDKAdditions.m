@@ -48,29 +48,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *)box_smallIconForItem:(BOXItem *)item
 {
-    UIImage *icon = nil;
+    NSString *name = nil;
     
     if (item.isFolder) {
         BOXFolder *folder = (BOXFolder *)item;
         if (folder.isExternallyOwned == BOXAPIBooleanYES) {
-            icon = [UIImage box_iconWithName:@"small_external_folder"];
+            name = @"small_external_folder";
             
         } else if (folder.hasCollaborations == BOXAPIBooleanYES) {
-            icon = [UIImage box_iconWithName:@"small_shared_folder"];
+            name = @"small_shared_folder";
             
         } else {
-            icon = [UIImage box_iconWithName:@"small_personal_folder"];
+            name = @"small_personal_folder";
             
         }
     } else if (item.isFile) {
         NSString *fileExtension = [item.name box_pathExtensionAccountingForMultipleExtensionsAndEmptyName].lowercaseString;
         NSString *iconName = [self iconNameForFileExtension:fileExtension];
 
-        icon = [UIImage box_iconWithName:[@"small_" stringByAppendingString:iconName]];
+        name = [@"small_" stringByAppendingString:iconName];
 
     } else if (item.isBookmark) {
-        icon = [UIImage box_iconWithName:@"small_link"];
+        name = @"small_link";
     }
+    UIImage *icon = [UIImage box_iconWithName:name];
 
     BOXAssert(icon != nil, @"No small icon for item %@.", item);
     return icon;
