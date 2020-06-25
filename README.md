@@ -3,11 +3,11 @@
 Box iOS Browse SDK
 ===================
 
-This SDK allows you to show UI that allows users to browse their folders on Box.
+##Note:
 
-<img src="https://cloud.box.com/shared/static/x7do7jgfgt7vz6dheizuvzjnm4yn8ta1.png" width="200"/>
-<img src="https://cloud.box.com/shared/static/dfy0t2ammy8jashk2qhlv6zuin1vcpee.png" width="200"/>
-<img src="https://cloud.box.com/shared/static/k14dvhfvr4hd6a1q57p27y3ugk71cwzn.png" width="200"/>
+- The Box iOS Browse SDK is in **Maintenance** mode. This means only critical bugs will be patched. However, new functionality and additional bug fixes may be added on occasion based on customer demand, but should not be expected.
+
+This SDK allows you to show UI that allows users to browse their folders on Box.
 
 Developer Setup
 ---------------
@@ -25,9 +25,9 @@ Create Cartfile in your project directory, add the following line:
  git "git@github.com:box/box-ios-browse-sdk.git" "master"
 ```
 This will fetch the latest commit on master branch.
- 
+
 Step 2: Run Carthage Update
- 
+
 In the same directory as your Cartfile, run the following command:
 ```
 carthage update --platform ios
@@ -35,7 +35,7 @@ carthage update --platform ios
 Step 3: Import
 
 In your project:
- 
+
 ```objectivec
 @import BoxBrowseSDK;
 ```
